@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Distribution of Minimum &#8212; Data and AI Concepts</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mathematical-statistics/dist_of_minimum';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matrix Calculus Jacobians and Gradients" href="matrix_calculus_short.html" />
+    <link rel="prev" title="Chebyshev’s Inequality" href="chebyshev_inequality.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Data and AI Concepts - Home"/>
+    <img src="../_static/logo.jpg" class="logo__image only-dark pst-js-only" alt="Data and AI Concepts - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data and AI Concepts by @AIinMinutes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/causal_attention.html">Causal Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/decoding_strategies.html">Text Decoding Strategies: Greedy vs Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/multi_head_attention.html">Multi-head Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html">Rank One Matrices</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/autoencoder_latent_space.html">Auto-encoder Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/pca_for_anomaly_detection.html">PCA for Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/vae_anomaly_detection.html">Variational AutoEncoder for Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/vae_on_mnist.html">Variational AutoEncoder Loss Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/attention_mechanism.html">Attention Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/gelu.html">GELU</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/orthogonality.html">Orthogonality</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/perplexity.html">Perplexity</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning 🔧</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/trees-and-forests/gini_impurity_vs_entropy.html">Gini Impurity vs Entropy</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/agglomerative_clustering.html">Agglomerative Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/elastic_net.html">Elastic Net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/huber_loss.html">Huber Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/mahalanobis_distance.html">Mahalanobis Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/natural_breaks.html">Natural Breaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/oversampling.html">Oversampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pca_vs_feat_ag.html">PCA vs Feature Agglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/permutation_importance.html">Permutation Importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pseudo_r2.html">Pseudo R²</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning 🧠</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/focal_loss_balanced.html">Balanced Focal Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/jensen_inequality.html">Jensen's Inequality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/reparametrization_trick.html">Reparametrization Trick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep-learning/temperature_scaled_softmax.html">Temperature Scaled Softmax</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpretable AI 🔍</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../interpretable-ai/logistic_regression.html">Logistic Regression Coefficient Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interpretable-ai/shapley.html">Shapley values and SHAP for ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applied Statistics 📊</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/acf_and_pacf.html">Autocorrelation Function vs Partial Autocorrelation Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/adjusted_r_squared.html">Adjusted R²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/condition_number.html">Condition Number</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/cramer_v.html">Cramer's V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/ewa_and_bias_correction.html">Exponentially Weighted Average and Bias Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/kruskal_wallis.html">Kruskal Wallis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/spurious_correlation.html">Spurious Correlation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/predictive_r2.html">Leave One Out Cross Validation and PRESS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multivariate Statistics 📈</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../multivariate-statistics/canonical_correlation_analysis.html">Canonical Correlation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multivariate-statistics/correspondence_analysis.html">Correspondence Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multivariate-statistics/factor_analysis.html">Factor Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multivariate-statistics/hotelling.html">Hotelling's T²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../multivariate-statistics/principal_component_analysis.html">Principal Component Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical Statistics 🎲</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chebyshev_inequality.html">Chebyshev's Inequality</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Distribution of Minimum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_calculus_short.html">Matrix Calculus Jacobians and Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multivariate_normal_distribution.html">Multivariate Normal Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mutual_information.html">Mutual Information</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="point_biserial.html">Point Biserial Correlation Coefficient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unbiased_vs_consistent.html">Unbiased vs Consistent Estimator</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prerequisite Mathematics ➗</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">Introduction to Linear Algebra</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming 💻</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/kadanes.html">Kadane's Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization 📉</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualization/plotnine.html">Plotnine: Python's ggplot2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts/issues/new?title=Issue%20on%20page%20%2Fmathematical-statistics/dist_of_minimum.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/mathematical-statistics/dist_of_minimum.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Distribution of Minimum</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-the-minimum-x-1-min-x-1-x-2-ldots-x-n">Distribution of the Minimum <span class="math notranslate nohighlight">\(X_{(1)} = \min(X_1, X_2, \ldots, X_n)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-x-1">1. <strong>CDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-x-1">2. <strong>PDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-x-sim-text-exp-lambda">3. <strong>Example: Exponential Distribution <span class="math notranslate nohighlight">\(X \sim \text{Exp}(\lambda)\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result"><strong>Result:</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="distribution-of-minimum">
+<h1>Distribution of Minimum<a class="headerlink" href="#distribution-of-minimum" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">expon</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">lambda_value</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Rate parameter for the exponential distribution</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>             <span class="c1"># Number of independent exponential variables</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Number of samples to simulate</span>
+
+<span class="k">class</span> <span class="nc">ExponentialDistribution</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exponential distribution with parameterized rate.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">rate</span>  <span class="c1"># Scale is the inverse of the rate</span>
+
+    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expon</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expon</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Create ExponentialDistribution instances (theoretical)</span>
+<span class="n">exp_dist</span> <span class="o">=</span> <span class="n">ExponentialDistribution</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">lambda_value</span><span class="p">)</span>
+<span class="n">exp_X_1_dist</span> <span class="o">=</span> <span class="n">ExponentialDistribution</span><span class="p">(</span><span class="n">rate</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">lambda_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate X</span>
+<span class="n">x_samples</span> <span class="o">=</span> <span class="n">exp_dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Simulate X(1) as the minimum of n independent Exponentials</span>
+<span class="n">x_min_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">exp_dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDFs</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">x_pdf</span> <span class="o">=</span> <span class="n">exp_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># PDF of X</span>
+<span class="n">x_min_pdf</span> <span class="o">=</span> <span class="n">exp_X_1_dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># PDF of X(1)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> 
+                         <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Left: Theoretical PDFs</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_pdf</span><span class="p">,</span> <span class="s1">&#39;m-&#39;</span><span class="p">,</span> 
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;PDF of $X \sim \exp(\lambda)$&quot;</span><span class="p">,</span> 
+             <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_min_pdf</span><span class="p">,</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> 
+             <span class="n">label</span><span class="o">=</span><span class="s2">&quot;PDF of $X(1) \sim \exp(n\lambda)$&quot;</span><span class="p">,</span> 
+             <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Theoretical PDFs&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Right: Histograms (Simulated)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x_samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Histogram of X&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x_min_samples</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+             <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Histogram of X(1)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Simulated Histograms&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Relative Frequency&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Adjust layout and show</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/af486b7435b1f2e2997b31bd391dff8ba55db38c51449a419fbc0e4cb4bf8f90.png" src="../_images/af486b7435b1f2e2997b31bd391dff8ba55db38c51449a419fbc0e4cb4bf8f90.png" />
+</div>
+</div>
+<section id="distribution-of-the-minimum-x-1-min-x-1-x-2-ldots-x-n">
+<h2>Distribution of the Minimum <span class="math notranslate nohighlight">\(X_{(1)} = \min(X_1, X_2, \ldots, X_n)\)</span><a class="headerlink" href="#distribution-of-the-minimum-x-1-min-x-1-x-2-ldots-x-n" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable and <span class="math notranslate nohighlight">\(X_1, X_2, ..., X_n\)</span> be <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed (IID) samples from the distribution of <span class="math notranslate nohighlight">\(X\)</span>. We are interested in finding the distribution of the minimum of these samples, denoted as <span class="math notranslate nohighlight">\(X_{(1)}\)</span>.</p>
+<section id="cdf-of-x-1">
+<h3>1. <strong>CDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong><a class="headerlink" href="#cdf-of-x-1" title="Link to this heading">#</a></h3>
+<p>The cumulative distribution function (CDF) of <span class="math notranslate nohighlight">\(X_{(1)}\)</span> is the probability that the minimum of the samples is less than or equal to a given value <span class="math notranslate nohighlight">\(x\)</span>.  We can derive it as follows:</p>
+<p><span class="math notranslate nohighlight">\(F_{X_{(1)}}(x) = P(X_{(1)} \leq x) = 1 - P(X_1 &gt; x, X_2 &gt; x, \ldots, X_n &gt; x)\)</span></p>
+<p>Since the samples are independent, the probability that all of them are greater than <span class="math notranslate nohighlight">\(x\)</span> is the product of the individual probabilities:</p>
+<p><span class="math notranslate nohighlight">\(P(X_1 &gt; x, \ldots, X_n &gt; x) = \prod_{i=1}^n P(X_i &gt; x) = (1 - P(X_i \leq x))^n  = \left(1 - F_X(x)\right)^n\)</span></p>
+<p>Therefore, the CDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span> is:</p>
+<p><span class="math notranslate nohighlight">\(F_{X_{(1)}}(x) = 1 - \left(1 - F_X(x)\right)^n\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="pdf-of-x-1">
+<h3>2. <strong>PDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong><a class="headerlink" href="#pdf-of-x-1" title="Link to this heading">#</a></h3>
+<p>The probability density function (PDF) of <span class="math notranslate nohighlight">\(X_{(1)}\)</span> can be obtained by differentiating the CDF:</p>
+<p><span class="math notranslate nohighlight">\(f_{X_{(1)}}(x) = \frac{d}{dx} F_{X_{(1)}}(x) = n \left(1 - F_X(x)\right)^{n-1} f_X(x)\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="example-exponential-distribution-x-sim-text-exp-lambda">
+<h3>3. <strong>Example: Exponential Distribution <span class="math notranslate nohighlight">\(X \sim \text{Exp}(\lambda)\)</span>:</strong><a class="headerlink" href="#example-exponential-distribution-x-sim-text-exp-lambda" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>CDF: <span class="math notranslate nohighlight">\(F_X(x) = 1 - e^{-\lambda x}\)</span></p></li>
+<li><p>PDF: <span class="math notranslate nohighlight">\(f_X(x) = \lambda e^{-\lambda x}\)</span></p></li>
+</ul>
+<p>Substituting these into the generalized PDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>, we get:</p>
+<p><span class="math notranslate nohighlight">\(f_{X_{(1)}}(x) = n \lambda e^{-\lambda x (n-1)} e^{-\lambda x} = n \lambda e^{-n \lambda x}\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="result">
+<h3><strong>Result:</strong><a class="headerlink" href="#result" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\(X \sim \text{exp}(\lambda)\)</span>, then the minimum of <span class="math notranslate nohighlight">\(n\)</span> IID samples from this distribution, <span class="math notranslate nohighlight">\(X_{(1)}\)</span>, also follows an exponential distribution (<span class="math notranslate nohighlight">\(X(1) \sim \text{exp}(n\lambda)\)</span>) but with parameter <span class="math notranslate nohighlight">\(n\lambda\)</span></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "book_env"
+        },
+        kernelOptions: {
+            name: "book_env",
+            path: "./mathematical-statistics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'book_env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chebyshev_inequality.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chebyshev’s Inequality</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matrix_calculus_short.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matrix Calculus Jacobians and Gradients</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-the-minimum-x-1-min-x-1-x-2-ldots-x-n">Distribution of the Minimum <span class="math notranslate nohighlight">\(X_{(1)} = \min(X_1, X_2, \ldots, X_n)\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-x-1">1. <strong>CDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-x-1">2. <strong>PDF of <span class="math notranslate nohighlight">\(X_{(1)}\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-exponential-distribution-x-sim-text-exp-lambda">3. <strong>Example: Exponential Distribution <span class="math notranslate nohighlight">\(X \sim \text{Exp}(\lambda)\)</span>:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result"><strong>Result:</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prakhar Deroliya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

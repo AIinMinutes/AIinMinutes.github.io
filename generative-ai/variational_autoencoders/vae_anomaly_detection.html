@@ -1,0 +1,978 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Variational AutoEncoder for Anomaly Detection &#8212; Data and AI Concepts</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'generative-ai/variational_autoencoders/vae_anomaly_detection';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Variational AutoEncoder Loss Function" href="vae_on_mnist.html" />
+    <link rel="prev" title="PCA for Anomaly Detection" href="pca_for_anomaly_detection.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.jpg" class="logo__image only-light" alt="Data and AI Concepts - Home"/>
+    <img src="../../_static/logo.jpg" class="logo__image only-dark pst-js-only" alt="Data and AI Concepts - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Data and AI Concepts by @AIinMinutes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/causal_attention.html">Causal Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/decoding_strategies.html">Text Decoding Strategies: Greedy vs Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/multi_head_attention.html">Multi-head Attention</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/energy.html">Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/rank_one_matrices.html">Rank One Matrices</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="autoencoder_latent_space.html">Auto-encoder Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pca_for_anomaly_detection.html">PCA for Anomaly Detection</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variational AutoEncoder for Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vae_on_mnist.html">Variational AutoEncoder Loss Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attention_mechanism.html">Attention Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gelu.html">GELU</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../orthogonality.html">Orthogonality</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../perplexity.html">Perplexity</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning 🔧</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/trees-and-forests/gini_impurity_vs_entropy.html">Gini Impurity vs Entropy</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/agglomerative_clustering.html">Agglomerative Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/elastic_net.html">Elastic Net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/huber_loss.html">Huber Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/mahalanobis_distance.html">Mahalanobis Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/natural_breaks.html">Natural Breaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/oversampling.html">Oversampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/pca_vs_feat_ag.html">PCA vs Feature Agglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/permutation_importance.html">Permutation Importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../machine-learning/pseudo_r2.html">Pseudo R²</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning 🧠</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../deep-learning/focal_loss_balanced.html">Balanced Focal Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deep-learning/jensen_inequality.html">Jensen's Inequality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deep-learning/reparametrization_trick.html">Reparametrization Trick</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deep-learning/temperature_scaled_softmax.html">Temperature Scaled Softmax</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpretable AI 🔍</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../interpretable-ai/logistic_regression.html">Logistic Regression Coefficient Interpretation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interpretable-ai/shapley.html">Shapley values and SHAP for ML</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applied Statistics 📊</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/acf_and_pacf.html">Autocorrelation Function vs Partial Autocorrelation Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/adjusted_r_squared.html">Adjusted R²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/condition_number.html">Condition Number</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/cramer_v.html">Cramer's V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/ewa_and_bias_correction.html">Exponentially Weighted Average and Bias Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/kruskal_wallis.html">Kruskal Wallis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/spurious_correlation.html">Spurious Correlation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../applied-statistics/predictive_r2.html">Leave One Out Cross Validation and PRESS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multivariate Statistics 📈</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../multivariate-statistics/canonical_correlation_analysis.html">Canonical Correlation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multivariate-statistics/correspondence_analysis.html">Correspondence Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multivariate-statistics/factor_analysis.html">Factor Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multivariate-statistics/hotelling.html">Hotelling's T²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../multivariate-statistics/principal_component_analysis.html">Principal Component Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical Statistics 🎲</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/chebyshev_inequality.html">Chebyshev's Inequality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/dist_of_minimum.html">Distribution of Minimum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/matrix_calculus_short.html">Matrix Calculus Jacobians and Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/multivariate_normal_distribution.html">Multivariate Normal Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/mutual_information.html">Mutual Information</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/point_biserial.html">Point Biserial Correlation Coefficient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mathematical-statistics/unbiased_vs_consistent.html">Unbiased vs Consistent Estimator</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Prerequisite Mathematics ➗</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">Introduction to Linear Algebra</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming 💻</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/kadanes.html">Kadane's Algorithm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization 📉</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../visualization/plotnine.html">Plotnine: Python's ggplot2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts/issues/new?title=Issue%20on%20page%20%2Fgenerative-ai/variational_autoencoders/vae_anomaly_detection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/generative-ai/variational_autoencoders/vae_anomaly_detection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variational AutoEncoder for Anomaly Detection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-loss-function-used-in-variational-autoencoder">Derivation of the Loss Function used in Variational AutoEncoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">1. Bayes’ Theorem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-of-marginal-likelihood">2. Log of Marginal Likelihood:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-approximation-q-z-x">3. Variational Approximation (<span class="math notranslate nohighlight">\(q(z|x)\)</span>):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality-lower-bound">4. Jensen’s Inequality (Lower Bound):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expand-the-joint-distribution">5. Expand the Joint Distribution:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elbo-formula">6. ELBO Formula:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-with-gaussian-assumptions">7. Simplification with Gaussian Assumptions:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-error-gaussian-likelihood">8. Reconstruction Error (Gaussian Likelihood):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kl-divergence">9. KL Divergence:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-elbo-loss-with-beta">10. Final Simplified ELBO Loss with <span class="math notranslate nohighlight">\( \beta \)</span>:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder-for-anomaly-detection">
+<h1>Variational AutoEncoder for Anomaly Detection<a class="headerlink" href="#variational-autoencoder-for-anomaly-detection" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip3<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span><span class="nv">pyod</span><span class="o">==</span><span class="m">2</span>.0.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pyod.models.vae</span> <span class="kn">import</span> <span class="n">VAE</span>
+<span class="kn">from</span> <span class="nn">pyod.models.auto_encoder</span> <span class="kn">import</span> <span class="n">AutoEncoder</span>
+<span class="kn">from</span> <span class="nn">pyod.utils.data</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">generate_data</span><span class="p">,</span> <span class="n">evaluate_print</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate synthetic data</span>
+<span class="n">contamination</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_test</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">generate_data</span><span class="p">(</span>
+    <span class="n">n_train</span><span class="o">=</span><span class="n">n_train</span><span class="p">,</span> <span class="n">n_test</span><span class="o">=</span><span class="n">n_test</span><span class="p">,</span> 
+    <span class="n">n_features</span><span class="o">=</span><span class="n">n_features</span><span class="p">,</span>
+    <span class="n">contamination</span><span class="o">=</span><span class="n">contamination</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Train the VAE model</span>
+<span class="n">clf_name_vae</span> <span class="o">=</span> <span class="s1">&#39;VAE&#39;</span>
+<span class="n">vae_clf</span> <span class="o">=</span> <span class="n">VAE</span><span class="p">(</span><span class="n">epoch_num</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+              <span class="n">contamination</span><span class="o">=</span><span class="n">contamination</span><span class="p">,</span> 
+              <span class="n">beta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">vae_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   0%|                                                                  | 0/30 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   3%|█▉                                                        | 1/30 [00:00&lt;00:08,  3.47it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  10%|█████▊                                                    | 3/30 [00:00&lt;00:03,  8.62it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  17%|█████████▋                                                | 5/30 [00:00&lt;00:02, 11.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  23%|█████████████▌                                            | 7/30 [00:00&lt;00:01, 13.80it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  30%|█████████████████▍                                        | 9/30 [00:00&lt;00:01, 15.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  37%|████████████████████▉                                    | 11/30 [00:00&lt;00:01, 16.08it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  43%|████████████████████████▋                                | 13/30 [00:00&lt;00:01, 16.76it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  50%|████████████████████████████▌                            | 15/30 [00:01&lt;00:00, 17.15it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  57%|████████████████████████████████▎                        | 17/30 [00:01&lt;00:00, 17.45it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  63%|████████████████████████████████████                     | 19/30 [00:01&lt;00:00, 17.66it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  70%|███████████████████████████████████████▉                 | 21/30 [00:01&lt;00:00, 17.78it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  77%|███████████████████████████████████████████▋             | 23/30 [00:01&lt;00:00, 17.89it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  83%|███████████████████████████████████████████████▌         | 25/30 [00:01&lt;00:00, 17.99it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  90%|███████████████████████████████████████████████████▎     | 27/30 [00:01&lt;00:00, 18.03it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  97%|███████████████████████████████████████████████████████  | 29/30 [00:01&lt;00:00, 18.10it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|█████████████████████████████████████████████████████████| 30/30 [00:01&lt;00:00, 15.87it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the AE model</span>
+<span class="n">clf_name_ae</span> <span class="o">=</span> <span class="s1">&#39;AE&#39;</span>
+<span class="n">ae_clf</span> <span class="o">=</span> <span class="n">AutoEncoder</span><span class="p">(</span><span class="n">epoch_num</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+                     <span class="n">contamination</span><span class="o">=</span><span class="n">contamination</span><span class="p">)</span>
+<span class="n">ae_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="c1"># Predictions and scores for VAE</span>
+<span class="n">y_test_pred_vae</span> <span class="o">=</span> <span class="n">vae_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Predictions and scores for AE</span>
+<span class="n">y_test_pred_ae</span> <span class="o">=</span> <span class="n">ae_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span>
+<span class="p">)</span>
+
+<span class="c1"># Compute metrics function</span>
+<span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="n">balanced_acc</span> <span class="o">=</span> <span class="n">balanced_accuracy_score</span><span class="p">(</span>
+        <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span>
+    <span class="p">)</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">balanced_acc</span><span class="p">,</span> <span class="n">f1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   0%|                                                                  | 0/30 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  10%|█████▊                                                    | 3/30 [00:00&lt;00:01, 23.26it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  20%|███████████▌                                              | 6/30 [00:00&lt;00:00, 24.02it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  30%|█████████████████▍                                        | 9/30 [00:00&lt;00:00, 25.83it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  40%|██████████████████████▊                                  | 12/30 [00:00&lt;00:00, 25.16it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  50%|████████████████████████████▌                            | 15/30 [00:00&lt;00:00, 25.88it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  63%|████████████████████████████████████                     | 19/30 [00:00&lt;00:00, 27.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  77%|███████████████████████████████████████████▋             | 23/30 [00:00&lt;00:00, 28.57it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  90%|███████████████████████████████████████████████████▎     | 27/30 [00:00&lt;00:00, 29.17it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|█████████████████████████████████████████████████████████| 30/30 [00:01&lt;00:00, 27.68it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_detailed_results</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="c1"># Compute metrics</span>
+    <span class="n">balanced_acc</span><span class="p">,</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    
+    <span class="c1"># Plot points with different categories</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span> 
+               <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Positive (Anomaly)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span> 
+               <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Negative (Non-Anomaly)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span> 
+               <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;False Positive (Non-Anomaly)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[(</span><span class="n">y_true</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span> 
+               <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;False Negative (Anomaly)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Title with metrics</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">dataset_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">Balanced Acc: </span><span class="si">{</span><span class="n">balanced_acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, F1: </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature 1&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Feature 2&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Visualize results for VAE on test data</span>
+<span class="n">visualize_detailed_results</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_vae</span><span class="p">,</span> <span class="s2">&quot;VAE&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Data&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Visualize results for AE on test data</span>
+<span class="n">visualize_detailed_results</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred_ae</span><span class="p">,</span> <span class="s2">&quot;AE&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Data&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Visualize results for VAE on training data</span>
+<span class="n">visualize_detailed_results</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">vae_clf</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="s2">&quot;VAE&quot;</span><span class="p">,</span> <span class="s2">&quot;Training Data&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Visualize results for AE on training data</span>
+<span class="n">visualize_detailed_results</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">ae_clf</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="s2">&quot;AE&quot;</span><span class="p">,</span> <span class="s2">&quot;Training Data&quot;</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/86ce4a3b87801a76cc7d1f9a76e06102de59a6e4d984c58a66effa1e9885cb93.png" src="../../_images/86ce4a3b87801a76cc7d1f9a76e06102de59a6e4d984c58a66effa1e9885cb93.png" />
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\( \text{ELBO} = \| x - f(z) \|^2 + \frac{\beta}{2} \sum_{i=1}^{d} \left( \sigma_i^2 + \mu_{q,i}^2 - 1 - \log \sigma_i^2 \right) \)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p>First term: <strong>Reconstruction Loss</strong> (MSE)</p></li>
+<li><p>Second term: <strong><span class="math notranslate nohighlight">\( \beta \)</span> scaled KL Divergence</strong> (regularizes the posterior)</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Aspect</strong></p></th>
+<th class="head"><p><strong>Autoencoder (AE)</strong></p></th>
+<th class="head"><p><strong>Variational Autoencoder (VAE)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Latent Space</strong></p></td>
+<td><p>Deterministic representation (fixed point for each input)</p></td>
+<td><p>Probabilistic representation (distribution over latent variables)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Latent Space Structure</strong></p></td>
+<td><p>No specific regularization; can be scattered and unstructured</p></td>
+<td><p>Regularized to match a predefined prior (typically Gaussian), resulting in a smooth, continuous space</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Objective</strong></p></td>
+<td><p>Minimize reconstruction error (e.g., MSE)</p></td>
+<td><p>Minimize both reconstruction error and KL divergence to enforce latent space structure</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Encoder Output</strong></p></td>
+<td><p>Direct mapping to a single point in latent space</p></td>
+<td><p>Outputs parameters of a distribution (mean and variance) for each latent variable</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Generative Capability</strong></p></td>
+<td><p>Limited generative ability; may not generalize well for new data</p></td>
+<td><p>Strong generative capability due to regularized latent space</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Latent Variable Interpolation</strong></p></td>
+<td><p>Less smooth interpolation between latent variables</p></td>
+<td><p>Smooth interpolation due to the continuous nature of the latent space</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>KL Divergence</strong></p></td>
+<td><p>Not used in the loss function</p></td>
+<td><p>KL divergence term in the loss function regularizes the latent space</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reconstruction</strong></p></td>
+<td><p>Reconstructs the input deterministically</p></td>
+<td><p>Reconstructs the input probabilistically, sampling from the learned latent distribution</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Use Cases</strong></p></td>
+<td><p>Mainly used for dimensionality reduction and reconstruction tasks</p></td>
+<td><p>Used for generative modeling, data generation, and anomaly detection</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Regularization</strong></p></td>
+<td><p>None</p></td>
+<td><p>Explicit regularization to ensure the latent space follows a known distribution (e.g., Gaussian)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="derivation-of-the-loss-function-used-in-variational-autoencoder">
+<h2>Derivation of the Loss Function used in Variational AutoEncoder<a class="headerlink" href="#derivation-of-the-loss-function-used-in-variational-autoencoder" title="Link to this heading">#</a></h2>
+<section id="bayes-theorem">
+<h3>1. Bayes’ Theorem:<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(p(z|x) = \frac{p(x|z)p(z)}{p(x)}\)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p(z|x) \)</span> = Posterior</p></li>
+<li><p><span class="math notranslate nohighlight">\( p(x|z) \)</span> = Likelihood</p></li>
+<li><p><span class="math notranslate nohighlight">\( p(z) \)</span> = Prior</p></li>
+<li><p><span class="math notranslate nohighlight">\( p(x) = \int p(x|z)p(z) \, dz \)</span> = Marginal Likelihood (Evidence)</p></li>
+</ul>
+</section>
+<section id="log-of-marginal-likelihood">
+<h3>2. Log of Marginal Likelihood:<a class="headerlink" href="#log-of-marginal-likelihood" title="Link to this heading">#</a></h3>
+<p>Taking the log:
+<span class="math notranslate nohighlight">\(\log p(x) = \log \int p(x, z) \, dz\)</span></p>
+</section>
+<section id="variational-approximation-q-z-x">
+<h3>3. Variational Approximation (<span class="math notranslate nohighlight">\(q(z|x)\)</span>):<a class="headerlink" href="#variational-approximation-q-z-x" title="Link to this heading">#</a></h3>
+<p>Introduce a simpler distribution <span class="math notranslate nohighlight">\(q(z|x)\)</span> to approximate the posterior <span class="math notranslate nohighlight">\(p(z|x)\)</span>.</p>
+</section>
+<section id="jensen-s-inequality-lower-bound">
+<h3>4. Jensen’s Inequality (Lower Bound):<a class="headerlink" href="#jensen-s-inequality-lower-bound" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\log p(x) = \log \int \frac{p(x, z)}{q(z|x)} q(z|x) \, dz \geq \mathbb{E}_{q(z|x)} [ \log \frac{p(x, z)}{q(z|x)} ]\)</span></p>
+<p>The ELBO (Evidence Lower Bound) becomes:
+<span class="math notranslate nohighlight">\(\text{ELBO} = \mathbb{E}_{q(z|x)} [ \log p(x, z) - \log q(z|x) ]\)</span></p>
+</section>
+<section id="expand-the-joint-distribution">
+<h3>5. Expand the Joint Distribution:<a class="headerlink" href="#expand-the-joint-distribution" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(p(x, z) = p(x|z)p(z)\)</span></p>
+<p>So the ELBO becomes:
+<span class="math notranslate nohighlight">\(\text{ELBO} = \mathbb{E}_{q(z|x)} [ \log p(x|z) + \log p(z) - \log q(z|x) ]\)</span></p>
+</section>
+<section id="elbo-formula">
+<h3>6. ELBO Formula:<a class="headerlink" href="#elbo-formula" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\text{ELBO} = \mathbb{E}_{q(z|x)} [ \log p(x|z) ] - D_{KL}(q(z|x) \| p(z))\)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}_{q(z|x)} [ \log p(x|z) ]\)</span> = Reconstruction Error</p></li>
+<li><p><span class="math notranslate nohighlight">\( D_{KL}(q(z|x) \| p(z)) \)</span> = KL Divergence</p></li>
+</ul>
+</section>
+<section id="simplification-with-gaussian-assumptions">
+<h3>7. Simplification with Gaussian Assumptions:<a class="headerlink" href="#simplification-with-gaussian-assumptions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Prior</strong>: <span class="math notranslate nohighlight">\( p(z) = \mathcal{N}(z; 0, I) \)</span></p></li>
+<li><p><strong>Variational Posterior</strong>: <span class="math notranslate nohighlight">\( q(z|x) = \mathcal{N}(z; \mu_q(x), \Sigma_q(x)) \)</span></p></li>
+</ul>
+</section>
+<section id="reconstruction-error-gaussian-likelihood">
+<h3>8. Reconstruction Error (Gaussian Likelihood):<a class="headerlink" href="#reconstruction-error-gaussian-likelihood" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\mathbb{E}_{q(z|x)} [ \log p(x|z) ] \approx \| x - f(z) \|^2\)</span></p>
+<p>Where <span class="math notranslate nohighlight">\( f(z) \)</span> is the decoder network (reconstruction).</p>
+</section>
+<section id="kl-divergence">
+<h3>9. KL Divergence:<a class="headerlink" href="#kl-divergence" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\( D_{KL}(q(z|x) \| p(z)) = \frac{1}{2} \sum_{i=1}^{d} \left( \sigma_i^2 + \mu_{q,i}^2 - 1 - \log \sigma_i^2 \right) \)</span></p>
+<p>Where <span class="math notranslate nohighlight">\( \mu_q(x), \sigma_q(x) \)</span> are parameters of the variational posterior, and <span class="math notranslate nohighlight">\( \sigma_i^2 \)</span> are diagonal variances of the approximate posterior.</p>
+</section>
+<section id="final-simplified-elbo-loss-with-beta">
+<h3>10. Final Simplified ELBO Loss with <span class="math notranslate nohighlight">\( \beta \)</span>:<a class="headerlink" href="#final-simplified-elbo-loss-with-beta" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\( \text{ELBO} = \| x - f(z) \|^2 + \frac{\beta}{2} \sum_{i=1}^{d} \left( \sigma_i^2 + \mu_{q,i}^2 - 1 - \log \sigma_i^2 \right) \)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p>First term: <strong>Reconstruction Loss</strong> (MSE)</p></li>
+<li><p>Second term: <strong><span class="math notranslate nohighlight">\( \beta \)</span> scaled KL Divergence</strong> (regularizes the posterior)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "book_env"
+        },
+        kernelOptions: {
+            name: "book_env",
+            path: "./generative-ai/variational_autoencoders"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'book_env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pca_for_anomaly_detection.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PCA for Anomaly Detection</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vae_on_mnist.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variational AutoEncoder Loss Function</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-loss-function-used-in-variational-autoencoder">Derivation of the Loss Function used in Variational AutoEncoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">1. Bayes’ Theorem:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-of-marginal-likelihood">2. Log of Marginal Likelihood:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-approximation-q-z-x">3. Variational Approximation (<span class="math notranslate nohighlight">\(q(z|x)\)</span>):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jensen-s-inequality-lower-bound">4. Jensen’s Inequality (Lower Bound):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expand-the-joint-distribution">5. Expand the Joint Distribution:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elbo-formula">6. ELBO Formula:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-with-gaussian-assumptions">7. Simplification with Gaussian Assumptions:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-error-gaussian-likelihood">8. Reconstruction Error (Gaussian Likelihood):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kl-divergence">9. KL Divergence:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-simplified-elbo-loss-with-beta">10. Final Simplified ELBO Loss with <span class="math notranslate nohighlight">\( \beta \)</span>:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prakhar Deroliya
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
