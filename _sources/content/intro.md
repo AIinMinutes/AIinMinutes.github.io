@@ -1,4 +1,6 @@
-# Data and AI Concepts by @AIinMinutes
+# ❤️AIinMinutes
+
+##Data and AI Concepts by @AIinMinutes
 
 Welcome to a comprehensive collection of Data Science and AI concepts, originally shared on [❤️AIinMinutes](https://threads.net/@AIinMinutes). This interactive book covers topics ranging from foundational mathematics to cutting-edge generative AI, designed to support both learners and professionals in the field of data science.
 
