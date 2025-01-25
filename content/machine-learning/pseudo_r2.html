@@ -597,87 +597,11 @@
 <p><strong>Pseudo <span class="math notranslate nohighlight">\(R^2\)</span></strong> is a measure used in statistical models, particularly when dealing with logistic regression or other non-linear models, to assess model fit. It is similar in concept to the traditional <span class="math notranslate nohighlight">\(R^2\)</span> used in linear regression, but since logistic regression does not predict continuous outcomes, a direct <span class="math notranslate nohighlight">\(R^2\)</span> value is not applicable. Various definitions of pseudo <span class="math notranslate nohighlight">\(R^2\)</span> exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;logistic_regression_animation.gif&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;logistic_regression_animation.gif&#39;</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/book/lib/python3.10/site-packages/IPython/core/display.py:1053,</span> in <span class="ni">Image.__init__</span><span class="nt">(self, data, url, filename, format, embed, width, height, retina, unconfined, metadata, alt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1051</span> <span class="bp">self</span><span class="o">.</span><span class="n">unconfined</span> <span class="o">=</span> <span class="n">unconfined</span>
-<span class="g g-Whitespace">   </span><span class="mi">1052</span> <span class="bp">self</span><span class="o">.</span><span class="n">alt</span> <span class="o">=</span> <span class="n">alt</span>
-<span class="ne">-&gt; </span><span class="mi">1053</span> <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1054</span>         <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1056</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">,</span> <span class="p">{}):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1057</span>     <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">]</span>
-
-<span class="nn">File ~/anaconda3/envs/book/lib/python3.10/site-packages/IPython/core/display.py:371,</span> in <span class="ni">DisplayObject.__init__</span><span class="nt">(self, data, url, filename, metadata)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="ne">--&gt; </span><span class="mi">371</span> <span class="bp">self</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">372</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_data</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/envs/book/lib/python3.10/site-packages/IPython/core/display.py:1088,</span> in <span class="ni">Image.reload</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1086</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Reload the raw data from file or URL.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1087</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1088</span>     <span class="nb">super</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">retina</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1090</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_retina_shape</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/envs/book/lib/python3.10/site-packages/IPython/core/display.py:397,</span> in <span class="ni">DisplayObject.reload</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">395</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">396</span>     <span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_flags</span> <span class="k">else</span> <span class="s2">&quot;utf-8&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">397</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_flags</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">398</span>         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">399</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span>     <span class="c1"># Deferred import</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;logistic_regression_animation.gif&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Image(filename=&#39;logistic_regression_animation.gif&#39;)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Pseudo <span class="math notranslate nohighlight">\(R^2\)</span></strong> is a measure used in statistical models, particularly when dealing with logistic regression or other non-linear models, to assess model fit. It is similar in concept to the traditional <span class="math notranslate nohighlight">\(R^2\)</span> used in linear regression, but since logistic regression does not predict continuous outcomes, a direct <span class="math notranslate nohighlight">\(R^2\)</span> value is not applicable. Various definitions of pseudo <span class="math notranslate nohighlight">\(R^2\)</span> exist, with the most common ones being:</p>
-<ol class="arabic simple">
-<li><p><strong>McFadden’s <span class="math notranslate nohighlight">\(R^2\)</span></strong>:
-$<span class="math notranslate nohighlight">\(
-R^2_{\text{McF}} = 1 - \frac{\ln L(\hat{\beta})}{\ln L(\hat{\beta_0})}
-\)</span>$</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(L(\hat{\beta})\)</span>: Log-likelihood of the fitted model.</p></li>
-<li><p><span class="math notranslate nohighlight">\(L(\hat{\beta_0})\)</span>: Log-likelihood of the null model (intercept-only model).</p></li>
-<li><p>The value ranges from 0 to 1, where 1 indicates perfect fit, and values closer to 0 suggest a poor fit.</p></li>
-<li><p><span class="math notranslate nohighlight">\(n\)</span> is the number of observations.</p></li>
-</ul>
-</li>
-<li><p><strong>Cox and Snell’s <span class="math notranslate nohighlight">\(R^2\)</span></strong>:
-$<span class="math notranslate nohighlight">\(
-R^2_{\text{CS}} = 1 - \left( \frac{L(\hat{\beta_0})}{L(\hat{\beta})} \right)^{2/n}
-\)</span>$</p>
-<ul class="simple">
-<li><p>This measure also ranges from 0 to 1, but it may not reach 1 even in the case of a perfect fit.</p></li>
-</ul>
-</li>
-<li><p><strong>Nagelkerke’s <span class="math notranslate nohighlight">\(R^2\)</span></strong>:
-$<span class="math notranslate nohighlight">\(
-R^2_{\text{Nag}} = \frac{R^2_{\text{CS}}}{1 - L(\hat{\beta_0})^{2/n}}
-\)</span>$</p>
-<ul class="simple">
-<li><p>This is an adjusted version of Cox and Snell’s <span class="math notranslate nohighlight">\(R^2\)</span> that scales it to a range of 0 to 1.</p></li>
-</ul>
-</li>
-</ol>
-<hr class="docutils" />
-<p><strong>Key Notes</strong>:</p>
-<ul class="simple">
-<li><p>Pseudo <span class="math notranslate nohighlight">\(R^2\)</span> values are often much lower than the <span class="math notranslate nohighlight">\(R^2\)</span> in linear regression.</p></li>
-<li><p>Higher pseudo <span class="math notranslate nohighlight">\(R^2\)</span> values indicate better model fit, but they should not be used as the sole indicator of model quality.</p></li>
-<li><p>They are particularly useful for comparing nested models or different models when analyzing categorical outcomes like in logistic regression.</p></li>
-</ul>
 </section>
 
     <script type="text/x-thebe-config">
