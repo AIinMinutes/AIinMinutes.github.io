@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -254,7 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html">Rank-1 Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html"><strong>Rank-1 Matrices</strong></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
 </ul>
@@ -424,20 +424,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-factor-model">1. <strong>Orthogonal Factor Model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-on-latent-factors">2. <strong>Assumptions on Latent Factors</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-error">3. <strong>Assumption on Error</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-expressed-in-terms-of-latent-factors-and-error">4. <strong>Covariance Expressed in Terms of Latent Factors and Error</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-loading-matrix-need-not-be-unique">5. <strong>Why the Loading Matrix Need Not Be Unique</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-schemes-for-improving-interpretation">6. <strong>Rotation Schemes for Improving Interpretation</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-varimax-rotation">a) <strong>Varimax Rotation</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-quartimax-rotation">b) <strong>Quartimax Rotation</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-equamax-rotation">c) <strong>Equamax Rotation</strong>:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-varimax-rotation">a) Varimax Rotation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-quartimax-rotation">b) Quartimax Rotation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-equamax-rotation">c) Equamax Rotation:</a></li>
 </ul>
             </nav>
         </div>
@@ -450,9 +440,9 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="factor-analysis">
-<h1>Factor Analysis<a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h1>
-<section id="orthogonal-factor-model">
-<h2>1. <strong>Orthogonal Factor Model</strong><a class="headerlink" href="#orthogonal-factor-model" title="Link to this heading">#</a></h2>
+<h1><strong>Factor Analysis</strong><a class="headerlink" href="#factor-analysis" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. Orthogonal Factor Model
+</h1>
 <div class="math notranslate nohighlight">
 \[
 X = \mu + \Lambda F + \epsilon
@@ -465,46 +455,43 @@ X = \mu + \Lambda F + \epsilon
 <li><p><span class="math notranslate nohighlight">\(F \in \mathbb{R}^{k}\)</span> is the vector of latent factors.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\epsilon \in \mathbb{R}^{p}\)</span> is the vector of errors.</p></li>
 </ul>
-</section>
 <hr class="docutils" />
-<section id="assumptions-on-latent-factors">
-<h2>2. <strong>Assumptions on Latent Factors</strong><a class="headerlink" href="#assumptions-on-latent-factors" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Assumptions on Latent Factors
+</h1>
 <ul class="simple">
-<li><p><strong>Uncorrelated Factors</strong>:</p></li>
+<li><p>Uncorrelated Factors:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \text{Cov}(F) = I_k
 \]</div>
 <ul class="simple">
-<li><p><strong>Independence from Errors</strong>:</p></li>
+<li><p>Independence from Errors:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \text{Cov}(F, \epsilon) = 0
 \]</div>
-</section>
 <hr class="docutils" />
-<section id="assumption-on-error">
-<h2>3. <strong>Assumption on Error</strong><a class="headerlink" href="#assumption-on-error" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 3. Assumption on Error
+</h1>
 <ul class="simple">
-<li><p><strong>No Correlation Among Errors</strong>:</p></li>
+<li><p>No Correlation Among Errors:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \text{Cov}(\epsilon) = \Psi, \quad \Psi \in \mathbb{R}^{p \times p}, \quad \text{diagonal}
 \]</div>
 <ul class="simple">
-<li><p><strong>Independence from Latent Factors</strong>:</p></li>
+<li><p>Independence from Latent Factors:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \text{Cov}(F, \epsilon) = 0
 \]</div>
-</section>
 <hr class="docutils" />
-<section id="covariance-expressed-in-terms-of-latent-factors-and-error">
-<h2>4. <strong>Covariance Expressed in Terms of Latent Factors and Error</strong><a class="headerlink" href="#covariance-expressed-in-terms-of-latent-factors-and-error" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 4. Covariance Expressed in Terms of Latent Factors and Error
+</h1>
 <p>We start with:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -524,23 +511,22 @@ X = \mu + \Lambda F + \epsilon
 \[
 \Sigma = \Lambda \Lambda' + \Psi
 \]</div>
-</section>
 <hr class="docutils" />
-<section id="why-the-loading-matrix-need-not-be-unique">
-<h2>5. <strong>Why the Loading Matrix Need Not Be Unique</strong><a class="headerlink" href="#why-the-loading-matrix-need-not-be-unique" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 5. Why the Loading Matrix Need Not Be Unique
+</h1>
 <section id="proof">
-<h3>Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h3>
-<p><strong>Original Model</strong>:</p>
+<h2>Proof:<a class="headerlink" href="#proof" title="Link to this heading">#</a></h2>
+<p>Original Model:</p>
 <div class="math notranslate nohighlight">
 \[
 X = \mu + \Lambda F + \epsilon
 \]</div>
-<p><strong>Covariance of <span class="math notranslate nohighlight">\(X\)</span></strong>:</p>
+<p>Covariance of <span class="math notranslate nohighlight">\(X\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{Cov}(X) = \Sigma = \Lambda \Lambda^T + \Psi
 \]</div>
-<p><strong>Orthogonal Rotation</strong>: Let <span class="math notranslate nohighlight">\(Q \in \mathbb{R}^{k \times k}\)</span> be an orthogonal matrix, <span class="math notranslate nohighlight">\(Q^T Q = I_k\)</span>. Apply rotation:</p>
+<p>Orthogonal Rotation: Let <span class="math notranslate nohighlight">\(Q \in \mathbb{R}^{k \times k}\)</span> be an orthogonal matrix, <span class="math notranslate nohighlight">\(Q^T Q = I_k\)</span>. Apply rotation:</p>
 <div class="math notranslate nohighlight">
 \[
 \Lambda' = \Lambda Q
@@ -555,13 +541,12 @@ X = \mu + \Lambda F + \epsilon
 \[
 \text{Cov}(X) = \Lambda \Lambda^T + \Psi
 \]</div>
-</section>
-</section>
 <hr class="docutils" />
-<section id="rotation-schemes-for-improving-interpretation">
-<h2>6. <strong>Rotation Schemes for Improving Interpretation</strong><a class="headerlink" href="#rotation-schemes-for-improving-interpretation" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 6. Rotation Schemes for Improving Interpretation
+</h1>
+</section>
 <section id="a-varimax-rotation">
-<h3>a) <strong>Varimax Rotation</strong>:<a class="headerlink" href="#a-varimax-rotation" title="Link to this heading">#</a></h3>
+<h2>a) Varimax Rotation:<a class="headerlink" href="#a-varimax-rotation" title="Link to this heading">#</a></h2>
 <p>Maximizes the variance of squared loadings for each factor:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -569,7 +554,7 @@ X = \mu + \Lambda F + \epsilon
 \]</div>
 </section>
 <section id="b-quartimax-rotation">
-<h3>b) <strong>Quartimax Rotation</strong>:<a class="headerlink" href="#b-quartimax-rotation" title="Link to this heading">#</a></h3>
+<h2>b) Quartimax Rotation:<a class="headerlink" href="#b-quartimax-rotation" title="Link to this heading">#</a></h2>
 <p>Maximizes the variance of squared loadings for each observed variable:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -577,7 +562,7 @@ X = \mu + \Lambda F + \epsilon
 \]</div>
 </section>
 <section id="c-equamax-rotation">
-<h3>c) <strong>Equamax Rotation</strong>:<a class="headerlink" href="#c-equamax-rotation" title="Link to this heading">#</a></h3>
+<h2>c) Equamax Rotation:<a class="headerlink" href="#c-equamax-rotation" title="Link to this heading">#</a></h2>
 <p>Balance between varimax and quartimax:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -621,7 +606,6 @@ X = \mu + \Lambda F + \epsilon
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -659,7 +643,7 @@ X = \mu + \Lambda F + \epsilon
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Correspondence Analysis</p>
+        <p class="prev-next-title"><strong>Correspondence Analysis</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -688,20 +672,10 @@ X = \mu + \Lambda F + \epsilon
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-factor-model">1. <strong>Orthogonal Factor Model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions-on-latent-factors">2. <strong>Assumptions on Latent Factors</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assumption-on-error">3. <strong>Assumption on Error</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-expressed-in-terms-of-latent-factors-and-error">4. <strong>Covariance Expressed in Terms of Latent Factors and Error</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-the-loading-matrix-need-not-be-unique">5. <strong>Why the Loading Matrix Need Not Be Unique</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotation-schemes-for-improving-interpretation">6. <strong>Rotation Schemes for Improving Interpretation</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-varimax-rotation">a) <strong>Varimax Rotation</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-quartimax-rotation">b) <strong>Quartimax Rotation</strong>:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-equamax-rotation">c) <strong>Equamax Rotation</strong>:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-varimax-rotation">a) Varimax Rotation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-quartimax-rotation">b) Quartimax Rotation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-equamax-rotation">c) Equamax Rotation:</a></li>
 </ul>
   </nav></div>
 

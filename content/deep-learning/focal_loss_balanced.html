@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,14 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focal-loss-definition">Focal Loss Definition</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -437,38 +427,33 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="focal-loss">
-<h1>Focal Loss<a class="headerlink" href="#focal-loss" title="Link to this heading">#</a></h1>
-<section id="focal-loss-definition">
-<h2>Focal Loss Definition<a class="headerlink" href="#focal-loss-definition" title="Link to this heading">#</a></h2>
+<h1><strong>Focal Loss</strong><a class="headerlink" href="#focal-loss" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Focal Loss Definition
+</h1>
 <p>The <strong>focal loss</strong> for binary classification, considering class imbalance, is defined as:</p>
 <div class="math notranslate nohighlight">
 \[
 \text{FL}(p_t) = -\alpha_{t} (1 - p_t)^\gamma \log(p_t)
 \]</div>
 <p>Where:</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the predicted probability for the true class <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_t\)</span> is the predicted probability for the true class <span class="math notranslate nohighlight">\(t\)</span>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  p_t = 
-  \begin{cases}
-  p &amp; \text{if } y = 1 \\
-  1 - p &amp; \text{if } y = 0
-  \end{cases}
-  \end{split}\]</div>
-</li>
-<li><p><span class="math notranslate nohighlight">\(\alpha_{t}\)</span> is the weighting factor for the positive class:</p>
+p_t =
+\begin{cases}
+p &amp; \text{if } y = 1 \\
+1 - p &amp; \text{if } y = 0
+\end{cases}
+\end{split}\]</div>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha_{t}\)</span> is the weighting factor for the positive class:</p></li>
 <li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is applied to the positive class (<span class="math notranslate nohighlight">\(y = 1\)</span>).</p></li>
 <li><p><span class="math notranslate nohighlight">\(1 - \alpha\)</span> is applied to the negative class (<span class="math notranslate nohighlight">\(y = 0\)</span>).</p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\((1 - p_t)^\gamma\)</span> is the modulating factor, where <span class="math notranslate nohighlight">\(\gamma\)</span> (the focusing parameter) reduces the loss for well-classified examples as <span class="math notranslate nohighlight">\(\gamma\)</span> increases.</p>
-<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((1 - p_t)^\gamma\)</span> is the modulating factor, where <span class="math notranslate nohighlight">\(\gamma\)</span> (the focusing parameter) reduces the loss for well-classified examples as <span class="math notranslate nohighlight">\(\gamma\)</span> increases.</p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\gamma = 0\)</span>, this term has no effect, and the focal loss becomes equivalent to the <strong>cross-entropy loss</strong>.</p></li>
 <li><p>As <span class="math notranslate nohighlight">\(\gamma\)</span> increases, the loss for easy examples decreases more aggressively.</p></li>
-</ul>
-</li>
 </ul>
 <p>Reference:
 <strong>Lin, T.-Y., Goyal, P., Girshick, R., He, K., &amp; Dollár, P.</strong> (2017). Focal loss for dense object detection. <em>arXiv</em>. <a class="reference external" href="https://arxiv.org/pdf/1708.02002">https://arxiv.org/pdf/1708.02002</a></p>
@@ -713,7 +698,6 @@ Test Balanced Accuracy (Focal Loss): 98.91%
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -759,7 +743,7 @@ Test Balanced Accuracy (Focal Loss): 98.91%
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Jensen’s Inequality</p>
+        <p class="prev-next-title"><strong>Jensen’s Inequality</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -769,22 +753,6 @@ Test Balanced Accuracy (Focal Loss): 98.91%
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#focal-loss-definition">Focal Loss Definition</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,15 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-acf">Autocorrelation Function (ACF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-autocorrelation-function-pacf">Partial Autocorrelation Function (PACF)</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -438,49 +427,43 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="autocorrelation-vs-partial-autocorrelation">
-<h1>Autocorrelation vs. Partial Autocorrelation<a class="headerlink" href="#autocorrelation-vs-partial-autocorrelation" title="Link to this heading">#</a></h1>
-<section id="autocorrelation-function-acf">
-<h2>Autocorrelation Function (ACF)<a class="headerlink" href="#autocorrelation-function-acf" title="Link to this heading">#</a></h2>
-<ul>
-<li><p><strong>Purpose</strong>: Shows the correlation between <span class="math notranslate nohighlight">\( X_t \)</span> and its past values.</p></li>
-<li><p><strong>Formula</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-  \rho_k = \frac{\text{Cov}(X_t, X_{t-k})}{\text{Var}(X_t)}
-  \]</div>
-</li>
-<li><p><strong>Sample ACF</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-  r_k = \frac{\sum_{t=k+1}^{n} (X_t - \bar{X})(X_{t-k} - \bar{X})}{\sum_{t=1}^{n} (X_t - \bar{X})^2}
-  \]</div>
-</li>
-<li><p><strong>Interpretation</strong>:</p>
+<h1><strong>Autocorrelation vs. Partial Autocorrelation</strong><a class="headerlink" href="#autocorrelation-vs-partial-autocorrelation" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Autocorrelation Function (ACF)
+</h1>
 <ul class="simple">
+<li><p><strong>Purpose</strong>: Shows the correlation between <span class="math notranslate nohighlight">\( X_t \)</span> and its past values.</p></li>
+<li><p><strong>Formula</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\rho_k = \frac{\text{Cov}(X_t, X_{t-k})}{\text{Var}(X_t)}
+\]</div>
+<ul class="simple">
+<li><p><strong>Sample ACF</strong>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+r_k = \frac{\sum_{t=k+1}^{n} (X_t - \bar{X})(X_{t-k} - \bar{X})}{\sum_{t=1}^{n} (X_t - \bar{X})^2}
+\]</div>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>:</p></li>
 <li><p><strong>MA (q) Process</strong>: ACF cuts off (or becomes insignificant) after <span class="math notranslate nohighlight">\( q \)</span> lags.</p></li>
 </ul>
-</li>
-</ul>
-</section>
-<section id="partial-autocorrelation-function-pacf">
-<h2>Partial Autocorrelation Function (PACF)<a class="headerlink" href="#partial-autocorrelation-function-pacf" title="Link to this heading">#</a></h2>
-<ul>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Partial Autocorrelation Function (PACF)
+</h1>
+<ul class="simple">
 <li><p><strong>Purpose</strong>: Measures the direct effect of <span class="math notranslate nohighlight">\( X_{t-k} \)</span> on <span class="math notranslate nohighlight">\( X_t \)</span>, excluding the effects of intermediate lags.</p></li>
-<li><p><strong>Formula</strong>:</p>
+<li><p><strong>Formula</strong>:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-  X_t = \phi_{k1} X_{t-1} + \phi_{k2} X_{t-2} + \dots + \phi_{kk} X_{t-k} + \varepsilon_t
-  \]</div>
+X_t = \phi_{k1} X_{t-1} + \phi_{k2} X_{t-2} + \dots + \phi_{kk} X_{t-k} + \varepsilon_t
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( \phi_{kk} \)</span>: PACF value at lag <span class="math notranslate nohighlight">\( k \)</span>, capturing the unique contribution of <span class="math notranslate nohighlight">\( X_{t-k} \)</span>. <br> <br></p></li>
-</ul>
-</li>
 <li><p><strong>Conditional Correlation Interpretation</strong>: The PACF at lag <span class="math notranslate nohighlight">\( k \)</span> is the correlation between <span class="math notranslate nohighlight">\( X_t \)</span> and <span class="math notranslate nohighlight">\( X_{t-k} \)</span>, conditioned on <span class="math notranslate nohighlight">\( X_{t-1}, X_{t-2}, \dots, X_{t-k+1} \)</span>. This means it measures the direct relationship between <span class="math notranslate nohighlight">\( X_t \)</span> and <span class="math notranslate nohighlight">\( X_{t-k} \)</span>, excluding any influence from intermediate lags.</p></li>
-<li><p><strong>Interpretation</strong>:</p>
-<ul class="simple">
+<li><p><strong>Interpretation</strong>:</p></li>
 <li><p><strong>AR(<span class="math notranslate nohighlight">\( p \)</span>) Model</strong> (stationary): PACF cuts off (or become insignificant) sharply after <span class="math notranslate nohighlight">\( p \)</span>.</p></li>
-</ul>
-</li>
 </ul>
 <hr class="docutils" />
 <div class="cell docutils container">
@@ -543,7 +526,6 @@
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -581,7 +563,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Empirical Cumulative Distribution Function</p>
+        <p class="prev-next-title"><strong>Empirical Cumulative Distribution Function</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -599,23 +581,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-acf">Autocorrelation Function (ACF)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-autocorrelation-function-pacf">Partial Autocorrelation Function (PACF)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

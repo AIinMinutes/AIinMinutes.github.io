@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -254,7 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html">Rank-1 Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html"><strong>Rank-1 Matrices</strong></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
 </ul>
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,24 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator"><strong>1. Unbiased Estimator</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics"><strong>Key Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example"><strong>Example</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-estimator"><strong>2. Consistent Estimator</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Key Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Example</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-table"><strong>Comparison Table</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -448,67 +428,55 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="notes-on-unbiased-and-consistent-estimators">
 <h1><strong>Notes on Unbiased and Consistent Estimators</strong><a class="headerlink" href="#notes-on-unbiased-and-consistent-estimators" title="Link to this heading">#</a></h1>
-<p><strong>1. Unbiased Estimator</strong>
-An estimator is <strong>unbiased</strong> if its expected value equals the true parameter value. Formally, for an estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>,</p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. Unbiased Estimator
+</h1>
+<p>An estimator is unbiased if its expected value equals the true parameter value. Formally, for an estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-  \mathbb{E}[\hat{\theta}] = \theta
-  \]</div>
-<p><strong>2. Consistent Estimator</strong>
-An estimator is <strong>consistent</strong> if it converges in probability to the true parameter as the sample size increases. Formally, <span class="math notranslate nohighlight">\(\hat{\theta}_n\)</span> is consistent for <span class="math notranslate nohighlight">\(\theta\)</span> if:</p>
-<div class="math notranslate nohighlight">
-\[\lim_{n \to \infty} P(|\hat{\theta}_n - \theta| &lt; \epsilon) = 1 \quad \text{for any } \epsilon &gt; 0
- \]</div>
-<hr class="docutils" />
-<section id="unbiased-estimator">
-<h2><strong>1. Unbiased Estimator</strong><a class="headerlink" href="#unbiased-estimator" title="Link to this heading">#</a></h2>
-<p>An estimator is <strong>unbiased</strong> if its expected value equals the true parameter value. Formally, for an estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> of a parameter <span class="math notranslate nohighlight">\(\theta\)</span>,<br />
-<span class="math notranslate nohighlight">\(\mathbb{E}[\hat{\theta}] = \theta\)</span>.</p>
-<section id="key-characteristics">
-<h3><strong>Key Characteristics</strong><a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
+\mathbb{E}[\hat{\theta}] = \theta
+\]</div>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Key Characteristics
+</h2>
 <ul class="simple">
 <li><p>An unbiased estimator does not systematically overestimate or underestimate the parameter.</p></li>
 <li><p>It provides the “correct” value on average across repeated samples.</p></li>
 <li><p>However, unbiasedness does not guarantee that the estimator converges to the true parameter as the sample size increases (consistency).</p></li>
 </ul>
-</section>
-<section id="example">
-<h3><strong>Example</strong><a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Example
+</h2>
 <ul class="simple">
-<li><p><strong>Estimator:</strong> <span class="math notranslate nohighlight">\(X_1\)</span>, the first observation from a sample of size <span class="math notranslate nohighlight">\(n\)</span>, for the mean of a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p></li>
-<li><p><strong>Unbiasedness:</strong> The expected value of <span class="math notranslate nohighlight">\(X_1\)</span> is:<br />
-<span class="math notranslate nohighlight">\(\mathbb{E}[X_1] = \mu\)</span>.<br />
-Thus, <span class="math notranslate nohighlight">\(X_1\)</span> is an <strong>unbiased estimator</strong> of <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
-<li><p><strong>Consistency:</strong> Since <span class="math notranslate nohighlight">\(X_1\)</span> does not depend on <span class="math notranslate nohighlight">\(n\)</span>, its variance (<span class="math notranslate nohighlight">\(\text{Var}(X_1) = \sigma^2\)</span>) does not decrease as <span class="math notranslate nohighlight">\(n \to \infty\)</span>. Therefore, <span class="math notranslate nohighlight">\(X_1\)</span> is <strong>not consistent</strong>.</p></li>
+<li><p>Estimator: <span class="math notranslate nohighlight">\(X_1\)</span>, the first observation from a sample of size <span class="math notranslate nohighlight">\(n\)</span>, for the mean of a normal distribution <span class="math notranslate nohighlight">\(\mathcal{N}(\mu, \sigma^2)\)</span>.</p></li>
+<li><p>Unbiasedness: The expected value of <span class="math notranslate nohighlight">\(X_1\)</span> is:
+<span class="math notranslate nohighlight">\(\mathbb{E}[X_1] = \mu\)</span>.
+Thus, <span class="math notranslate nohighlight">\(X_1\)</span> is an unbiased estimator of <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p>Consistency: Since <span class="math notranslate nohighlight">\(X_1\)</span> does not depend on <span class="math notranslate nohighlight">\(n\)</span>, its variance (<span class="math notranslate nohighlight">\(\text{Var}(X_1) = \sigma^2\)</span>) does not decrease as <span class="math notranslate nohighlight">\(n \to \infty\)</span>. Therefore, <span class="math notranslate nohighlight">\(X_1\)</span> is not consistent.</p></li>
 </ul>
-</section>
-</section>
 <hr class="docutils" />
-<section id="consistent-estimator">
-<h2><strong>2. Consistent Estimator</strong><a class="headerlink" href="#consistent-estimator" title="Link to this heading">#</a></h2>
-<p>An estimator is <strong>consistent</strong> if it converges in probability to the true parameter as the sample size increases. Formally, <span class="math notranslate nohighlight">\(\hat{\theta}_n\)</span> is consistent for <span class="math notranslate nohighlight">\(\theta\)</span> if:<br />
-<span class="math notranslate nohighlight">\(\lim_{n \to \infty} P(|\hat{\theta}_n - \theta| &lt; \epsilon) = 1 \quad \text{for any } \epsilon &gt; 0\)</span>.</p>
-<section id="id1">
-<h3><strong>Key Characteristics</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Consistent Estimator
+</h1>
+<p>An estimator is consistent if it converges in probability to the true parameter as the sample size increases. Formally, <span class="math notranslate nohighlight">\(\hat{\theta}_n\)</span> is consistent for <span class="math notranslate nohighlight">\(\theta\)</span> if:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{n \to \infty} P(|\hat{\theta}_n - \theta| &lt; \epsilon) = 1 \quad \text{for any } \epsilon &gt; 0
+\]</div>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Key Characteristics
+</h2>
 <ul class="simple">
 <li><p>A consistent estimator becomes arbitrarily close to the true parameter value as the sample size grows.</p></li>
 <li><p>Consistency often depends the variance of the estimator shrinking as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.</p></li>
 </ul>
-</section>
-<section id="id2">
-<h3><strong>Example</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Example
+</h2>
 <ul class="simple">
-<li><p><strong>Estimator:</strong> <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span>, where <span class="math notranslate nohighlight">\(\bar{X}\)</span> is the sample mean.</p></li>
-<li><p><strong>Unbiasedness:</strong> The expected value of <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span> is:<br />
-<span class="math notranslate nohighlight">\(\mathbb{E}\left[\frac{n}{n+1} \bar{X}\right] = \frac{n}{n+1} \mu\)</span>,<br />
-which shows that this estimator is <strong>biased</strong> (bias = <span class="math notranslate nohighlight">\(-\frac{\mu}{n+1}\)</span>).</p></li>
-<li><p><strong>Consistency:</strong> As <span class="math notranslate nohighlight">\(n \to \infty\)</span>, the bias goes to <span class="math notranslate nohighlight">\(0\)</span>, and the variance of <span class="math notranslate nohighlight">\(\bar{X}\)</span> (<span class="math notranslate nohighlight">\(\frac{\sigma^2}{n}\)</span>) ensures convergence to <span class="math notranslate nohighlight">\(\mu\)</span>. Thus, <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span> is <strong>consistent</strong>.</p></li>
+<li><p>Estimator: <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span>, where <span class="math notranslate nohighlight">\(\bar{X}\)</span> is the sample mean.</p></li>
+<li><p>Unbiasedness: The expected value of <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span> is:
+<span class="math notranslate nohighlight">\(\mathbb{E}\left[\frac{n}{n+1} \bar{X}\right] = \frac{n}{n+1} \mu\)</span>,
+which shows that this estimator is biased (bias = <span class="math notranslate nohighlight">\(-\frac{\mu}{n+1}\)</span>).</p></li>
+<li><p>Consistency: As <span class="math notranslate nohighlight">\(n \to \infty\)</span>, the bias goes to <span class="math notranslate nohighlight">\(0\)</span>, and the variance of <span class="math notranslate nohighlight">\(\bar{X}\)</span> (<span class="math notranslate nohighlight">\(\frac{\sigma^2}{n}\)</span>) ensures convergence to <span class="math notranslate nohighlight">\(\mu\)</span>. Thus, <span class="math notranslate nohighlight">\(\frac{n}{n+1} \bar{X}\)</span> is consistent.</p></li>
 </ul>
-</section>
-</section>
 <hr class="docutils" />
-<section id="comparison-table">
-<h2><strong>Comparison Table</strong><a class="headerlink" href="#comparison-table" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Comparison Table
+</h1>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
@@ -653,7 +621,6 @@ Sample mean of the last sample (biased): 4.999915438548363
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -699,7 +666,7 @@ Sample mean of the last sample (biased): 4.999915438548363
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Empirical Cumulative Distribution Function</p>
+        <p class="prev-next-title"><strong>Empirical Cumulative Distribution Function</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -709,32 +676,6 @@ Sample mean of the last sample (biased): 4.999915438548363
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator"><strong>1. Unbiased Estimator</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics"><strong>Key Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example"><strong>Example</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-estimator"><strong>2. Consistent Estimator</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Key Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Example</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-table"><strong>Comparison Table</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

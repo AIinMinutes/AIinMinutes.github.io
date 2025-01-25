@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -254,7 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html">Rank-1 Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/rank_one_matrices.html"><strong>Rank-1 Matrices</strong></a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
 </ul>
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,15 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites"><strong>Prerequisites</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-derivation"><strong>PCA Derivation</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -438,115 +427,121 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="principal-component-analysis">
-<h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Link to this heading">#</a></h1>
-<section id="prerequisites">
-<h2><strong>Prerequisites</strong><a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><strong>Dot Product Between Two Vectors and Scalar Projection:</strong></p>
+<h1><strong>Principal Component Analysis</strong><a class="headerlink" href="#principal-component-analysis" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Prerequisites
+</h1>
+<ol class="arabic simple">
+<li><p><strong>Dot Product Between Two Vectors and Scalar Projection:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \mathbf{a} \cdot \mathbf{b} = \|\mathbf{a}\| \|\mathbf{b}\| \cos \theta = \sum_{i=1}^d a_i b_i
-   \]</div>
+\mathbf{a} \cdot \mathbf{b} = \|\mathbf{a}\| \|\mathbf{b}\| \cos \theta = \sum_{i=1}^d a_i b_i
+\]</div>
 <p>Scalar projection of <span class="math notranslate nohighlight">\( \mathbf{a} \)</span> onto <span class="math notranslate nohighlight">\( \mathbf{b} \)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-   \text{Projection} = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}
-   \]</div>
-</li>
+\text{Projection} = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{b}\|}
+\]</div>
+<ol class="arabic simple" start="2">
 <li><p><strong>Dot Product = Scalar Projection When Projected onto Unit Vector:</strong>
-If <span class="math notranslate nohighlight">\( \|\mathbf{b}\| = 1 \)</span>, then:</p>
-<div class="math notranslate nohighlight">
-\[
-   \text{Projection} = \mathbf{a} \cdot \mathbf{b}
-   \]</div>
-<p><em>If either vector is unit vector, dot product equals scalar projection.</em></p>
-</li>
-<li><p><strong>Variance of an Observation Vector If Its Mean Is Zero:</strong></p>
-<div class="math notranslate nohighlight">
-\[
-   \text{Var}(\mathbf{x}) = \frac{1}{n - 1} \|\mathbf{x}\|^2 = \frac{1}{n - 1} \sum_{i=1}^n x_i^2
-   \]</div>
-<p><em>Variance is the squared norm if the mean is zero.</em></p>
-</li>
+If <span class="math notranslate nohighlight">\( \|\mathbf{b}\| = 1 \)</span>, then:</p></li>
 </ol>
-</section>
+<div class="math notranslate nohighlight">
+\[
+\text{Projection} = \mathbf{a} \cdot \mathbf{b}
+\]</div>
+<p><em>If either vector is unit vector, dot product equals scalar projection.</em></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Variance of an Observation Vector If Its Mean Is Zero:</strong></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\mathbf{x}) = \frac{1}{n - 1} \|\mathbf{x}\|^2 = \frac{1}{n - 1} \sum_{i=1}^n x_i^2
+\]</div>
+<p><em>Variance is the squared norm if the mean is zero.</em></p>
 <hr class="docutils" />
-<section id="pca-derivation">
-<h2><strong>PCA Derivation</strong><a class="headerlink" href="#pca-derivation" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><strong>Data Matrix:</strong></p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> PCA Derivation
+</h1>
+<ol class="arabic simple">
+<li><p><strong>Data Matrix:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   X \in \mathbb{R}^{n \times d}
-   \]</div>
+X \in \mathbb{R}^{n \times d}
+\]</div>
 <p><em>Matrix with <span class="math notranslate nohighlight">\(n\)</span> data points and <span class="math notranslate nohighlight">\(d\)</span> features.</em></p>
-</li>
-<li><p><strong>Mean-Centering:</strong></p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Mean-Centering:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \mathbf{\mu} = \frac{1}{n} \sum_{i=1}^n \mathbf{x}_i
-   \]</div>
+\mathbf{\mu} = \frac{1}{n} \sum_{i=1}^n \mathbf{x}_i
+\]</div>
 <div class="math notranslate nohighlight">
 \[
-   \tilde{X} = X - \mathbf{1}_n \mathbf{\mu}^T
-   \]</div>
+\tilde{X} = X - \mathbf{1}_n \mathbf{\mu}^T
+\]</div>
 <p><em>Center data by subtracting the mean.</em></p>
-</li>
-<li><p><strong>Covariance Matrix:</strong></p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Covariance Matrix:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   S = \frac{1}{n - 1} \tilde{X}^T \tilde{X}
-   \]</div>
+S = \frac{1}{n - 1} \tilde{X}^T \tilde{X}
+\]</div>
 <p><em>Covariance matrix captures relationships between features.</em></p>
-</li>
-<li><p><strong>Projection onto Unit Vector <span class="math notranslate nohighlight">\( \mathbf{w} \)</span>:</strong></p>
+<ol class="arabic simple" start="4">
+<li><p><strong>Projection onto Unit Vector <span class="math notranslate nohighlight">\( \mathbf{w} \)</span>:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \mathbf{z} = \tilde{X} \mathbf{w}
-   \]</div>
+\mathbf{z} = \tilde{X} \mathbf{w}
+\]</div>
 <p>Variance of projection:</p>
 <div class="math notranslate nohighlight">
 \[
-   \text{Var}(\tilde{X} \mathbf{w}) = \frac{1}{n - 1} (\tilde{X} \mathbf{w})^T (\tilde{X} \mathbf{w}) = \mathbf{w}^T S \mathbf{w}
-   \]</div>
+\text{Var}(\tilde{X} \mathbf{w}) = \frac{1}{n - 1} (\tilde{X} \mathbf{w})^T (\tilde{X} \mathbf{w}) = \mathbf{w}^T S \mathbf{w}
+\]</div>
 <p><em>Projection each row vector along <span class="math notranslate nohighlight">\( \mathbf{w} \)</span> .</em></p>
-</li>
-<li><p><strong>Optimization Problem (Maximize Variance):</strong></p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Optimization Problem (Maximize Variance):</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \max_{\mathbf{w}} \mathbf{w}^T S \mathbf{w}, \quad \text{subject to } \mathbf{w}^T \mathbf{w} = 1
-   \]</div>
+\max_{\mathbf{w}} \mathbf{w}^T S \mathbf{w}, \quad \text{subject to } \mathbf{w}^T \mathbf{w} = 1
+\]</div>
 <p><em>Find the direction <span class="math notranslate nohighlight">\( \mathbf{w} \)</span> that maximizes variance.</em></p>
-</li>
-<li><p><strong>Lagrangian and Gradient Condition:</strong></p>
+<ol class="arabic simple" start="6">
+<li><p><strong>Lagrangian and Gradient Condition:</strong></p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \mathcal{L}(\mathbf{w}, \lambda) = \mathbf{w}^T S \mathbf{w} - \lambda (\mathbf{w}^T \mathbf{w} - 1)
-   \]</div>
+\mathcal{L}(\mathbf{w}, \lambda) = \mathbf{w}^T S \mathbf{w} - \lambda (\mathbf{w}^T \mathbf{w} - 1)
+\]</div>
 <p>Gradient condition:</p>
 <div class="math notranslate nohighlight">
 \[
-   \nabla_{\mathbf{w}} \mathcal{L} = 2S \mathbf{w} - 2\lambda \mathbf{w} = 0
-   \]</div>
+\nabla_{\mathbf{w}} \mathcal{L} = 2S \mathbf{w} - 2\lambda \mathbf{w} = 0
+\]</div>
 <div class="math notranslate nohighlight">
 \[
-   S \mathbf{w} = \lambda \mathbf{w}
-   \]</div>
+S \mathbf{w} = \lambda \mathbf{w}
+\]</div>
 <p><em>Leads to the eigenvalue problem.</em></p>
-</li>
-<li><p><strong>Principal Components:</strong></p>
-<ul>
-<li><p>Eigenvalue problem:</p>
+<ol class="arabic simple" start="7">
+<li><p><strong>Principal Components:</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Eigenvalue problem:</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-     S \mathbf{w} = \lambda \mathbf{w}
-     \]</div>
-</li>
-<li><p><span class="math notranslate nohighlight">\( \mathbf{w} \)</span> is the eigenvector corresponding to the largest eigenvalue <span class="math notranslate nohighlight">\( \lambda_1 \)</span>.
-<em>The first principal component (explaining the largest variance) is the eigenvector with the largest eigenvalue.</em></p></li>
+S \mathbf{w} = \lambda \mathbf{w}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{w} \)</span> is the eigenvector corresponding to the largest eigenvalue <span class="math notranslate nohighlight">\( \lambda_1 \)</span>.</p></li>
 </ul>
-</li>
-</ol>
+<p><em>The first principal component (explaining the largest variance) is the eigenvector with the largest eigenvalue.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -648,7 +643,6 @@ Eigenvalues from manual method:
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -659,16 +653,16 @@ Eigenvalues from manual method:
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "book"
+            mode: "python"
         },
         kernelOptions: {
-            name: "book",
+            name: "python3",
             path: "./content/multivariate-statistics"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'book'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -704,23 +698,6 @@ Eigenvalues from manual method:
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites"><strong>Prerequisites</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-derivation"><strong>PCA Derivation</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

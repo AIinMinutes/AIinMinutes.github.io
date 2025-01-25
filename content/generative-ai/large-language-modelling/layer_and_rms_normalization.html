@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,17 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-layer-normalization">1. <strong>Why Layer Normalization?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-behind-layer-normalization">2. <strong>Math behind Layer Normalization</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-we-avoid-calculating-the-mean-why-rms-normalization">3. <strong>Can We Avoid Calculating the Mean? Why RMS Normalization?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-behind-rms-normalization">4. <strong>Math behind RMS Normalization</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -440,86 +427,85 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="layer-vs-rms-normalization">
-<h1>Layer vs. RMS Normalization<a class="headerlink" href="#layer-vs-rms-normalization" title="Link to this heading">#</a></h1>
-<section id="why-layer-normalization">
-<h2>1. <strong>Why Layer Normalization?</strong><a class="headerlink" href="#why-layer-normalization" title="Link to this heading">#</a></h2>
+<h1><strong>Layer vs. RMS Normalization</strong><a class="headerlink" href="#layer-vs-rms-normalization" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. Why Layer Normalization?
+</h1>
 <ul class="simple">
 <li><p><strong>Purpose</strong>: Stabilizes the training of deep neural networks by regularizing neuron dynamics within one layer (across features) via mean and variance statistics.</p></li>
 <li><p><strong>Application</strong>: Normalizes activations <strong>per sample/token</strong>, not across the batch.</p></li>
 <li><p><strong>Use Case</strong>: Works well for sequential data like transformers.</p></li>
 </ul>
-</section>
-<section id="math-behind-layer-normalization">
-<h2>2. <strong>Math behind Layer Normalization</strong><a class="headerlink" href="#math-behind-layer-normalization" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Math behind Layer Normalization
+</h1>
 <p>Given input <strong>X</strong> (<span class="math notranslate nohighlight">\(n \times d\)</span>), where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n\)</span> = context length (number of tokens)</p></li>
 <li><p><span class="math notranslate nohighlight">\(d\)</span> = embedding dimension</p></li>
 </ul>
-<ol class="arabic">
-<li><p><strong>Mean</strong> per token:</p>
+<ol class="arabic simple">
+<li><p><strong>Mean</strong> per token:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \mu_i = \frac{1}{d} \sum_{j=1}^{d} X_{ij} \quad (\mu \in \mathbb{R}^{n \times 1})
-   \]</div>
-</li>
-<li><p><strong>Variance</strong> per token:</p>
+\mu_i = \frac{1}{d} \sum_{j=1}^{d} X_{ij} \quad (\mu \in \mathbb{R}^{n \times 1})
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Variance</strong> per token:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \sigma^2_i = \frac{1}{d} \sum_{j=1}^{d} (X_{ij})^2 - (\mu_i)^2 \quad (\sigma^2 \in \mathbb{R}^{n \times 1})
-   \]</div>
-</li>
-<li><p><strong>Normalize</strong>:</p>
+\sigma^2_i = \frac{1}{d} \sum_{j=1}^{d} (X_{ij})^2 - (\mu_i)^2 \quad (\sigma^2 \in \mathbb{R}^{n \times 1})
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Normalize</strong>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \hat{X}_{ij} = \frac{X_{ij} - \mu_i}{\sqrt{\sigma_i^2 + \epsilon}} \quad (\hat{X} \in \mathbb{R}^{n \times d})
-   \]</div>
-</li>
-<li><p><strong>Scale and Shift</strong>:</p>
+\hat{X}_{ij} = \frac{X_{ij} - \mu_i}{\sqrt{\sigma_i^2 + \epsilon}} \quad (\hat{X} \in \mathbb{R}^{n \times d})
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Scale and Shift</strong>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   Y_{ij} = \gamma_j \hat{X}_{ij} + \beta_j \quad (Y \in \mathbb{R}^{n \times d})
-   \]</div>
+Y_{ij} = \gamma_j \hat{X}_{ij} + \beta_j \quad (Y \in \mathbb{R}^{n \times d})
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\gamma, \beta \in \mathbb{R}^{d \times 1}\)</span></p></li>
 </ul>
-</li>
-</ol>
-</section>
-<hr class="docutils" />
-<section id="can-we-avoid-calculating-the-mean-why-rms-normalization">
-<h2>3. <strong>Can We Avoid Calculating the Mean? Why RMS Normalization?</strong><a class="headerlink" href="#can-we-avoid-calculating-the-mean-why-rms-normalization" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 3. Can We Avoid Calculating the Mean? Why RMS Normalization?
+</h1>
 <ul class="simple">
 <li><p><strong>RMS Normalization</strong>: Avoids the mean computation, uses RMS (because variance calculation needs mean) to simplify computations. Mean normalization has little impact on the success of LayerNorm.</p></li>
 <li><p><strong>Use Case</strong>: 7% to 64% reduced running term against LayerNorm.</p></li>
 </ul>
-</section>
-<section id="math-behind-rms-normalization">
-<h2>4. <strong>Math behind RMS Normalization</strong><a class="headerlink" href="#math-behind-rms-normalization" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 4. Math behind RMS Normalization
+</h1>
 <p>Given input <strong>X</strong> (<span class="math notranslate nohighlight">\(n \times d\)</span>):</p>
-<ol class="arabic">
-<li><p><strong>RMS</strong> per token:</p>
+<ol class="arabic simple">
+<li><p><strong>RMS</strong> per token:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \text{RMS}_i = \sqrt{\frac{1}{d} \sum_{j=1}^{d} (X_{ij})^2} \quad (\text{RMS} \in \mathbb{R}^{n \times 1})
-   \]</div>
-</li>
-<li><p><strong>Normalize</strong>:</p>
+\text{RMS}_i = \sqrt{\frac{1}{d} \sum_{j=1}^{d} (X_{ij})^2} \quad (\text{RMS} \in \mathbb{R}^{n \times 1})
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Normalize</strong>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   \hat{X}_{ij} = \frac{X_{ij}}{\text{RMS}_i} \quad (\hat{X} \in \mathbb{R}^{n \times d})
-   \]</div>
-</li>
-<li><p><strong>Scale</strong>:</p>
+\hat{X}_{ij} = \frac{X_{ij}}{\text{RMS}_i} \quad (\hat{X} \in \mathbb{R}^{n \times d})
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Scale</strong>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   Y_{ij} = \gamma_j \hat{X}_{ij} \quad (Y \in \mathbb{R}^{n \times d})
-   \]</div>
+Y_{ij} = \gamma_j \hat{X}_{ij} \quad (Y \in \mathbb{R}^{n \times d})
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\gamma \in \mathbb{R}^{d \times 1}\)</span></p></li>
 </ul>
-</li>
-</ol>
 <p>Reference: Zhang, B., &amp; Sennrich, R. (2019). Root mean square layer normalization. Advances in Neural Information Processing Systems, 32.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +694,6 @@
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -746,7 +731,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decoding Strategies: Greedy vs Beam</p>
+        <p class="prev-next-title"><strong>Decoding Strategies: Greedy vs Beam</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -754,7 +739,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multi-head Attention</p>
+        <p class="prev-next-title"><strong>Multi-head Attention</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -764,25 +749,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-layer-normalization">1. <strong>Why Layer Normalization?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-behind-layer-normalization">2. <strong>Math behind Layer Normalization</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-we-avoid-calculating-the-mean-why-rms-normalization">3. <strong>Can We Avoid Calculating the Mean? Why RMS Normalization?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math-behind-rms-normalization">4. <strong>Math behind RMS Normalization</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

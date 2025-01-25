@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -401,9 +401,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -419,15 +417,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-distribution-creativity"><strong>Multinomial Distribution + Creativity</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications"><strong>Applications:</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -440,36 +429,35 @@
   <section class="tex2jax_ignore mathjax_ignore" id="temperature-scaled-softmax">
 <h1><strong>Temperature-Scaled Softmax</strong><a class="headerlink" href="#temperature-scaled-softmax" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p><strong>Formula:</strong><br />
-<span class="math notranslate nohighlight">\(P(y_i \mid \mathbf{z}) = \frac{\exp(z_i / T)}{\sum_{j=1}^n \exp(z_j / T)}\)</span></p></li>
-<li><p><strong>Key Points:</strong></p>
-<ul>
+<li><p><strong>Formula:</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+P(y_i \mid \mathbf{z}) = \frac{\exp(z_i / T)}{\sum_{j=1}^n \exp(z_j / T)}
+\]</div>
+<ul class="simple">
+<li><p><strong>Key Points:</strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(T &gt; 1\)</span>: Flattens probabilities → More exploration (creativity).</p></li>
 <li><p><span class="math notranslate nohighlight">\(T &lt; 1\)</span>: Sharpens probabilities → More confident predictions.</p></li>
 </ul>
-</li>
-</ul>
 <hr class="docutils" />
-<section id="multinomial-distribution-creativity">
-<h2><strong>Multinomial Distribution + Creativity</strong><a class="headerlink" href="#multinomial-distribution-creativity" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Multinomial Distribution + Creativity
+</h1>
 <ul class="simple">
-<li><p><strong>Process:</strong></p>
+<li><p><strong>Process:</strong></p></li>
+</ul>
 <ol class="arabic simple">
 <li><p>Apply temperature-scaled softmax to logits.</p></li>
 <li><p>Use multinomial sampling to pick an output.</p></li>
 </ol>
-</li>
-<li><p><strong>Effect of <span class="math notranslate nohighlight">\(T\)</span>:</strong></p>
-<ul>
+<ul class="simple">
+<li><p><strong>Effect of <span class="math notranslate nohighlight">\(T\)</span>:</strong></p></li>
 <li><p>High <span class="math notranslate nohighlight">\(T\)</span>: Diverse, creative outputs.</p></li>
 <li><p>Low <span class="math notranslate nohighlight">\(T\)</span>: Predictable, focused outputs.</p></li>
 </ul>
-</li>
-</ul>
-</section>
 <hr class="docutils" />
-<section id="applications">
-<h2><strong>Applications:</strong><a class="headerlink" href="#applications" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Applications
+</h1>
 <ol class="arabic simple">
 <li><p><strong>Text Generation (e.g., GPT):</strong> Control creativity.</p></li>
 <li><p><strong>Action Selection (RL):</strong> Balance exploration/exploitation.</p></li>
@@ -562,7 +550,6 @@
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -600,7 +587,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Reparametrization Trick</p>
+        <p class="prev-next-title"><strong>Reparametrization Trick</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -618,23 +605,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-distribution-creativity"><strong>Multinomial Distribution + Creativity</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications"><strong>Applications:</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

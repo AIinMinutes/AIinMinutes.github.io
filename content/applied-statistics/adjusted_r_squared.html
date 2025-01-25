@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -424,12 +424,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-coefficient-of-determination">1. <strong><span class="math notranslate nohighlight">\(R^2\)</span>: Coefficient of Determination</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2">2. <strong>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#degrees-of-freedom-in-multiple-regression">3. <strong>Degrees of Freedom in Multiple Regression</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -442,56 +437,46 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="r-2-and-adjusted-r-2-in-multiple-regression">
-<h1><span class="math notranslate nohighlight">\(R^2\)</span> and Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> in Multiple Regression<a class="headerlink" href="#r-2-and-adjusted-r-2-in-multiple-regression" title="Link to this heading">#</a></h1>
-<section id="r-2-coefficient-of-determination">
-<h2>1. <strong><span class="math notranslate nohighlight">\(R^2\)</span>: Coefficient of Determination</strong><a class="headerlink" href="#r-2-coefficient-of-determination" title="Link to this heading">#</a></h2>
-<ul>
-<li><p><strong>Definition</strong>: <span class="math notranslate nohighlight">\(R^2\)</span> represents the proportion of the variance in the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>) that is predictable from the independent variables <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_p\)</span>.</p>
+<h1><strong><span class="math notranslate nohighlight">\(R^2\)</span> and Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> in Multiple Regression</strong><a class="headerlink" href="#r-2-and-adjusted-r-2-in-multiple-regression" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. Coefficient of Determination
+</h1>
+<ul class="simple">
+<li><p><strong><strong>Definition</strong></strong>: <span class="math notranslate nohighlight">\(R^2\)</span> represents the proportion of the variance in the dependent variable (<span class="math notranslate nohighlight">\(y\)</span>) that is predictable from the independent variables <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_p\)</span>.</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-  R^2 = 1 - \frac{\text{SS}_{\text{res}}}{\text{SS}_{\text{tot}}}
-  \]</div>
+R^2 = 1 - \frac{\text{SS}_{\text{res}}}{\text{SS}_{\text{tot}}}
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\text{SS}_{\text{res}} = \sum_{i=1}^n (y_i - \hat{y}_i)^2\)</span>: Residual Sum of Squares</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{SS}_{\text{tot}} = \sum_{i=1}^n (y_i - \bar{y})^2\)</span>: Total Sum of Squares</p></li>
+<li><p><strong><strong>Interpretation</strong></strong>: <span class="math notranslate nohighlight">\(R^2\)</span> ranges from 0 to 1. An <span class="math notranslate nohighlight">\(R^2\)</span> close to 1 indicates that a large portion of the variance in <span class="math notranslate nohighlight">\(y\)</span> is explained by the model.</p></li>
 </ul>
-</li>
-<li><p><strong>Interpretation</strong>: <span class="math notranslate nohighlight">\(R^2\)</span> ranges from 0 to 1. An <span class="math notranslate nohighlight">\(R^2\)</span> close to 1 indicates that a large portion of the variance in <span class="math notranslate nohighlight">\(y\)</span> is explained by the model.</p></li>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Adjusted R-squared
+</h1>
+<ul class="simple">
+<li><p><strong><strong>Definition</strong></strong>: Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> adjusts <span class="math notranslate nohighlight">\(R^2\)</span> for the number of predictors, accounting for model complexity. It is calculated as:</p></li>
 </ul>
-</section>
-<section id="adjusted-r-2">
-<h2>2. <strong>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong><a class="headerlink" href="#adjusted-r-2" title="Link to this heading">#</a></h2>
-<ul>
-<li><p><strong>Definition</strong>: Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> adjusts <span class="math notranslate nohighlight">\(R^2\)</span> for the number of predictors, accounting for model complexity. It is calculated as:</p>
 <div class="math notranslate nohighlight">
 \[
-  \text{Adjusted } R^2 = 1 - \frac{\text{MSE}}{\text{MST}}
-  \]</div>
+\text{Adjusted } R^2 = 1 - \frac{\text{MSE}}{\text{MST}}
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\text{MSE} = \frac{\text{SS}_{\text{res}}}{n - p - 1}\)</span>: Mean Squared Error, with <span class="math notranslate nohighlight">\(n - p - 1\)</span> degrees of freedom.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{MST} = \frac{\text{SS}_{\text{tot}}}{n - 1}\)</span>: Mean Total Sum of Squares.</p></li>
+<li><p><strong><strong>Interpretation</strong></strong>: Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> accounts for degrees of freedom and tends to penalize overfitting. Unlike <span class="math notranslate nohighlight">\(R^2\)</span>, it can decrease if unnecessary predictors are added.</p></li>
 </ul>
-</li>
-<li><p><strong>Interpretation</strong>: Adjusted <span class="math notranslate nohighlight">\(R^2\)</span> accounts for degrees of freedom and tends to penalize overfitting. Unlike <span class="math notranslate nohighlight">\(R^2\)</span>, it can decrease if unnecessary predictors are added.</p></li>
-</ul>
-</section>
-<section id="degrees-of-freedom-in-multiple-regression">
-<h2>3. <strong>Degrees of Freedom in Multiple Regression</strong><a class="headerlink" href="#degrees-of-freedom-in-multiple-regression" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 3. Degrees of Freedom in Multiple Regression
+</h1>
 <ul class="simple">
-<li><p><strong>Degrees of Freedom</strong>:</p>
-<ul>
-<li><p><strong>Residual Degrees of Freedom</strong>: <span class="math notranslate nohighlight">\(n - p - 1\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of observations and <span class="math notranslate nohighlight">\(p\)</span> is the number of predictors.</p></li>
-<li><p><strong>Total Degrees of Freedom</strong>: <span class="math notranslate nohighlight">\(n - 1\)</span>.</p></li>
-</ul>
-</li>
-<li><p><strong>Role in Model Evaluation</strong>:</p>
-<ul>
-<li><p><strong>Residuals</strong>: Degrees of freedom for the residuals help determine the penalty in Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>.</p></li>
-<li><p><strong>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong>: Uses residual degrees of freedom to adjust the <span class="math notranslate nohighlight">\(R^2\)</span>, making it more reliable when comparing models with different numbers of predictors.</p></li>
-</ul>
-</li>
+<li><p><strong><strong>Degrees of Freedom</strong></strong>:</p></li>
+<li><p><strong><strong>Residual Degrees of Freedom</strong></strong>: <span class="math notranslate nohighlight">\(n - p - 1\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of observations and <span class="math notranslate nohighlight">\(p\)</span> is the number of predictors.</p></li>
+<li><p><strong><strong>Total Degrees of Freedom</strong></strong>: <span class="math notranslate nohighlight">\(n - 1\)</span>.</p></li>
+<li><p><strong><strong>Role in Model Evaluation</strong></strong>:</p></li>
+<li><p><strong><strong>Residuals</strong></strong>: Degrees of freedom for the residuals help determine the penalty in Adjusted <span class="math notranslate nohighlight">\(R^2\)</span>.</p></li>
+<li><p><strong><strong>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong></strong>: Uses residual degrees of freedom to adjust the <span class="math notranslate nohighlight">\(R^2\)</span>, making it more reliable when comparing models with different numbers of predictors.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,9 +754,8 @@ Model{-}5 &amp; \hat{y} = 5.42 + 0.298 \cdot x_{1} + 0.595 \cdot x_{2} + 0.011 \
 </div>
 </div>
 <section id="conclusion">
-<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>This analysis revealed that <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> were the only significant predictors for the dependent variable <span class="math notranslate nohighlight">\(y\)</span>. While the coefficient of determination, <span class="math notranslate nohighlight">\(R^2\)</span>, either increased or remained constant with the addition of irrelevant variables, adjusted <span class="math notranslate nohighlight">\(R^2\)</span> decreased, demonstrating its effectiveness in evaluating model performance. Thus, adjusted <span class="math notranslate nohighlight">\(R^2\)</span> is a more reliable metric than <span class="math notranslate nohighlight">\(R^2\)</span> for preventing overfitting and accurately representing the predictors’ relationship with the response variable.</p>
-</section>
 </section>
 </section>
 
@@ -811,7 +795,7 @@ Model{-}5 &amp; \hat{y} = 5.42 + 0.298 \cdot x_{1} + 0.595 \cdot x_{2} + 0.011 \
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Autocorrelation vs. Partial Autocorrelation</p>
+        <p class="prev-next-title"><strong>Autocorrelation vs. Partial Autocorrelation</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -819,7 +803,7 @@ Model{-}5 &amp; \hat{y} = 5.42 + 0.298 \cdot x_{1} + 0.595 \cdot x_{2} + 0.011 \
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Condition Number Explained</p>
+        <p class="prev-next-title"><strong>Condition Number Explained</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -840,12 +824,7 @@ Model{-}5 &amp; \hat{y} = 5.42 + 0.298 \cdot x_{1} + 0.595 \cdot x_{2} + 0.011 \
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2-coefficient-of-determination">1. <strong><span class="math notranslate nohighlight">\(R^2\)</span>: Coefficient of Determination</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-r-2">2. <strong>Adjusted <span class="math notranslate nohighlight">\(R^2\)</span></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#degrees-of-freedom-in-multiple-regression">3. <strong>Degrees of Freedom in Multiple Regression</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 

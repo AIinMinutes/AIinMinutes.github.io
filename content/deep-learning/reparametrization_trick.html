@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -427,47 +427,38 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reparametrization-trick">
-<h1>Reparametrization Trick<a class="headerlink" href="#reparametrization-trick" title="Link to this heading">#</a></h1>
-<ul>
-<li><p><strong>Reparameterization Trick</strong>: A technique to enable backpropagation through stochastic processes by making them differentiable.</p></li>
-<li><p><strong>Problem</strong>: Direct sampling from distributions like <span class="math notranslate nohighlight">\(z \sim \mathcal{N}(\mu, \sigma^2)\)</span> is non-differentiable, blocking gradient computation.</p>
-<ul>
-<li><p><strong>Without reparameterization</strong>: Sampling <span class="math notranslate nohighlight">\(z\)</span> is non-differentiable:</p>
-<div class="math notranslate nohighlight">
-\[
-    z = \text{Sample from } \mathcal{N}(\mu, \sigma^2)
-    \]</div>
-<p>No gradients can be computed for <span class="math notranslate nohighlight">\(\mu\)</span> or <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-</li>
-</ul>
-</li>
-<li><p><strong>Solution</strong>: Represent <span class="math notranslate nohighlight">\(z\)</span> as <span class="math notranslate nohighlight">\(z = \mu + \sigma \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, 1)\)</span>.</p>
-<ul>
-<li><p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(\mu = 2\)</span>, <span class="math notranslate nohighlight">\(\sigma = 3\)</span>, and <span class="math notranslate nohighlight">\(\epsilon = -1.5\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-    z = 2 + 3(-1.5) = -2.5
-    \]</div>
-</li>
-</ul>
-</li>
-<li><p><strong>Why It Works</strong>: The transformation <span class="math notranslate nohighlight">\(z = \mu + \sigma \epsilon\)</span> is differentiable, allowing gradient flow.</p>
-<ul>
-<li><p>Gradients:</p>
-<div class="math notranslate nohighlight">
-\[
-    \frac{\partial z}{\partial \mu} = 1, \quad \frac{\partial z}{\partial \sigma} = \epsilon
-    \]</div>
-</li>
-</ul>
-</li>
-<li><p><strong>Without Reparameterization</strong>: The sampling operation is non-differentiable, making gradient computation impossible.</p></li>
-<li><p><strong>Applications</strong>:</p>
+<h1><strong>Reparametrization Trick</strong><a class="headerlink" href="#reparametrization-trick" title="Link to this heading">#</a></h1>
 <ul class="simple">
+<li><p><strong>Reparameterization Trick</strong>: A technique to enable backpropagation through stochastic processes by making them differentiable.</p></li>
+<li><p><strong>Problem</strong>: Direct sampling from distributions like <span class="math notranslate nohighlight">\(z \sim \mathcal{N}(\mu, \sigma^2)\)</span> is non-differentiable, blocking gradient computation.</p></li>
+<li><p><strong>Without reparameterization</strong>: Sampling <span class="math notranslate nohighlight">\(z\)</span> is non-differentiable:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z = \text{Sample from } \mathcal{N}(\mu, \sigma^2)
+\]</div>
+<p>No gradients can be computed for <span class="math notranslate nohighlight">\(\mu\)</span> or <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<ul class="simple">
+<li><p><strong>Solution</strong>: Represent <span class="math notranslate nohighlight">\(z\)</span> as <span class="math notranslate nohighlight">\(z = \mu + \sigma \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, 1)\)</span>.</p></li>
+<li><p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(\mu = 2\)</span>, <span class="math notranslate nohighlight">\(\sigma = 3\)</span>, and <span class="math notranslate nohighlight">\(\epsilon = -1.5\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+z = 2 + 3(-1.5) = -2.5
+\]</div>
+<ul class="simple">
+<li><p><strong>Why It Works</strong>: The transformation <span class="math notranslate nohighlight">\(z = \mu + \sigma \epsilon\)</span> is differentiable, allowing gradient flow.</p></li>
+<li><p>Gradients:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial z}{\partial \mu} = 1, \quad \frac{\partial z}{\partial \sigma} = \epsilon
+\]</div>
+<ul class="simple">
+<li><p><strong>Without Reparameterization</strong>: The sampling operation is non-differentiable, making gradient computation impossible.</p></li>
+<li><p><strong>Applications</strong>:</p></li>
 <li><p><strong>VAEs</strong>: Enables training of both encoder and decoder networks.</p></li>
 <li><p><strong>Generative Models</strong>: Used in models with latent variables (e.g., GANs, RL).</p></li>
-</ul>
-</li>
 <li><p><strong>Benefit</strong>: Makes non-differentiable operations differentiable, enabling gradient-based optimization.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -545,7 +536,7 @@ Gradient wrt sigma: -1.4624308347702026
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Jensen’s Inequality</p>
+        <p class="prev-next-title"><strong>Jensen’s Inequality</strong></p>
       </div>
     </a>
     <a class="right-next"

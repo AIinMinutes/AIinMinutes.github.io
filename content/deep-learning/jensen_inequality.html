@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -427,36 +427,32 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="jensen-s-inequality">
-<h1>Jensen’s Inequality<a class="headerlink" href="#jensen-s-inequality" title="Link to this heading">#</a></h1>
-<ul>
-<li><p><strong>Statement</strong>:<br />
-For a convex function <span class="math notranslate nohighlight">\(f\)</span> and a random variable <span class="math notranslate nohighlight">\(X\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-  f(\mathbb{E}[X]) \leq \mathbb{E}[f(X)].
-  \]</div>
-</li>
-<li><p><strong>Convex Function</strong>:<br />
-A function <span class="math notranslate nohighlight">\(f(x)\)</span> is convex if:</p>
-<div class="math notranslate nohighlight">
-\[
-  f(\alpha x_1 + (1-\alpha)x_2) \leq \alpha f(x_1) + (1-\alpha)f(x_2), \quad \forall \alpha \in [0, 1].
-  \]</div>
-</li>
-<li><p><strong>Interpretation</strong>:<br />
-The value of <span class="math notranslate nohighlight">\(f\)</span> at the mean <span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span> is always less than or equal to the average value of <span class="math notranslate nohighlight">\(f(X)\)</span>.</p></li>
-<li><p><strong>Key Terms</strong>:</p>
+<h1><strong>Jensen’s Inequality</strong><a class="headerlink" href="#jensen-s-inequality" title="Link to this heading">#</a></h1>
 <ul class="simple">
+<li><p><strong>Statement</strong>:
+For a convex function <span class="math notranslate nohighlight">\(f\)</span> and a random variable <span class="math notranslate nohighlight">\(X\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+f(\mathbb{E}[X]) \leq \mathbb{E}[f(X)].
+\]</div>
+<ul class="simple">
+<li><p><strong>Convex Function</strong>:
+A function <span class="math notranslate nohighlight">\(f(x)\)</span> is convex if:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+f(\alpha x_1 + (1-\alpha)x_2) \leq \alpha f(x_1) + (1-\alpha)f(x_2), \quad \forall \alpha \in [0, 1].
+\]</div>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>:
+The value of <span class="math notranslate nohighlight">\(f\)</span> at the mean <span class="math notranslate nohighlight">\(\mathbb{E}[X]\)</span> is always less than or equal to the average value of <span class="math notranslate nohighlight">\(f(X)\)</span>.</p></li>
+<li><p><strong>Key Terms</strong>:</p></li>
 <li><p><span class="math notranslate nohighlight">\(f(\mathbb{E}[X])\)</span>: Function applied to the expected value of <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbb{E}[f(X)]\)</span>: Expected value of the function applied to <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
-</ul>
-</li>
-<li><p><strong>Applications</strong>:</p>
-<ul class="simple">
+<li><p><strong>Applications</strong>:</p></li>
 <li><p><strong>Optimization</strong>: Guarantees for algorithms working with convex objectives.</p></li>
 <li><p><strong>Variational Inference</strong>: Jensen’s inequality is the foundation for deriving the <strong>evidence lower bound (ELBO)</strong> in variational inference.</p></li>
-</ul>
-</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,7 +591,7 @@ The value of <span class="math notranslate nohighlight">\(f\)</span> at the mean
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Focal Loss</p>
+        <p class="prev-next-title"><strong>Focal Loss</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -603,7 +599,7 @@ The value of <span class="math notranslate nohighlight">\(f\)</span> at the mean
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reparametrization Trick</p>
+        <p class="prev-next-title"><strong>Reparametrization Trick</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
