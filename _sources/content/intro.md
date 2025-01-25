@@ -42,7 +42,7 @@ The concepts covered here are carefully curated from real-world applications, in
 
 ## Contributing
 
-This is a living document that grows with the [@AIinMinutes](https://threads.net/@AIinMinutes) community. If you find these concepts helpful, follow along on Threads for regular updates and discussions.
+This is a living document that grows with the [❤️AIinMinutes](https://threads.net/@AIinMinutes) community. If you find these concepts helpful, follow along on Threads for regular updates and discussions.
 
 ---
 

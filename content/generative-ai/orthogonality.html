@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -176,17 +176,6 @@
 <li class="toctree-l1"><a class="reference internal" href="large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="large-language-modelling/multi_head_attention.html">Multi-head Attention</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/rank_one_matrices.html">Rank-1 Matrices</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="variational_autoencoders/autoencoder_latent_space.html">Ideal Properties of a Latent Space</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variational_autoencoders/pca_for_anomaly_detection.html">PCA for Anomaly Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variational_autoencoders/vae_anomaly_detection.html">Variational AutoEncoder for Anomaly Detection</a></li>
@@ -195,19 +184,6 @@
 <li class="toctree-l1"><a class="reference internal" href="gelu.html">GELU</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Orthogonality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="perplexity.html">Perplexity</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning 🔧</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/trees-and-forests/gini_impurity_vs_entropy.html">Gini Impurity vs Entropy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/agglomerative_clustering.html">Agglomerative Clustering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/elastic_net.html">Elastic Net</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/huber_loss.html">Huber Loss</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/mahalanobis_distance.html">Mahalanobis Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/natural_breaks.html">Natural Breaks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/oversampling.html">Oversampling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pca_vs_feat_ag.html">PCA vs Feature Agglomeration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/permutation_importance.html">Permutation Importance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pseudo_r2.html">Pseudo R^2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deep Learning 🧠</span></p>
 <ul class="nav bd-sidenav">
@@ -222,13 +198,39 @@
 <li class="toctree-l1"><a class="reference internal" href="../interpretable-ai/shapley.html">Shapley values and SHAP for ML</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interpretable-ai/model_counterfactuals.html">Counterfactuals</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning 🔧</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/trees-and-forests/gini_impurity_vs_entropy.html">Gini Impurity vs Entropy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/agglomerative_clustering.html">Agglomerative Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/elastic_net.html">Elastic Net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/huber_loss.html">Huber Loss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/mahalanobis_distance.html">Mahalanobis Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/natural_breaks.html">Natural Breaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/oversampling.html">Oversampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pca_vs_feat_ag.html">PCA vs Feature Agglomeration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/permutation_importance.html">Permutation Importance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine-learning/pseudo_r2.html">Pseudo R²</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical Statistics 🎲</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/chebyshev_inequality.html">Chebyshev's Inequality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/dist_of_minimum.html">Distribution of Minimum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/matrix_calculus_short.html">Matrix Calculus Jacobians and Gradients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/multivariate_normal_distribution.html">Multivariate Normal Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/mutual_information.html">Mutual Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/point_biserial.html">Point Biserial Correlation Coefficient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/unbiased_vs_consistent.html">Unbiasesd vs Consistent Estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/ecdf.html">ECDF</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Applied Statistics 📊</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/acf_and_pacf.html">Autocorrelation Function vs Partial Autocorrelation Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/adjusted_r_squared.html">Adjusted R-squared</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/adjusted_r_squared.html">Adjusted R²</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/condition_number.html">Condition Number</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/cramer_v.html">Cramer's V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/ewa_and_bias_correction.html">Exponentially Weighted Average and Bias Correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/kruskal_wallis.html">Kruskal Wallis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../applied-statistics/kendalltaub.html">Kendall's Rank Correlation Coefficient</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/spurious_correlation.html">Spurious Correlation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../applied-statistics/predictive_r2.html">Leave One Out Cross Validation and PRESS</a></li>
 </ul>
@@ -243,6 +245,17 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Prerequisite Mathematics ➗</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/energy.html">Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/multiclass_classification.html">Jacobians and Gradients behind Multi-class Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/norm_and_metric.html">Norm and Metric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/rank_one_matrices.html">Rank-1 Matrices</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Spectral Decomposition</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming 💻</span></p>
@@ -251,17 +264,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical Statistics 🎲</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/chebyshev_inequality.html">Chebyshev's Inequality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/dist_of_minimum.html">Distribution of Minimum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/matrix_calculus_short.html">Matrix Calculus Jacobians and Gradients</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/multivariate_normal_distribution.html">Multivariate Normal Distribution</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/mutual_information.html">Mutual Information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/point_biserial.html">Point Biserial Correlation Coefficient</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/unbiased_vs_consistent.html">Unbiasesd vs Consistent Estimator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/ecdf.html">ECDF</a></li>
 </ul>
 
     </div>
