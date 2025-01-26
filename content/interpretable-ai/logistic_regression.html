@@ -94,8 +94,8 @@
   <input type="search"
          class="form-control"
          name="q"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
+         placeholder="Search..."
+         aria-label="Search..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -162,16 +162,9 @@
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    @AIinMinutes
-                </a>
-            </li>
-        </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/causal_attention.html">Causal Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
@@ -246,7 +239,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
 
@@ -312,18 +304,50 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/AIinMinutes/Data-and-AI-Concepts.git" target="_blank"
-   class="btn btn-sm btn-source-repository-button"
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
-   data-bs-placement="bottom" data-bs-toggle="tooltip"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-
+<span class="btn__text-container">Repository</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/AIinMinutes/Data-and-AI-Concepts/issues/new?title=Issue%20on%20page%20%2Fcontent/interpretable-ai/logistic_regression.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
 
 
 
@@ -424,22 +448,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-odds-ratio-log-odds-and-logistic-regression-in-machine-learning">Odds, Odds Ratio, Log Odds, and Logistic Regression in Machine Learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds">Odds:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-ratio">Odds Ratio:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds">Log Odds:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-the-ml-model">Logistic Regression: The ML Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-model">Logistic Regression Model:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-and-coefficients-in-logistic-regression">Odds and Coefficients in Logistic Regression:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentiated-coefficients-odds-ratios">Exponentiated Coefficients: Odds Ratios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-coefficients-and-odds-ratios">Interpretation of Coefficients and Odds Ratios:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
 </ul>
             </nav>
         </div>
@@ -452,40 +461,36 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interpreting-a-logistic-regression-model">
-<h1>Interpreting a Logistic Regression Model<a class="headerlink" href="#interpreting-a-logistic-regression-model" title="Link to this heading">#</a></h1>
-<section id="odds-odds-ratio-log-odds-and-logistic-regression-in-machine-learning">
-<h2>Odds, Odds Ratio, Log Odds, and Logistic Regression in Machine Learning<a class="headerlink" href="#odds-odds-ratio-log-odds-and-logistic-regression-in-machine-learning" title="Link to this heading">#</a></h2>
-<section id="odds">
-<h3>Odds:<a class="headerlink" href="#odds" title="Link to this heading">#</a></h3>
-<p><strong>Odds</strong> represent the likelihood of an event occurring relative to it not occurring. In the context of binary classification, they provide a way to model the relative risk of an outcome happening.</p>
+<h1><strong>Interpreting a Logistic Regression Model</strong><a class="headerlink" href="#interpreting-a-logistic-regression-model" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Odds, Odds Ratio, Log Odds, and Logistic Regression in Machine Learning
+</h1>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Odds:
+</h2>
+<p>Odds represent the likelihood of an event occurring relative to it not occurring. In the context of binary classification, they provide a way to model the relative risk of an outcome happening.</p>
 <p><strong>Odds</strong> = <span class="math notranslate nohighlight">\(\frac{P(A)}{P(\neg A)}\)</span></p>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(A)\)</span> = Probability of event <span class="math notranslate nohighlight">\(A\)</span> (e.g., class “1”) occurring</p></li>
 <li><p><span class="math notranslate nohighlight">\(P(\neg A)\)</span> = Probability of event <span class="math notranslate nohighlight">\(A\)</span> not occurring (e.g., class “0”), or <span class="math notranslate nohighlight">\(1 - P(A)\)</span></p></li>
 </ul>
-</section>
-<section id="odds-ratio">
-<h3>Odds Ratio:<a class="headerlink" href="#odds-ratio" title="Link to this heading">#</a></h3>
-<p><strong>The odds ratio (OR)</strong> compares the odds of event <span class="math notranslate nohighlight">\(A\)</span> happening to the odds of event <span class="math notranslate nohighlight">\(B\)</span> happening, which is crucial for comparing relative risk across different conditions or groups.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Odds Ratio:
+</h2>
+<p>The odds ratio (OR) compares the odds of event <span class="math notranslate nohighlight">\(A\)</span> happening to the odds of event <span class="math notranslate nohighlight">\(B\)</span> happening, which is crucial for comparing relative risk across different conditions or groups.</p>
 <p><strong>Odds Ratio (OR)</strong> = <span class="math notranslate nohighlight">\(\frac{ \frac{P(A)}{P(\neg A)} }{ \frac{P(B)}{P(\neg B)} }\)</span></p>
-</section>
-<section id="log-odds">
-<h3>Log Odds:<a class="headerlink" href="#log-odds" title="Link to this heading">#</a></h3>
-<p><strong>Log odds</strong> transform the odds into a logarithmic scale, making it easier to model using linear techniques, especially in logistic regression. This transformation allows the relationship between predictors and the target to be modeled in a linear fashion.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Log Odds:
+</h2>
+<p>Log odds transform the odds into a logarithmic scale, making it easier to model using linear techniques, especially in logistic regression. This transformation allows the relationship between predictors and the target to be modeled in a linear fashion.</p>
 <p><strong>Log Odds</strong> = <span class="math notranslate nohighlight">\(\log \left( \frac{P(A)}{1 - P(A)} \right)\)</span></p>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(A)\)</span> = Probability of event <span class="math notranslate nohighlight">\(A\)</span> (class “1”) occurring</p></li>
 <li><p><span class="math notranslate nohighlight">\(1 - P(A)\)</span> = Probability of event <span class="math notranslate nohighlight">\(A\)</span> not occurring (class “0”)</p></li>
 </ul>
-</section>
-</section>
-<section id="logistic-regression-the-ml-model">
-<h2>Logistic Regression: The ML Model<a class="headerlink" href="#logistic-regression-the-ml-model" title="Link to this heading">#</a></h2>
-<p>Logistic Regression is a foundational algorithm for binary classification, modeling the <strong>log odds</strong> of the outcome as a linear combination of input features. By using the log odds, we can predict the probability of a class label (e.g., “1” or “0”).</p>
-<section id="logistic-regression-model">
-<h3>Logistic Regression Model:<a class="headerlink" href="#logistic-regression-model" title="Link to this heading">#</a></h3>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Logistic Regression: The ML Model
+</h1>
+<p>Logistic Regression is a foundational algorithm for binary classification, modeling the log odds of the outcome as a linear combination of input features. By using the log odds, we can predict the probability of a class label (e.g., “1” or “0”).</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Logistic Regression Model:
+</h2>
 <div class="math notranslate nohighlight">
 \[
 \log \left( \frac{P(A)}{1 - P(A)} \right) = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_n X_n
@@ -497,38 +502,32 @@
 <li><p><span class="math notranslate nohighlight">\(\beta_0\)</span> = Intercept (the log odds when all features are zero)</p></li>
 <li><p><span class="math notranslate nohighlight">\(\beta_1, \beta_2, \dots, \beta_n\)</span> = Coefficients of the predictor variables (learned from the data)</p></li>
 </ul>
-</section>
-<section id="odds-and-coefficients-in-logistic-regression">
-<h3>Odds and Coefficients in Logistic Regression:<a class="headerlink" href="#odds-and-coefficients-in-logistic-regression" title="Link to this heading">#</a></h3>
-<p>In <strong>logistic regression</strong>, the coefficients (<span class="math notranslate nohighlight">\(\beta\)</span> values) represent the change in the <strong>log odds</strong> for a one-unit increase in the corresponding predictor variable. The <strong>model</strong> learns the coefficients during training to best fit the relationship between features and the target label.</p>
-</section>
-<section id="exponentiated-coefficients-odds-ratios">
-<h3>Exponentiated Coefficients: Odds Ratios<a class="headerlink" href="#exponentiated-coefficients-odds-ratios" title="Link to this heading">#</a></h3>
-<p>The <strong>odds ratio (OR)</strong> for a predictor variable <span class="math notranslate nohighlight">\(X_i\)</span> is the exponentiation of its coefficient <span class="math notranslate nohighlight">\(\beta_i\)</span>. The odds ratio helps us interpret how the odds change in relation to the target event when the predictor variable increases by one unit.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Odds and Coefficients in Logistic Regression:
+</h2>
+<p>In logistic regression, the coefficients (<span class="math notranslate nohighlight">\(\beta\)</span> values) represent the change in the log odds for a one-unit increase in the corresponding predictor variable. The model learns the coefficients during training to best fit the relationship between features and the target label.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Exponentiated Coefficients: Odds Ratios
+</h2>
+<p>The odds ratio (OR) for a predictor variable <span class="math notranslate nohighlight">\(X_i\)</span> is the exponentiation of its coefficient <span class="math notranslate nohighlight">\(\beta_i\)</span>. The odds ratio helps us interpret how the odds change in relation to the target event when the predictor variable increases by one unit.</p>
 <p><strong>Odds Ratio (OR)</strong> = <span class="math notranslate nohighlight">\(e^{\beta_i}\)</span></p>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(OR_i\)</span> = Odds ratio for predictor <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(e^{\beta_i}\)</span> = Exponentiated coefficient</p></li>
 </ul>
-</section>
-<section id="interpretation-of-coefficients-and-odds-ratios">
-<h3>Interpretation of Coefficients and Odds Ratios:<a class="headerlink" href="#interpretation-of-coefficients-and-odds-ratios" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Interpretation of Coefficients and Odds Ratios:
+</h2>
 <ul class="simple">
-<li><p><strong>Odds Ratio (OR)</strong>: The odds ratio tells you how the odds of the event change for a one-unit increase in a feature.</p>
-<ul>
-<li><p>If <span class="math notranslate nohighlight">\(OR &gt; 1\)</span>: A one-unit increase in <span class="math notranslate nohighlight">\(X_i\)</span> <strong>increases</strong> the odds of event <span class="math notranslate nohighlight">\(A\)</span> (i.e., class “1”).</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(OR &lt; 1\)</span>: A one-unit increase in <span class="math notranslate nohighlight">\(X_i\)</span> <strong>decreases</strong> the odds of event <span class="math notranslate nohighlight">\(A\)</span> (i.e., class “1”).</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(OR = 1\)</span>: The predictor <span class="math notranslate nohighlight">\(X_i\)</span> has <strong>no effect</strong> on the odds of event <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
-</ul>
-</li>
+<li><p><strong>Odds Ratio (OR)</strong>: The odds ratio tells you how the odds of the event change for a one-unit increase in a feature.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(OR &gt; 1\)</span>: A one-unit increase in <span class="math notranslate nohighlight">\(X_i\)</span> increases the odds of event <span class="math notranslate nohighlight">\(A\)</span> (i.e., class “1”).</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(OR &lt; 1\)</span>: A one-unit increase in <span class="math notranslate nohighlight">\(X_i\)</span> decreases the odds of event <span class="math notranslate nohighlight">\(A\)</span> (i.e., class “1”).</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(OR = 1\)</span>: The predictor <span class="math notranslate nohighlight">\(X_i\)</span> has no effect on the odds of event <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
 </ul>
 <section id="example">
-<h4>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h4>
+<h2>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>Suppose <span class="math notranslate nohighlight">\(\beta_1 = 0.5\)</span> for a predictor variable <span class="math notranslate nohighlight">\(X_1\)</span>:</p>
 <ul class="simple">
-<li><p>For each one-unit increase in <span class="math notranslate nohighlight">\(X_1\)</span>, the <strong>log odds</strong> of event <span class="math notranslate nohighlight">\(A\)</span> (e.g., class “1”) increase by 0.5.</p></li>
-<li><p>The corresponding <strong>odds ratio</strong> is <span class="math notranslate nohighlight">\(OR_1 = e^{0.5} \approx 1.65\)</span>. This means that for each one-unit increase in <span class="math notranslate nohighlight">\(X_1\)</span>, the odds of event <span class="math notranslate nohighlight">\(A\)</span> happening increase by a factor of approximately <strong>1.65</strong>.</p></li>
+<li><p>For each one-unit increase in <span class="math notranslate nohighlight">\(X_1\)</span>, the log odds of event <span class="math notranslate nohighlight">\(A\)</span> (e.g., class “1”) increase by 0.5.</p></li>
+<li><p>The corresponding odds ratio is <span class="math notranslate nohighlight">\(OR_1 = e^{0.5} \approx 1.65\)</span>. This means that for each one-unit increase in <span class="math notranslate nohighlight">\(X_1\)</span>, the odds of event <span class="math notranslate nohighlight">\(A\)</span> happening increase by a factor of approximately 1.65.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -681,8 +680,6 @@ Interpretation of Coefficients:
 </div>
 </section>
 </section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -749,22 +746,7 @@ Interpretation of Coefficients:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-odds-ratio-log-odds-and-logistic-regression-in-machine-learning">Odds, Odds Ratio, Log Odds, and Logistic Regression in Machine Learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds">Odds:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-ratio">Odds Ratio:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#log-odds">Log Odds:</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-the-ml-model">Logistic Regression: The ML Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-model">Logistic Regression Model:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#odds-and-coefficients-in-logistic-regression">Odds and Coefficients in Logistic Regression:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponentiated-coefficients-odds-ratios">Exponentiated Coefficients: Odds Ratios</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-coefficients-and-odds-ratios">Interpretation of Coefficients and Odds Ratios:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
 </ul>
   </nav></div>
 
