@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -494,13 +494,13 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
-<span class="kn">from</span> <span class="nn">statsmodels.discrete.discrete_model</span> <span class="kn">import</span> <span class="n">Logit</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.discrete.discrete_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
@@ -601,7 +601,7 @@
     <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">labelspacing</span><span class="o">=</span><span class="mi">1</span>
 <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">azim</span><span class="o">=</span><span class="n">frame</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="n">r2_mcfadden</span> <span class="o">*</span> <span class="n">frame</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r2_mcfadden</span> <span class="o">*</span> <span class="n">frame</span> <span class="o">/</span> <span class="mi">360</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">],</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">),</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="n">r2_cox_snell</span> <span class="o">*</span> <span class="n">frame</span> <span class="o">/</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r2_cox_snell</span> <span class="o">*</span> <span class="n">frame</span> <span class="o">/</span> <span class="mi">360</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span><span class="p">],</span> <span class="n">wedgeprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">),</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
@@ -695,7 +695,7 @@
   <div class="footer-item">
     
 <p class="component-author">
-By AIinMinutes
+By @AIinMinutes
 </p>
 
   </div>

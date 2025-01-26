@@ -30,7 +30,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -551,13 +551,13 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">pyod.models.vae</span> <span class="kn">import</span> <span class="n">VAE</span>
-<span class="kn">from</span> <span class="nn">pyod.models.auto_encoder</span> <span class="kn">import</span> <span class="n">AutoEncoder</span>
-<span class="kn">from</span> <span class="nn">pyod.utils.data</span> <span class="kn">import</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyod.models.vae</span><span class="w"> </span><span class="kn">import</span> <span class="n">VAE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyod.models.auto_encoder</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pyod.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">generate_data</span><span class="p">,</span> <span class="n">evaluate_print</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span>
 <span class="p">)</span>
 
@@ -652,12 +652,12 @@
 <span class="c1"># Predictions and scores for AE</span>
 <span class="n">y_test_pred_ae</span> <span class="o">=</span> <span class="n">ae_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span>
 <span class="p">)</span>
 
 <span class="c1"># Compute metrics function</span>
-<span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
     <span class="n">balanced_acc</span> <span class="o">=</span> <span class="n">balanced_accuracy_score</span><span class="p">(</span>
         <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span>
     <span class="p">)</span>
@@ -710,7 +710,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_detailed_results</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">visualize_detailed_results</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">dataset_name</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
     <span class="c1"># Compute metrics</span>
     <span class="n">balanced_acc</span><span class="p">,</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
     
@@ -901,7 +901,7 @@
   <div class="footer-item">
     
 <p class="component-author">
-By AIinMinutes
+By @AIinMinutes
 </p>
 
   </div>

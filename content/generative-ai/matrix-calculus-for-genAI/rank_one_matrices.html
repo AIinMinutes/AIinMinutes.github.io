@@ -30,7 +30,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -576,7 +576,7 @@ A = \begin{bmatrix}
 \end{bmatrix}
 \end{split}\]</div>
 <p>We can compute the SVD of <span class="math notranslate nohighlight">\(A\)</span> using Python’s numpy library:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
@@ -667,9 +667,9 @@ A = \begin{bmatrix}
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -754,21 +754,21 @@ A = \begin{bmatrix}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Reconstruct the image for a given rank</span>
-<span class="k">def</span> <span class="nf">reconstruct_image</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">VT</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reconstruct_image</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">VT</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
     <span class="n">S_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">U</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">VT</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>  
     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">S_k</span><span class="p">,</span> <span class="n">S</span><span class="p">[:</span><span class="n">rank</span><span class="p">])</span>  
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="p">:</span><span class="n">rank</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S_k</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:</span><span class="n">rank</span><span class="p">],</span> <span class="n">VT</span><span class="p">[:</span><span class="n">rank</span><span class="p">,</span> <span class="p">:]))</span>
 
 <span class="c1"># Compute the Frobenius norm</span>
-<span class="k">def</span> <span class="nf">frobenius_norm</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">reconstructed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">frobenius_norm</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">reconstructed</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">original</span> <span class="o">-</span> <span class="n">reconstructed</span><span class="p">,</span> <span class="s1">&#39;fro&#39;</span><span class="p">)</span>
 
 <span class="c1"># Get rank-1 matrix</span>
-<span class="k">def</span> <span class="nf">rank_1_matrix</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">VT</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rank_1_matrix</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">VT</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">VT</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span>
 
 <span class="c1"># Ranks to visualize</span>
@@ -965,7 +965,7 @@ A = \begin{bmatrix}
   <div class="footer-item">
     
 <p class="component-author">
-By AIinMinutes
+By @AIinMinutes
 </p>
 
   </div>
