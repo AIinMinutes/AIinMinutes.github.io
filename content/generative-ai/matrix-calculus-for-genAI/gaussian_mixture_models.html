@@ -425,9 +425,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -443,21 +441,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-generative-model"><strong>1. What is a Generative Model?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-of-a-generative-model"><strong>2. Objective of a Generative Model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-vs-discriminative-models"><strong>3. Generative vs Discriminative Models</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix"><strong>4. Variance-Covariance Matrix</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixture-model-gmm"><strong>5. Gaussian Mixture Model (GMM)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-gmm-a-generative-model"><strong>6. Is GMM a Generative Model?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-gmm-em-algorithm"><strong>7. Training GMM: EM Algorithm</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-for-anomaly-detection"><strong>8. GMM for Anomaly Detection</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -468,22 +451,20 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gaussian-mixture-models">
-<h1>Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Link to this heading">#</a></h1>
-<section id="what-is-a-generative-model">
-<h2><strong>1. What is a Generative Model?</strong><a class="headerlink" href="#what-is-a-generative-model" title="Link to this heading">#</a></h2>
+<h1><strong>Gaussian Mixture Models</strong><a class="headerlink" href="#gaussian-mixture-models" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. What is a Generative Model?
+</h1>
 <p>A model that learns the <strong>joint probability distribution</strong> <span class="math notranslate nohighlight">\(P(X, Y)\)</span> or <span class="math notranslate nohighlight">\(P(X)\)</span> and generates new data similar to the training data.</p>
-</section>
 <hr class="docutils" />
-<section id="objective-of-a-generative-model">
-<h2><strong>2. Objective of a Generative Model</strong><a class="headerlink" href="#objective-of-a-generative-model" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Objective of a Generative Model
+</h1>
 <ul class="simple">
 <li><p>Learn the <strong>underlying distribution</strong> of data.</p></li>
 <li><p><strong>Generate new samples</strong> resembling the training data.</p></li>
 </ul>
-</section>
 <hr class="docutils" />
-<section id="generative-vs-discriminative-models">
-<h2><strong>3. Generative vs Discriminative Models</strong><a class="headerlink" href="#generative-vs-discriminative-models" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 3. Generative vs Discriminative Models
+</h1>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p><strong>Aspect</strong></p></th>
@@ -494,7 +475,7 @@
 <tbody>
 <tr class="row-even"><td><p><strong>Goal</strong></p></td>
 <td><p>Learn <span class="math notranslate nohighlight">\(P(X, Y)\)</span> or <span class="math notranslate nohighlight">\(P(X)\)</span></p></td>
-<td><p>Learn $P(Y</p></td>
+<td><p>Learn <span class="math notranslate nohighlight">\(P(Y | X)\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Focus</strong></p></td>
 <td><p>Data generation &amp; density</p></td>
@@ -507,24 +488,22 @@
 </tbody>
 </table>
 </div>
-</section>
 <hr class="docutils" />
-<section id="variance-covariance-matrix">
-<h2><strong>4. Variance-Covariance Matrix</strong><a class="headerlink" href="#variance-covariance-matrix" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 4. Variance-Covariance Matrix
+</h1>
 <p>A matrix showing variances and covariances:</p>
 <ul class="simple">
 <li><p><strong>Diagonal</strong>: Variances of variables.</p></li>
-<li><p><strong>Off-diagonal</strong>: Covariances between variables.</p></li>
+<li><p><strong>Off-diagonal</strong>: Covariances between variables.
+<strong>Formula</strong>:</p></li>
 </ul>
-<p><strong>Formula</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
 \Sigma_{ij} = \text{Cov}(X_i, X_j) = E\left[(X_i - \mu_i)(X_j - \mu_j)\right]
 \]</div>
-</section>
 <hr class="docutils" />
-<section id="gaussian-mixture-model-gmm">
-<h2><strong>5. Gaussian Mixture Model (GMM)</strong><a class="headerlink" href="#gaussian-mixture-model-gmm" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 5. Gaussian Mixture Model (GMM)
+</h1>
 <p>A GMM models data as a mixture of <span class="math notranslate nohighlight">\(K\)</span> Gaussian distributions:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -534,53 +513,49 @@ P(X) = \sum_{k=1}^K \pi_k \mathcal{N}(X | \mu_k, \Sigma_k)
 <li><p><span class="math notranslate nohighlight">\(\pi_k\)</span>: Mixing coefficients <span class="math notranslate nohighlight">\((\sum \pi_k = 1)\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu_k, \Sigma_k\)</span>: Mean and covariance of Gaussian <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
 </ul>
-</section>
 <hr class="docutils" />
-<section id="is-gmm-a-generative-model">
-<h2><strong>6. Is GMM a Generative Model?</strong><a class="headerlink" href="#is-gmm-a-generative-model" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 6. Is GMM a Generative Model?
+</h1>
 <p>Yes, GMM generates data by:</p>
 <ol class="arabic simple">
 <li><p>Sampling a Gaussian component <span class="math notranslate nohighlight">\(k\)</span> using <span class="math notranslate nohighlight">\(\pi_k\)</span>.</p></li>
 <li><p>Sampling a point <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(\mathcal{N}(\mu_k, \Sigma_k)\)</span>.</p></li>
 </ol>
-</section>
 <hr class="docutils" />
-<section id="training-gmm-em-algorithm">
-<h2><strong>7. Training GMM: EM Algorithm</strong><a class="headerlink" href="#training-gmm-em-algorithm" title="Link to this heading">#</a></h2>
-<ol class="arabic">
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 7. Training GMM: EM Algorithm
+</h1>
+<ol class="arabic simple">
 <li><p><strong>Initialize</strong>: Start with <span class="math notranslate nohighlight">\(\pi_k, \mu_k, \Sigma_k\)</span>.</p></li>
-<li><p><strong>E-Step</strong>: Compute <strong>responsibilities</strong> <span class="math notranslate nohighlight">\(r_{ik}\)</span>:</p>
+<li><p><strong>E-Step</strong>: Compute <strong>responsibilities</strong> <span class="math notranslate nohighlight">\(r_{ik}\)</span>:</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
-   r_{ik} = \frac{\pi_k \mathcal{N}(X_i | \mu_k, \Sigma_k)}{\sum_{j=1}^K \pi_j \mathcal{N}(X_i | \mu_j, \Sigma_j)}
-   \]</div>
-</li>
-<li><p><strong>M-Step</strong>: Update parameters:</p>
+r_{ik} = \frac{\pi_k \mathcal{N}(X_i | \mu_k, \Sigma_k)}{\sum_{j=1}^K \pi_j \mathcal{N}(X_i | \mu_j, \Sigma_j)}
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>M-Step</strong>: Update parameters:</p></li>
+</ol>
 <ul class="simple">
-<li><p><strong>Means</strong>:<br />
+<li><p><strong>Means</strong>:
 <span class="math notranslate nohighlight">\( \mu_k = \frac{\sum_i r_{ik} X_i}{\sum_i r_{ik}} \)</span></p></li>
-<li><p><strong>Covariances</strong>:<br />
+<li><p><strong>Covariances</strong>:
 <span class="math notranslate nohighlight">\( \Sigma_k = \frac{\sum_i r_{ik} (X_i - \mu_k)(X_i - \mu_k)^T}{\sum_i r_{ik}} \)</span></p></li>
-<li><p><strong>Mixing Coefficients</strong>:<br />
+<li><p><strong>Mixing Coefficients</strong>:
 <span class="math notranslate nohighlight">\( \pi_k = \frac{1}{N} \sum_i r_{ik} \)</span></p></li>
 </ul>
-</li>
+<ol class="arabic simple" start="4">
 <li><p><strong>Repeat</strong> until convergence.</p></li>
 </ol>
-</section>
 <hr class="docutils" />
-<section id="gmm-for-anomaly-detection">
-<h2><strong>8. GMM for Anomaly Detection</strong><a class="headerlink" href="#gmm-for-anomaly-detection" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 8. GMM for Anomaly Detection
+</h1>
 <ul class="simple">
 <li><p><strong>Step 1</strong>: Fit GMM to the data.</p></li>
 <li><p><strong>Step 2</strong>: Compute the density <span class="math notranslate nohighlight">\(P(X)\)</span> for each point.</p></li>
 <li><p><strong>Step 3</strong>: Define a <strong>threshold</strong>: Points with very low <span class="math notranslate nohighlight">\(P(X)\)</span> are anomalies.</p></li>
-<li><p><strong>Result</strong>:</p>
-<ul>
+<li><p><strong>Result</strong>:</p></li>
 <li><p>High-density regions = normal.</p></li>
 <li><p>Low-density regions = anomalies.</p></li>
-</ul>
-</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1199,7 +1174,6 @@ Variance-Covariance Matrices:
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1255,29 +1229,6 @@ Variance-Covariance Matrices:
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-generative-model"><strong>1. What is a Generative Model?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-of-a-generative-model"><strong>2. Objective of a Generative Model</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-vs-discriminative-models"><strong>3. Generative vs Discriminative Models</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-covariance-matrix"><strong>4. Variance-Covariance Matrix</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixture-model-gmm"><strong>5. Gaussian Mixture Model (GMM)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-gmm-a-generative-model"><strong>6. Is GMM a Generative Model?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-gmm-em-algorithm"><strong>7. Training GMM: EM Algorithm</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-for-anomaly-detection"><strong>8. GMM for Anomaly Detection</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
