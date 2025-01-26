@@ -30,7 +30,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -164,6 +164,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/causal_attention.html">Causal Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
@@ -238,7 +239,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inner_product.html">Inner Product</a></li>
 
@@ -578,11 +578,11 @@ L = -\mathbf{y}^T \log(\mathbf{p}).
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Set aesthetic style and random seed</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
@@ -593,17 +593,17 @@ L = -\mathbf{y}^T \log(\mathbf{p}).
 
 <span class="c1"># Functions for reusability</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">cross_entropy</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">cross_entropy</span><span class="p">(</span><span class="n">ps</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute cross-entropy loss.&quot;&quot;&quot;</span>
     <span class="n">log_ps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">num_classes</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     <span class="k">return</span> <span class="o">-</span> <span class="n">y</span> <span class="o">@</span> <span class="n">log_ps</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">softmax_fn</span><span class="p">(</span><span class="n">logits</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">softmax_fn</span><span class="p">(</span><span class="n">logits</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute softmax.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_gradients</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">weight_matrix</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">compute_gradients</span><span class="p">(</span><span class="n">input_tensor</span><span class="p">,</span> <span class="n">weight_matrix</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute gradients and Jacobians for a given input, weights, and label.&quot;&quot;&quot;</span>
     <span class="c1"># Forward pass</span>
     <span class="n">logits</span> <span class="o">=</span> <span class="n">weight_matrix</span> <span class="o">@</span> <span class="n">input_tensor</span>
@@ -636,7 +636,7 @@ L = -\mathbf{y}^T \log(\mathbf{p}).
         <span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="p">}</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">title_mode</span><span class="o">=</span><span class="s2">&quot;Correct&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">plot_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">title_mode</span><span class="o">=</span><span class="s2">&quot;Correct&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Visualize gradients and Jacobians.</span>
 <span class="sd">    :param results: Computed gradients and Jacobians.</span>

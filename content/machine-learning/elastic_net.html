@@ -30,7 +30,7 @@
   <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -164,6 +164,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/causal_attention.html">Causal Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
@@ -238,7 +239,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
 
@@ -553,16 +553,16 @@ J(\beta) = \|y - X\beta\|^2 + \lambda_1 \|\beta\|_1 + \lambda_2 \|\beta\|^2
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">,</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">ElasticNet</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 </pre></div>
 </div>
 </div>
@@ -775,7 +775,7 @@ ElasticNet MSE: 290743.9027446827, R^2: -0.014133859374194646
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Huber Loss</p>
+        <p class="prev-next-title"><strong>Huber Loss</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

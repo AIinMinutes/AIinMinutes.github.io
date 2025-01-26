@@ -30,7 +30,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -164,6 +164,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/causal_attention.html">Causal Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
@@ -238,7 +239,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="inner_product.html">Inner Product</a></li>
 
@@ -500,8 +500,8 @@ d_E \leq d_M
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -509,7 +509,7 @@ d_E \leq d_M
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">unit_circle</span><span class="p">(</span><span class="n">norm_type</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unit_circle</span><span class="p">(</span><span class="n">norm_type</span><span class="p">,</span> <span class="n">num_points</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">p_value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_points</span><span class="p">)</span>  <span class="c1"># Fix x between -1 and 1</span>
     <span class="k">if</span> <span class="n">norm_type</span> <span class="o">==</span> <span class="s1">&#39;L2&#39;</span><span class="p">:</span>
         <span class="c1"># L2 Norm: Perfect circle</span>
@@ -544,7 +544,7 @@ d_E \leq d_M
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_unit_norms</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_unit_norms</span><span class="p">():</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
     
     <span class="c1"># L2 Norm (Euclidean Circle)</span>
@@ -594,8 +594,8 @@ d_E \leq d_M
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Generate random pairs of vectors (x1, y1) and (x2, y2) in the range [-3, 3]</span>
 <span class="n">x1_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>

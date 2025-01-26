@@ -30,7 +30,7 @@
   <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
@@ -162,6 +162,7 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/large-language-modelling/causal_attention.html">Causal Attention</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/large-language-modelling/decoding_strategies.html">Text Decoding Strategies--Greedy vs Beam</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/large-language-modelling/layer_and_rms_normalization.html">Layer vs RMS Normalization</a></li>
@@ -236,7 +237,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/gaussian_mixture_models.html">Gaussian Mixture Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
 
@@ -452,7 +452,7 @@
 <h1><strong>Kadane’s Algorithm and Sliding Window</strong><a class="headerlink" href="#kadane-s-algorithm-and-sliding-window" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -467,7 +467,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kadane</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kadane</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># Handling edge case for an empty list</span>
 
@@ -486,7 +486,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kadane_sliding_window</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kadane_sliding_window</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span>  <span class="c1"># Handle edge case for empty input</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
 
