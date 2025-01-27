@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -425,9 +425,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -443,16 +441,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-definition"><strong>Norm Definition</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-definition"><strong>Metric Definition</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minkowski-inequality"><strong>Minkowski Inequality</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -463,31 +451,29 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="norm-and-metric">
-<h1>Norm and Metric<a class="headerlink" href="#norm-and-metric" title="Link to this heading">#</a></h1>
-<section id="norm-definition">
-<h2><strong>Norm Definition</strong><a class="headerlink" href="#norm-definition" title="Link to this heading">#</a></h2>
-<p>A <strong>norm</strong> is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that assigns a non-negative value to a vector, representing its magnitude or length. It satisfies:</p>
+<h1><strong>Norm and Metric</strong><a class="headerlink" href="#norm-and-metric" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Norm Definition
+</h1>
+<p>A norm is a function <span class="math notranslate nohighlight">\(\| \cdot \|\)</span> that assigns a non-negative value to a vector, representing its magnitude or length. It satisfies:</p>
 <ol class="arabic simple">
 <li><p><strong>Non-negativity</strong>: <span class="math notranslate nohighlight">\(\| \mathbf{v} \| \geq 0\)</span>, and <span class="math notranslate nohighlight">\(\| \mathbf{v} \| = 0\)</span> if <span class="math notranslate nohighlight">\(\mathbf{v} = \mathbf{0}\)</span></p></li>
 <li><p><strong>Absolute scalability</strong>: <span class="math notranslate nohighlight">\(\| \alpha \mathbf{v} \| = |\alpha| \| \mathbf{v} \|\)</span></p></li>
 <li><p><strong>Triangle inequality</strong>: <span class="math notranslate nohighlight">\(\| \mathbf{u} + \mathbf{v} \| \leq \| \mathbf{u} \| + \| \mathbf{v} \|\)</span></p></li>
 </ol>
-</section>
 <hr class="docutils" />
-<section id="metric-definition">
-<h2><strong>Metric Definition</strong><a class="headerlink" href="#metric-definition" title="Link to this heading">#</a></h2>
-<p>A <strong>metric</strong> <span class="math notranslate nohighlight">\(d(x, y)\)</span> measures the distance between points in a set <span class="math notranslate nohighlight">\(X\)</span>. It satisfies:</p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Metric Definition
+</h1>
+<p>A metric <span class="math notranslate nohighlight">\(d(x, y)\)</span> measures the distance between points in a set <span class="math notranslate nohighlight">\(X\)</span>. It satisfies:</p>
 <ol class="arabic simple">
 <li><p><strong>Non-negativity</strong>: <span class="math notranslate nohighlight">\(d(x, y) \geq 0\)</span></p></li>
 <li><p><strong>Identity of indiscernibles</strong>: <span class="math notranslate nohighlight">\(d(x, y) = 0\)</span> if and only if <span class="math notranslate nohighlight">\(x = y\)</span></p></li>
 <li><p><strong>Symmetry</strong>: <span class="math notranslate nohighlight">\(d(x, y) = d(y, x)\)</span></p></li>
 <li><p><strong>Triangle inequality</strong>: <span class="math notranslate nohighlight">\(d(x, z) \leq d(x, y) + d(y, z)\)</span></p></li>
 </ol>
-</section>
 <hr class="docutils" />
-<section id="minkowski-inequality">
-<h2><strong>Minkowski Inequality</strong><a class="headerlink" href="#minkowski-inequality" title="Link to this heading">#</a></h2>
-<p>The <strong>Minkowski inequality</strong> generalizes the triangle inequality for <span class="math notranslate nohighlight">\(p\)</span>-norms:</p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Minkowski Inequality
+</h1>
+<p>The Minkowski inequality generalizes the triangle inequality for <span class="math notranslate nohighlight">\(p\)</span>-norms:</p>
 <div class="math notranslate nohighlight">
 \[
 \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{1/p} \leq \left( \sum_{i=1}^{n} |x_i - y_i|^q \right)^{1/q} \quad \text{for} \quad p \geq q
@@ -629,7 +615,6 @@ d_E \leq d_M
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -685,24 +670,6 @@ d_E \leq d_M
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#norm-definition"><strong>Norm Definition</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metric-definition"><strong>Metric Definition</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minkowski-inequality"><strong>Minkowski Inequality</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

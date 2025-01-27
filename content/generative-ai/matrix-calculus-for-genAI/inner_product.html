@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Inner Product</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -448,12 +448,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Inner Product</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-inner-product"><strong>What is an Inner Product?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-an-inner-product"><strong>Definition of an Inner Product</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inner-product"><strong>Properties of Inner Product</strong></a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Inner Product</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-in-euclidean-space">1. Dot Product in Euclidean Space</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-inner-product">2. Complex Inner Product</a></li>
@@ -495,78 +490,76 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="inner-product">
-<h1>Inner Product<a class="headerlink" href="#inner-product" title="Link to this heading">#</a></h1>
-<section id="what-is-an-inner-product">
-<h2><strong>What is an Inner Product?</strong><a class="headerlink" href="#what-is-an-inner-product" title="Link to this heading">#</a></h2>
+<h1><strong>Inner Product</strong><a class="headerlink" href="#inner-product" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> **What is an Inner Product?**
+</h1>
 <ul class="simple">
 <li><p>A <strong>generalization of the dot product</strong> to abstract spaces.</p></li>
 <li><p>Provides tools to measure <strong>angles, lengths, and projections</strong> in these spaces.</p></li>
-<li><p>Used in:</p>
-<ul>
+<li><p>Used in:</p></li>
 <li><p>Linear Algebra</p></li>
 <li><p>Functional Analysis</p></li>
 <li><p>Quantum Mechanics</p></li>
 </ul>
-</li>
-</ul>
-</section>
 <hr class="docutils" />
-<section id="definition-of-an-inner-product">
-<h2><strong>Definition of an Inner Product</strong><a class="headerlink" href="#definition-of-an-inner-product" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Definition of an Inner Product
+</h1>
 <p>An <strong>inner product</strong> on a vector space <span class="math notranslate nohighlight">\(V\)</span> is a function:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle \cdot, \cdot \rangle : V \times V \to F  
+\langle \cdot, \cdot \rangle : V \times V \to F
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(F\)</span> is the field of <strong>real</strong> or <strong>complex numbers</strong>.</p>
-<p>It satisfies the following <strong>properties</strong> for all <span class="math notranslate nohighlight">\(u, v, w \in V\)</span> and scalar <span class="math notranslate nohighlight">\(c \in F\)</span>:</p>
-</section>
+<p>where <span class="math notranslate nohighlight">\(F\)</span> is the field of <strong>real</strong> or <strong>complex numbers</strong>.
+It satisfies the following <strong>properties</strong> for all <span class="math notranslate nohighlight">\(u, v, w \in V\)</span> and scalar <span class="math notranslate nohighlight">\(c \in F\)</span>:</p>
 <hr class="docutils" />
-<section id="properties-of-inner-product">
-<h2><strong>Properties of Inner Product</strong><a class="headerlink" href="#properties-of-inner-product" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p><strong>Additivity in Both Arguments</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle  
-   \]</div>
-<p>for all <span class="math notranslate nohighlight">\(u, v, w \in V\)</span>.</p>
-</li>
-<li><p><strong>Homogeneity</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle c u, v \rangle = c \langle u, v \rangle  
-   \]</div>
-<p>for any scalar <span class="math notranslate nohighlight">\(c\)</span>.</p>
-</li>
-<li><p><strong>Linearity in the First Argument</strong>:<br />
-For scalars <span class="math notranslate nohighlight">\(a, b \in F\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle au + bv, w \rangle = a \langle u, w \rangle + b \langle v, w \rangle  
-   \]</div>
-</li>
-<li><p><strong>Conjugate-Linearity in the Second Argument</strong> <em>(for complex fields)</em>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle u, cv \rangle = \overline{c} \langle u, v \rangle  
-   \]</div>
-<p>where <span class="math notranslate nohighlight">\(\overline{c}\)</span> is the <strong>complex conjugate</strong> of <span class="math notranslate nohighlight">\(c\)</span>.</p>
-</li>
-<li><p><strong>Conjugate Symmetry</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle u, v \rangle = \overline{\langle v, u \rangle}  
-   \]</div>
-</li>
-<li><p><strong>Positive Definiteness</strong>:</p>
-<div class="math notranslate nohighlight">
-\[
-   \langle v, v \rangle \geq 0 \quad \text{and} \quad \langle v, v \rangle = 0 \iff v = 0  
-   \]</div>
-</li>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Properties of Inner Product
+</h1>
+<ol class="arabic simple">
+<li><p><strong>Additivity in Both Arguments</strong>:</p></li>
 </ol>
-</section>
+<div class="math notranslate nohighlight">
+\[
+\langle u + v, w \rangle = \langle u, w \rangle + \langle v, w \rangle
+\]</div>
+<p>for all <span class="math notranslate nohighlight">\(u, v, w \in V\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Homogeneity</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\langle c u, v \rangle = c \langle u, v \rangle
+\]</div>
+<p>for any scalar <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<ol class="arabic simple" start="3">
+<li><p><strong>Linearity in the First Argument</strong>:
+For scalars <span class="math notranslate nohighlight">\(a, b \in F\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\langle au + bv, w \rangle = a \langle u, w \rangle + b \langle v, w \rangle
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Conjugate-Linearity in the Second Argument</strong> <em>(for complex fields)</em>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\langle u, cv \rangle = \overline{c} \langle u, v \rangle
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{c}\)</span> is the <strong>complex conjugate</strong> of <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>Conjugate Symmetry</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\langle u, v \rangle = \overline{\langle v, u \rangle}
+\]</div>
+<ol class="arabic simple" start="6">
+<li><p><strong>Positive Definiteness</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\langle v, v \rangle \geq 0 \quad \text{and} \quad \langle v, v \rangle = 0 \iff v = 0
+\]</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="examples">
@@ -924,7 +917,7 @@ K(x_1, x_2) = (11 + 1)^2 = 12^2 = 144
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Moore Penrose Inverse</p>
+        <p class="prev-next-title"><strong>Moore Penrose Inverse</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -945,12 +938,7 @@ K(x_1, x_2) = (11 + 1)^2 = 12^2 = 144
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Inner Product</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-inner-product"><strong>What is an Inner Product?</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-an-inner-product"><strong>Definition of an Inner Product</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-inner-product"><strong>Properties of Inner Product</strong></a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Inner Product</strong></a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-in-euclidean-space">1. Dot Product in Euclidean Space</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-inner-product">2. Complex Inner Product</a></li>

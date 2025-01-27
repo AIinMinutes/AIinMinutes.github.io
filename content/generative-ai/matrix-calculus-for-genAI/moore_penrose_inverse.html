@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Moore Penrose Inverse</a></li>
@@ -425,9 +425,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -443,19 +441,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations">1. <strong>System of Linear Equations</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-of-a-matrix">2. <strong>Rank of a Matrix</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-linear-systems">3. <strong>Types of Linear Systems</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-rank-and-determinacy">4. <strong>Relationship Between Rank and Determinacy</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>Moore-Penrose Inverse</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-moore-penrose-inverse-solves-systems">6. <strong>How Moore-Penrose Inverse Solves Systems</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -466,13 +451,15 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="moore-penrose-inverse">
-<h1>Moore Penrose Inverse<a class="headerlink" href="#moore-penrose-inverse" title="Link to this heading">#</a></h1>
-<section id="system-of-linear-equations">
-<h2>1. <strong>System of Linear Equations</strong><a class="headerlink" href="#system-of-linear-equations" title="Link to this heading">#</a></h2>
-<p><strong>Definition:</strong><br />
+<h1><strong>Moore Penrose Inverse</strong><a class="headerlink" href="#moore-penrose-inverse" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 1. System of Linear Equations
+</h1>
+<p>Definition:<br />
 A system of linear equations can be written as:</p>
 <div class="math notranslate nohighlight">
-\[ A \mathbf{x} = \mathbf{b} \]</div>
+\[
+A \mathbf{x} = \mathbf{b}
+\]</div>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> is the matrix of coefficients.</p></li>
@@ -480,48 +467,54 @@ A system of linear equations can be written as:</p>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{R}^{m}\)</span> is the right-hand side vector.</p></li>
 </ul>
 <p>The goal is to solve for <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. This system can represent a variety of real-world problems, including statistical models, physics simulations, or optimization problems.</p>
-</section>
 <hr class="docutils" />
-<section id="rank-of-a-matrix">
-<h2>2. <strong>Rank of a Matrix</strong><a class="headerlink" href="#rank-of-a-matrix" title="Link to this heading">#</a></h2>
-<p><strong>Definition:</strong><br />
-The <strong>rank</strong> of a matrix <span class="math notranslate nohighlight">\(A\)</span>, denoted as <span class="math notranslate nohighlight">\(\text{rank}(A)\)</span>, is the dimension of its column (or row) space. It represents the number of linearly independent rows or columns in the matrix.</p>
-<p><strong>Properties:</strong></p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 2. Rank of a Matrix
+</h1>
+<p>Definition:<br />
+The rank of a matrix <span class="math notranslate nohighlight">\(A\)</span>, denoted as <span class="math notranslate nohighlight">\(\text{rank}(A)\)</span>, is the dimension of its column (or row) space. It represents the number of linearly independent rows or columns in the matrix.</p>
+<p>Properties:</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, then <span class="math notranslate nohighlight">\(\text{rank}(A) \leq \min(m, n)\)</span>.</p></li>
-<li><p>A <strong>full-rank matrix</strong> has <span class="math notranslate nohighlight">\(\text{rank}(A) = \min(m, n)\)</span>. For square matrices, full rank implies that the matrix is invertible.</p></li>
+<li><p>A full-rank matrix has <span class="math notranslate nohighlight">\(\text{rank}(A) = \min(m, n)\)</span>. For square matrices, full rank implies that the matrix is invertible.</p></li>
 </ul>
-<p><strong>Importance:</strong><br />
+<p>Importance:<br />
 The rank gives insight into the solvability of the linear system. A higher rank typically means the system is more constrained, leading to fewer solutions or more specific solutions.</p>
-</section>
 <hr class="docutils" />
-<section id="types-of-linear-systems">
-<h2>3. <strong>Types of Linear Systems</strong><a class="headerlink" href="#types-of-linear-systems" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 3. Types of Linear Systems
+</h1>
 <p>Linear systems can vary based on the number of equations and variables. These types include:</p>
-<ul>
-<li><p><strong>Unique Solution (Full Rank, Square Matrix):</strong><br />
-If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the system has a unique solution:</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{x} = A^{-1} \mathbf{b} \]</div>
-</li>
-<li><p><strong>Overdetermined System (More Equations than Variables):</strong><br />
-If <span class="math notranslate nohighlight">\(m &gt; n\)</span>, the system may be inconsistent (no solution), the least squares solution minimizes the error <span class="math notranslate nohighlight">\(\| A \mathbf{x} - \mathbf{b} \|_2^2\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{x} = (A^T A)^{-1} A^T \mathbf{b} \]</div>
-</li>
-<li><p><strong>Underdetermined System (More Variables than Equations):</strong><br />
-If <span class="math notranslate nohighlight">\(m &lt; n\)</span>, the system typically has infinitely many solutions. The minimum norm solution is found using the Moore-Penrose pseudoinverse:<br />
-$<span class="math notranslate nohighlight">\( \mathbf{x} = A^+ \mathbf{b} \)</span>$</p></li>
+<ul class="simple">
+<li><p>Unique Solution (Full Rank, Square Matrix):<br />
+If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the system has a unique solution:</p></li>
 </ul>
-</section>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = A^{-1} \mathbf{b}
+\]</div>
+<ul class="simple">
+<li><p>Overdetermined System (More Equations than Variables):<br />
+If <span class="math notranslate nohighlight">\(m &gt; n\)</span>, the system may be inconsistent (no solution), the least squares solution minimizes the error <span class="math notranslate nohighlight">\(\| A \mathbf{x} - \mathbf{b} \|_2^2\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = (A^T A)^{-1} A^T \mathbf{b}
+\]</div>
+<ul class="simple">
+<li><p>Underdetermined System (More Variables than Equations):<br />
+If <span class="math notranslate nohighlight">\(m &lt; n\)</span>, the system typically has infinitely many solutions. The minimum norm solution is found using the Moore-Penrose pseudoinverse:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = A^+ \mathbf{b}
+\]</div>
 <hr class="docutils" />
-<section id="relationship-between-rank-and-determinacy">
-<h2>4. <strong>Relationship Between Rank and Determinacy</strong><a class="headerlink" href="#relationship-between-rank-and-determinacy" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 4. Relationship Between Rank and Determinacy
+</h1>
 <p>The rank of the matrix <span class="math notranslate nohighlight">\(A\)</span> determines the nature of the solution to the system <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>:</p>
 <ul class="simple">
-<li><p><strong>Full Rank (Square Matrix):</strong><br />
+<li><p>Full Rank (Square Matrix):<br />
 If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the system has a unique solution (if consistent).</p></li>
-<li><p><strong>Less Than Full Rank:</strong><br />
+<li><p>Less Than Full Rank:<br />
 If <span class="math notranslate nohighlight">\(\text{rank}(A) &lt; n\)</span>, the system may have infinitely many solutions (if consistent) or no solution at all.</p>
 <ul>
 <li><p>If <span class="math notranslate nohighlight">\(\text{rank}(A) &lt; m\)</span>, the system may be inconsistent.</p></li>
@@ -529,11 +522,10 @@ If <span class="math notranslate nohighlight">\(\text{rank}(A) &lt; n\)</span>, 
 </li>
 </ul>
 <p>The rank is a key indicator of the solvability of the system, guiding us toward the appropriate method for finding solutions.</p>
-</section>
 <hr class="docutils" />
-<section id="id1">
-<h2>5. <strong>Moore-Penrose Inverse</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>The <strong>Moore-Penrose pseudoinverse</strong> <span class="math notranslate nohighlight">\(A^+\)</span> is a generalized inverse of a matrix <span class="math notranslate nohighlight">\(A\)</span>, and it exists for any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, whether square or rectangular. It satisfies four properties:</p>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 5. Moore-Penrose Inverse
+</h1>
+<p>The Moore-Penrose pseudoinverse <span class="math notranslate nohighlight">\(A^+\)</span> is a generalized inverse of a matrix <span class="math notranslate nohighlight">\(A\)</span>, and it exists for any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, whether square or rectangular. It satisfies four properties:</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(A A^+ A = A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A^+ A A^+ = A^+\)</span></p></li>
@@ -541,41 +533,51 @@ If <span class="math notranslate nohighlight">\(\text{rank}(A) &lt; n\)</span>, 
 <li><p><span class="math notranslate nohighlight">\((A^+ A)^T = A^+ A\)</span></p></li>
 </ol>
 <p>For matrices with full rank:</p>
-<ul>
-<li><p>If <span class="math notranslate nohighlight">\(A\)</span> has full column rank:</p>
-<div class="math notranslate nohighlight">
-\[ A^+ = (A^T A)^{-1} A^T \]</div>
-</li>
-<li><p>If <span class="math notranslate nohighlight">\(A\)</span> has full row rank:</p>
-<div class="math notranslate nohighlight">
-\[ A^+ = A^T (A A^T)^{-1} \]</div>
-</li>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(A\)</span> has full column rank:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+A^+ = (A^T A)^{-1} A^T
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(A\)</span> has full row rank:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+A^+ = A^T (A A^T)^{-1}
+\]</div>
 <p>The Moore-Penrose inverse helps solve linear systems, even when they do not have a unique solution (as in overdetermined or underdetermined systems).</p>
-</section>
 <hr class="docutils" />
-<section id="how-moore-penrose-inverse-solves-systems">
-<h2>6. <strong>How Moore-Penrose Inverse Solves Systems</strong><a class="headerlink" href="#how-moore-penrose-inverse-solves-systems" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> 6. How Moore-Penrose Inverse Solves Systems
+</h1>
 <p>The Moore-Penrose pseudoinverse <span class="math notranslate nohighlight">\(A^+\)</span> can be used to solve all types of linear systems, including underdetermined and overdetermined systems.</p>
-<ul>
-<li><p><strong>For a Unique Solution (Square, Full Rank):</strong><br />
-If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the Moore-Penrose inverse gives the unique solution:</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{x} = A^{-1} \mathbf{b} = A^+ \mathbf{b} \]</div>
-</li>
-<li><p><strong>For an Overdetermined System (<span class="math notranslate nohighlight">\(m &gt; n\)</span>):</strong><br />
-If <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the least squares solution is:</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{x} = A^+ \mathbf{b} = (A^T A)^{-1} A^T \mathbf{b} \]</div>
-<p>This minimizes <span class="math notranslate nohighlight">\(\| A \mathbf{x} - \mathbf{b} \|_2^2\)</span>, the sum of squared residuals.</p>
-</li>
-<li><p><strong>For an Underdetermined System (<span class="math notranslate nohighlight">\(m &lt; n\)</span>):</strong><br />
-If <span class="math notranslate nohighlight">\(\text{rank}(A) = m\)</span>, the minimum-norm solution is:</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{x} = A^+ \mathbf{b} \]</div>
-<p>This minimizes <span class="math notranslate nohighlight">\(\| \mathbf{x} \|_2\)</span>, ensuring the solution has the smallest possible magnitude.</p>
-</li>
+<ul class="simple">
+<li><p>For a Unique Solution (Square, Full Rank):<br />
+If <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the Moore-Penrose inverse gives the unique solution:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = A^{-1} \mathbf{b} = A^+ \mathbf{b}
+\]</div>
+<ul class="simple">
+<li><p>For an Overdetermined System (<span class="math notranslate nohighlight">\(m &gt; n\)</span>):<br />
+If <span class="math notranslate nohighlight">\(\text{rank}(A) = n\)</span>, the least squares solution is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = A^+ \mathbf{b} = (A^T A)^{-1} A^T \mathbf{b}
+\]</div>
+<p>This minimizes <span class="math notranslate nohighlight">\(\| A \mathbf{x} - \mathbf{b} \|_2^2\)</span>, the sum of squared residuals.</p>
+<ul class="simple">
+<li><p>For an Underdetermined System (<span class="math notranslate nohighlight">\(m &lt; n\)</span>):<br />
+If <span class="math notranslate nohighlight">\(\text{rank}(A) = m\)</span>, the minimum-norm solution is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = A^+ \mathbf{b}
+\]</div>
+<p>This minimizes <span class="math notranslate nohighlight">\(\| \mathbf{x} \|_2\)</span>, ensuring the solution has the smallest possible magnitude.</p>
 <p>The Moore-Penrose inverse provides the best approximation to a solution, even in cases where the system does not have a unique solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,7 +646,6 @@ A3 (2x3 - Under-determined) - Solution:
 </div>
 </div>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -682,7 +683,7 @@ A3 (2x3 - Under-determined) - Solution:
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Inner Product</p>
+        <p class="prev-next-title"><strong>Inner Product</strong></p>
       </div>
     </a>
     <a class="right-next"
@@ -700,27 +701,6 @@ A3 (2x3 - Under-determined) - Solution:
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-of-linear-equations">1. <strong>System of Linear Equations</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-of-a-matrix">2. <strong>Rank of a Matrix</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-linear-systems">3. <strong>Types of Linear Systems</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-rank-and-determinacy">4. <strong>Relationship Between Rank and Determinacy</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>Moore-Penrose Inverse</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-moore-penrose-inverse-solves-systems">6. <strong>How Moore-Penrose Inverse Solves Systems</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

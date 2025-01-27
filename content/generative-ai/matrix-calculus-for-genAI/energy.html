@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -425,9 +425,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -443,23 +441,6 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-symmetry">Matrix Symmetry:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-form-energy">Quadratic Form (Energy):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues">Eigenvalues:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-definite-matrix">1. Positive Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-definite-matrix">2. Negative Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indefinite-matrix">3. Indefinite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-semi-definite-matrix">4. Positive Semi-Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-semi-definite-matrix">5. Negative Semi-Definite Matrix</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -470,65 +451,56 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="energy">
-<h1>Energy<a class="headerlink" href="#energy" title="Link to this heading">#</a></h1>
-<section id="matrix-symmetry">
-<h2>Matrix Symmetry:<a class="headerlink" href="#matrix-symmetry" title="Link to this heading">#</a></h2>
+<h1><strong>Energy</strong><a class="headerlink" href="#energy" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Matrix Symmetry:
+</h1>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span> (Symmetric Matrix)</p></li>
 </ul>
-</section>
-<section id="quadratic-form-energy">
-<h2>Quadratic Form (Energy):<a class="headerlink" href="#quadratic-form-energy" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Quadratic Form (Energy):
+</h1>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\( x^T A x \)</span></p>
-<ul>
+<li><p><span class="math notranslate nohighlight">\( x^T A x \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( x^T A x &gt; 0 \)</span>: Positive quadratic form (energy positive)</p></li>
 <li><p><span class="math notranslate nohighlight">\( x^T A x &lt; 0 \)</span>: Negative quadratic form (energy negative)</p></li>
 <li><p><span class="math notranslate nohighlight">\( x^T A x = 0 \)</span>: Zero quadratic form (system in equilibrium)</p></li>
 </ul>
-</li>
-</ul>
-</section>
-<section id="eigenvalues">
-<h2>Eigenvalues:<a class="headerlink" href="#eigenvalues" title="Link to this heading">#</a></h2>
+<h1 style="font-weight: bold; background: linear-gradient(to right, teal, skyblue); -webkit-background-clip: text; color: transparent;"> Eigenvalues:
+</h1>
 <ul class="simple">
 <li><p>Eigenvalue equation: <span class="math notranslate nohighlight">\( A v = \lambda v \)</span></p></li>
 </ul>
 <hr class="docutils" />
-<section id="positive-definite-matrix">
-<h3>1. Positive Definite Matrix<a class="headerlink" href="#positive-definite-matrix" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> 1. Positive Definite Matrix
+</h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span>, <span class="math notranslate nohighlight">\( x^T A x &gt; 0 \)</span> for all <span class="math notranslate nohighlight">\( x \neq 0 \)</span></p></li>
 <li><p><strong>Eigenvalues</strong>: All positive</p></li>
 <li><p><strong>Energy</strong>: Always positive energy.</p></li>
 </ul>
-</section>
-<section id="negative-definite-matrix">
-<h3>2. Negative Definite Matrix<a class="headerlink" href="#negative-definite-matrix" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> 2. Negative Definite Matrix
+</h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span>, <span class="math notranslate nohighlight">\( x^T A x &lt; 0 \)</span> for all <span class="math notranslate nohighlight">\( x \neq 0 \)</span></p></li>
 <li><p><strong>Eigenvalues</strong>: All negative</p></li>
 <li><p><strong>Energy</strong>: Always negative energy.</p></li>
 </ul>
-</section>
-<section id="indefinite-matrix">
-<h3>3. Indefinite Matrix<a class="headerlink" href="#indefinite-matrix" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> 3. Indefinite Matrix
+</h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span>, quadratic form can be both positive and negative</p></li>
 <li><p><strong>Eigenvalues</strong>: Mixed positive and negative</p></li>
 <li><p><strong>Energy</strong>: Energy can be both positive and negative.</p></li>
 </ul>
-</section>
-<section id="positive-semi-definite-matrix">
-<h3>4. Positive Semi-Definite Matrix<a class="headerlink" href="#positive-semi-definite-matrix" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> 4. Positive Semi-Definite Matrix
+</h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span>, <span class="math notranslate nohighlight">\( x^T A x \geq 0 \)</span> for all <span class="math notranslate nohighlight">\( x \)</span></p></li>
 <li><p><strong>Eigenvalues</strong>: Non-negative</p></li>
 <li><p><strong>Energy</strong>: Non-negative energy.</p></li>
 </ul>
-</section>
-<section id="negative-semi-definite-matrix">
-<h3>5. Negative Semi-Definite Matrix<a class="headerlink" href="#negative-semi-definite-matrix" title="Link to this heading">#</a></h3>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> 5. Negative Semi-Definite Matrix
+</h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( A = A^T \)</span>, <span class="math notranslate nohighlight">\( x^T A x \leq 0 \)</span> for all <span class="math notranslate nohighlight">\( x \)</span></p></li>
 <li><p><strong>Eigenvalues</strong>: Non-positive</p></li>
@@ -701,8 +673,6 @@
 </div>
 </div>
 </section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -758,31 +728,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-symmetry">Matrix Symmetry:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadratic-form-energy">Quadratic Form (Energy):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenvalues">Eigenvalues:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-definite-matrix">1. Positive Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-definite-matrix">2. Negative Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indefinite-matrix">3. Indefinite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-semi-definite-matrix">4. Positive Semi-Definite Matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-semi-definite-matrix">5. Negative Semi-Definite Matrix</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
