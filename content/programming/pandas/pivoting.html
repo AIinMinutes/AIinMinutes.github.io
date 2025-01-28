@@ -63,6 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/programming/pandas/pivoting';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Speeding Up Pandas with GPU Acceleration Using cuDF" href="../optimization/cudf.html" />
     <link rel="prev" title="Two Pointers Algorithm Technique" href="../leetcode-python/two_pointer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -237,7 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -253,6 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -707,7 +709,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/7c1cdbab26474de5aaa10b9bd05823473573ed7a4f0300928f11f6ab3f7c7040.png" src="../../../_images/7c1cdbab26474de5aaa10b9bd05823473573ed7a4f0300928f11f6ab3f7c7040.png" />
+<img alt="../../../_images/fc2f8a7e9965284930b103ffc2b46e99713f37383c1254335200efb6747061b9.png" src="../../../_images/fc2f8a7e9965284930b103ffc2b46e99713f37383c1254335200efb6747061b9.png" />
 </div>
 </div>
 </section>
@@ -750,6 +752,15 @@
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Two Pointers Algorithm Technique</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../optimization/cudf.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Speeding Up Pandas with GPU Acceleration Using cuDF</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

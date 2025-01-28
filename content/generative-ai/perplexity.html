@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -492,15 +493,6 @@ Perplexity interprets the <strong>uncertainty</strong> of the language model: th
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/aim/anaconda3/envs/book/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new embeddings will be initialized from a multivariate normal distribution that has old embeddings&#39; mean and covariance. As described in this article: https://nlp.stanford.edu/~johnhew/vocab-expansion.html. To disable this, use `mean_resizing=False`
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -521,37 +513,10 @@ Perplexity interprets the <strong>uncertainty</strong> of the language model: th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 25.41it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 62.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 52.77it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                  | 0/1 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 46.59it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 1/1 [00:00&lt;00:00, 10.96it/s]
+100%|██████████| 1/1 [00:00&lt;00:00, 38.60it/s]
+100%|██████████| 1/1 [00:00&lt;00:00, 36.90it/s]
+100%|██████████| 1/1 [00:00&lt;00:00, 30.68it/s]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11963.835488696392, 1366.2190412861676, 460.76156089870796, 46.20063337388885]

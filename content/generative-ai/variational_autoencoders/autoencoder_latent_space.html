@@ -238,7 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -254,6 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -488,7 +489,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cpu backend.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using mps backend.
 </pre></div>
 </div>
 </div>
@@ -584,154 +585,56 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50, Loss: 0.0583
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2/50, Loss: 0.0485
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3/50, Loss: 0.0461
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4/50, Loss: 0.0446
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5/50, Loss: 0.0437
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6/50, Loss: 0.0429
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7/50, Loss: 0.0423
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8/50, Loss: 0.0417
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9/50, Loss: 0.0412
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10/50, Loss: 0.0407
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 11/50, Loss: 0.0403
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 12/50, Loss: 0.0400
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 13/50, Loss: 0.0397
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 14/50, Loss: 0.0395
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15/50, Loss: 0.0393
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 16/50, Loss: 0.0391
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 17/50, Loss: 0.0389
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 18/50, Loss: 0.0387
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 19/50, Loss: 0.0386
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 20/50, Loss: 0.0383
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 21/50, Loss: 0.0383
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 22/50, Loss: 0.0382
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 23/50, Loss: 0.0380
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 24/50, Loss: 0.0379
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 25/50, Loss: 0.0378
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 26/50, Loss: 0.0377
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 27/50, Loss: 0.0375
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 28/50, Loss: 0.0374
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 29/50, Loss: 0.0374
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 30/50, Loss: 0.0373
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 31/50, Loss: 0.0372
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 32/50, Loss: 0.0371
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 33/50, Loss: 0.0370
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 34/50, Loss: 0.0369
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 35/50, Loss: 0.0370
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 36/50, Loss: 0.0369
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 37/50, Loss: 0.0369
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 38/50, Loss: 0.0367
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 39/50, Loss: 0.0367
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40/50, Loss: 0.0366
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 41/50, Loss: 0.0365
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 42/50, Loss: 0.0365
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 43/50, Loss: 0.0365
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 44/50, Loss: 0.0364
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 45/50, Loss: 0.0364
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 46/50, Loss: 0.0363
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 47/50, Loss: 0.0362
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 48/50, Loss: 0.0362
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 49/50, Loss: 0.0363
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 50/50, Loss: 0.0362
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50, Loss: 0.0582
+Epoch 2/50, Loss: 0.0485
+Epoch 3/50, Loss: 0.0462
+Epoch 4/50, Loss: 0.0448
+Epoch 5/50, Loss: 0.0437
+Epoch 6/50, Loss: 0.0429
+Epoch 7/50, Loss: 0.0423
+Epoch 8/50, Loss: 0.0416
+Epoch 9/50, Loss: 0.0412
+Epoch 10/50, Loss: 0.0408
+Epoch 11/50, Loss: 0.0405
+Epoch 12/50, Loss: 0.0402
+Epoch 13/50, Loss: 0.0399
+Epoch 14/50, Loss: 0.0397
+Epoch 15/50, Loss: 0.0395
+Epoch 16/50, Loss: 0.0393
+Epoch 17/50, Loss: 0.0391
+Epoch 18/50, Loss: 0.0389
+Epoch 19/50, Loss: 0.0388
+Epoch 20/50, Loss: 0.0387
+Epoch 21/50, Loss: 0.0385
+Epoch 22/50, Loss: 0.0384
+Epoch 23/50, Loss: 0.0383
+Epoch 24/50, Loss: 0.0382
+Epoch 25/50, Loss: 0.0381
+Epoch 26/50, Loss: 0.0380
+Epoch 27/50, Loss: 0.0379
+Epoch 28/50, Loss: 0.0378
+Epoch 29/50, Loss: 0.0378
+Epoch 30/50, Loss: 0.0377
+Epoch 31/50, Loss: 0.0376
+Epoch 32/50, Loss: 0.0375
+Epoch 33/50, Loss: 0.0376
+Epoch 34/50, Loss: 0.0374
+Epoch 35/50, Loss: 0.0373
+Epoch 36/50, Loss: 0.0373
+Epoch 37/50, Loss: 0.0372
+Epoch 38/50, Loss: 0.0371
+Epoch 39/50, Loss: 0.0370
+Epoch 40/50, Loss: 0.0369
+Epoch 41/50, Loss: 0.0369
+Epoch 42/50, Loss: 0.0368
+Epoch 43/50, Loss: 0.0369
+Epoch 44/50, Loss: 0.0368
+Epoch 45/50, Loss: 0.0368
+Epoch 46/50, Loss: 0.0368
+Epoch 47/50, Loss: 0.0367
+Epoch 48/50, Loss: 0.0366
+Epoch 49/50, Loss: 0.0366
+Epoch 50/50, Loss: 0.0366
 </pre></div>
 </div>
 </div>
@@ -770,7 +673,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/586666c6bbe02109823c69b11f517beaed74ed93ed99b9ffac256c994791a06f.png" src="../../../_images/586666c6bbe02109823c69b11f517beaed74ed93ed99b9ffac256c994791a06f.png" />
+<img alt="../../../_images/ea03a97780da77089aa8143778ca09a3601a6e9c764db1ca2fbf6b6fa41184c4.png" src="../../../_images/ea03a97780da77089aa8143778ca09a3601a6e9c764db1ca2fbf6b6fa41184c4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -814,7 +717,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/a227d59799a0095c4ab6428aba5aa476ad7e6f807eb262dd25c476053c4f61d9.png" src="../../../_images/a227d59799a0095c4ab6428aba5aa476ad7e6f807eb262dd25c476053c4f61d9.png" />
+<img alt="../../../_images/80b232a6ce36d6d0a817b5c089941ee19925af448c2aebce2fe55edfe4375019.png" src="../../../_images/80b232a6ce36d6d0a817b5c089941ee19925af448c2aebce2fe55edfe4375019.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -861,7 +764,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/343020e99366632ec849f204c3b5db042107d04f1c13c7c854b7806a598e7e2f.png" src="../../../_images/343020e99366632ec849f204c3b5db042107d04f1c13c7c854b7806a598e7e2f.png" />
+<img alt="../../../_images/a88da957c9ea00c343755532286a8e269d802b3e01e64d2bba47b648f61e52ef.png" src="../../../_images/a88da957c9ea00c343755532286a8e269d802b3e01e64d2bba47b648f61e52ef.png" />
 </div>
 </div>
 </section>

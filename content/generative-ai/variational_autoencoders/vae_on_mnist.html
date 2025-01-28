@@ -238,7 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -254,6 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -526,7 +527,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using cpu backend.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using mps backend.
 </pre></div>
 </div>
 </div>
@@ -637,154 +638,56 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50, Loss: 15235.3201
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2/50, Loss: 11568.9932
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3/50, Loss: 11094.1903
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4/50, Loss: 10854.6791
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5/50, Loss: 10672.4681
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6/50, Loss: 10499.7108
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 7/50, Loss: 10329.8733
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 8/50, Loss: 10170.6547
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 9/50, Loss: 10031.3795
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 10/50, Loss: 9906.2736
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 11/50, Loss: 9801.1392
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 12/50, Loss: 9717.3964
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 13/50, Loss: 9635.4359
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 14/50, Loss: 9564.6337
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15/50, Loss: 9507.2270
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 16/50, Loss: 9459.0378
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 17/50, Loss: 9407.6421
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 18/50, Loss: 9373.1268
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 19/50, Loss: 9335.6648
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 20/50, Loss: 9296.2454
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 21/50, Loss: 9263.9866
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 22/50, Loss: 9238.1552
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 23/50, Loss: 9208.3010
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 24/50, Loss: 9191.1276
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 25/50, Loss: 9167.1403
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 26/50, Loss: 9144.1285
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 27/50, Loss: 9126.6215
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 28/50, Loss: 9108.1805
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 29/50, Loss: 9091.6249
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 30/50, Loss: 9064.6904
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 31/50, Loss: 9053.1744
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 32/50, Loss: 9033.8172
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 33/50, Loss: 9024.2236
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 34/50, Loss: 9008.6869
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 35/50, Loss: 8992.5001
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 36/50, Loss: 8972.0886
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 37/50, Loss: 8964.6190
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 38/50, Loss: 8946.9812
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 39/50, Loss: 8938.0233
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 40/50, Loss: 8922.2761
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 41/50, Loss: 8922.3682
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 42/50, Loss: 8896.9075
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 43/50, Loss: 8896.0381
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 44/50, Loss: 8899.0609
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 45/50, Loss: 8875.3821
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 46/50, Loss: 8869.8078
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 47/50, Loss: 8854.0785
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 48/50, Loss: 8843.9075
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 49/50, Loss: 8836.8420
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 50/50, Loss: 8820.3392
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/50, Loss: 15285.2554
+Epoch 2/50, Loss: 11586.7639
+Epoch 3/50, Loss: 11083.4447
+Epoch 4/50, Loss: 10781.2728
+Epoch 5/50, Loss: 10572.6048
+Epoch 6/50, Loss: 10405.3866
+Epoch 7/50, Loss: 10258.8899
+Epoch 8/50, Loss: 10134.5283
+Epoch 9/50, Loss: 10019.9649
+Epoch 10/50, Loss: 9919.4505
+Epoch 11/50, Loss: 9836.3590
+Epoch 12/50, Loss: 9744.8833
+Epoch 13/50, Loss: 9670.9032
+Epoch 14/50, Loss: 9608.3854
+Epoch 15/50, Loss: 9548.7525
+Epoch 16/50, Loss: 9503.0692
+Epoch 17/50, Loss: 9462.3527
+Epoch 18/50, Loss: 9412.0956
+Epoch 19/50, Loss: 9375.6170
+Epoch 20/50, Loss: 9339.3036
+Epoch 21/50, Loss: 9305.3525
+Epoch 22/50, Loss: 9268.8976
+Epoch 23/50, Loss: 9241.3404
+Epoch 24/50, Loss: 9212.7804
+Epoch 25/50, Loss: 9186.9957
+Epoch 26/50, Loss: 9157.7100
+Epoch 27/50, Loss: 9132.2370
+Epoch 28/50, Loss: 9106.3630
+Epoch 29/50, Loss: 9087.4329
+Epoch 30/50, Loss: 9070.1503
+Epoch 31/50, Loss: 9049.6586
+Epoch 32/50, Loss: 9028.4834
+Epoch 33/50, Loss: 9010.0085
+Epoch 34/50, Loss: 8995.3961
+Epoch 35/50, Loss: 8982.8214
+Epoch 36/50, Loss: 8964.7688
+Epoch 37/50, Loss: 8949.8052
+Epoch 38/50, Loss: 8928.9602
+Epoch 39/50, Loss: 8906.5844
+Epoch 40/50, Loss: 8900.1947
+Epoch 41/50, Loss: 8882.1667
+Epoch 42/50, Loss: 8875.9824
+Epoch 43/50, Loss: 8860.0553
+Epoch 44/50, Loss: 8854.9267
+Epoch 45/50, Loss: 8848.0144
+Epoch 46/50, Loss: 8833.2453
+Epoch 47/50, Loss: 8837.5478
+Epoch 48/50, Loss: 8812.8054
+Epoch 49/50, Loss: 8806.2974
+Epoch 50/50, Loss: 8795.0819
 </pre></div>
 </div>
 </div>
@@ -825,7 +728,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/e04560f5b0a12474695489d5952f4f01add8c67ec3b87705184b0085a4e64f12.png" src="../../../_images/e04560f5b0a12474695489d5952f4f01add8c67ec3b87705184b0085a4e64f12.png" />
+<img alt="../../../_images/12aad56357daaa141c6de83e1f942888e0829075181e6c9cec17e485c5a09530.png" src="../../../_images/12aad56357daaa141c6de83e1f942888e0829075181e6c9cec17e485c5a09530.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -863,7 +766,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/feb6a1508e43ae41028808755ec56ca56b7f224558873dc3e0f564f469ed7e3d.png" src="../../../_images/feb6a1508e43ae41028808755ec56ca56b7f224558873dc3e0f564f469ed7e3d.png" />
+<img alt="../../../_images/e5217b657e240d1e0daba16902523849d1b38d0f2372bee7c3486273372de835.png" src="../../../_images/e5217b657e240d1e0daba16902523849d1b38d0f2372bee7c3486273372de835.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,7 +808,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/5ddb3921ec38fbb49ea3cfce9464c4cd7e101ed35b2f01af6dce3e66a7f2fe3d.png" src="../../../_images/5ddb3921ec38fbb49ea3cfce9464c4cd7e101ed35b2f01af6dce3e66a7f2fe3d.png" />
+<img alt="../../../_images/1627ca6d1b2b1757df4e4ab4d963b056b306a85969dbd8bfd84396594e4973a8.png" src="../../../_images/1627ca6d1b2b1757df4e4ab4d963b056b306a85969dbd8bfd84396594e4973a8.png" />
 </div>
 </div>
 </section>

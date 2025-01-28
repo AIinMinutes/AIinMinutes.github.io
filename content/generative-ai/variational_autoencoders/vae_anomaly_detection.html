@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -585,55 +586,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   0%|                                                                                                                                                       | 0/30 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   3%|████▊                                                                                                                                          | 1/30 [00:00&lt;00:12,  2.41it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  13%|███████████████████                                                                                                                            | 4/30 [00:00&lt;00:03,  8.28it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  20%|████████████████████████████▌                                                                                                                  | 6/30 [00:00&lt;00:02, 10.90it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  27%|██████████████████████████████████████▏                                                                                                        | 8/30 [00:00&lt;00:01, 13.01it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  33%|███████████████████████████████████████████████▎                                                                                              | 10/30 [00:00&lt;00:01, 14.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  40%|████████████████████████████████████████████████████████▊                                                                                     | 12/30 [00:01&lt;00:01, 15.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  47%|██████████████████████████████████████████████████████████████████▎                                                                           | 14/30 [00:01&lt;00:00, 16.53it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  53%|███████████████████████████████████████████████████████████████████████████▋                                                                  | 16/30 [00:01&lt;00:00, 16.89it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  60%|█████████████████████████████████████████████████████████████████████████████████████▏                                                        | 18/30 [00:01&lt;00:00, 17.59it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  70%|███████████████████████████████████████████████████████████████████████████████████████████████████▍                                          | 21/30 [00:01&lt;00:00, 18.50it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  77%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                 | 23/30 [00:01&lt;00:00, 18.55it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  83%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎                       | 25/30 [00:01&lt;00:00, 18.80it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▊              | 27/30 [00:01&lt;00:00, 18.71it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:01&lt;00:00, 19.52it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:01&lt;00:00, 15.49it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|█████████████████████████████████| 30/30 [00:00&lt;00:00, 31.24it/s]
 </pre></div>
 </div>
 </div>
@@ -667,43 +620,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:   0%|                                                                                                                                                       | 0/30 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  10%|██████████████▎                                                                                                                                | 3/30 [00:00&lt;00:01, 22.44it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  20%|████████████████████████████▌                                                                                                                  | 6/30 [00:00&lt;00:01, 21.98it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  30%|██████████████████████████████████████████▉                                                                                                    | 9/30 [00:00&lt;00:00, 22.91it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  40%|████████████████████████████████████████████████████████▊                                                                                     | 12/30 [00:00&lt;00:00, 23.76it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  50%|███████████████████████████████████████████████████████████████████████                                                                       | 15/30 [00:00&lt;00:00, 20.39it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  60%|█████████████████████████████████████████████████████████████████████████████████████▏                                                        | 18/30 [00:00&lt;00:00, 19.69it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  70%|███████████████████████████████████████████████████████████████████████████████████████████████████▍                                          | 21/30 [00:01&lt;00:00, 18.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  77%|████████████████████████████████████████████████████████████████████████████████████████████████████████████▊                                 | 23/30 [00:01&lt;00:00, 18.81it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  87%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                   | 26/30 [00:01&lt;00:00, 20.46it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training:  97%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▎    | 29/30 [00:01&lt;00:00, 20.61it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:01&lt;00:00, 20.60it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|█████████████████████████████████| 30/30 [00:00&lt;00:00, 44.15it/s]
 </pre></div>
 </div>
 </div>
@@ -749,9 +666,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/86ce4a3b87801a76cc7d1f9a76e06102de59a6e4d984c58a66effa1e9885cb93.png" src="../../../_images/86ce4a3b87801a76cc7d1f9a76e06102de59a6e4d984c58a66effa1e9885cb93.png" />
 </div>
 </div>
 <div class="pst-scrollable-table-container"><table class="table">

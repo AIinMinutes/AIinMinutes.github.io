@@ -238,7 +238,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -254,6 +254,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -466,82 +467,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Result</th>
-      <th>Wins</th>
-      <th>Draws</th>
-      <th>Losses</th>
-      <th>Goals</th>
-      <th>Conceded</th>
-      <th>Points</th>
-    </tr>
-    <tr>
-      <th>Team</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Chelsea</th>
-      <td>18</td>
-      <td>9</td>
-      <td>11</td>
-      <td>77</td>
-      <td>63</td>
-      <td>63</td>
-    </tr>
-    <tr>
-      <th>Crystal Palace</th>
-      <td>13</td>
-      <td>10</td>
-      <td>15</td>
-      <td>57</td>
-      <td>58</td>
-      <td>49</td>
-    </tr>
-    <tr>
-      <th>Brentford</th>
-      <td>10</td>
-      <td>9</td>
-      <td>19</td>
-      <td>56</td>
-      <td>65</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <th>West Ham United</th>
-      <td>14</td>
-      <td>10</td>
-      <td>14</td>
-      <td>60</td>
-      <td>74</td>
-      <td>52</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,11 +480,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;prince.ca.CA at 0x7fc520401e10&gt;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,52 +487,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>eigenvalue</th>
-      <th>% of variance</th>
-      <th>% of variance (cumulative)</th>
-    </tr>
-    <tr>
-      <th>component</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.048</td>
-      <td>89.67%</td>
-      <td>89.67%</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.002</td>
-      <td>4.31%</td>
-      <td>93.98%</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,48 +494,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>Team</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Newcastle United</th>
-      <td>-0.003981</td>
-      <td>0.084109</td>
-    </tr>
-    <tr>
-      <th>Aston Villa</th>
-      <td>0.041745</td>
-      <td>0.002197</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,48 +501,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>Result</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Losses</th>
-      <td>-0.472415</td>
-      <td>0.059360</td>
-    </tr>
-    <tr>
-      <th>Conceded</th>
-      <td>-0.273443</td>
-      <td>0.007014</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -735,75 +525,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<style>
-  #altair-viz-b2d13c126133433aaba3b39275a672a6.vega-embed {
-    width: 100%;
-    display: flex;
-  }
-
-  #altair-viz-b2d13c126133433aaba3b39275a672a6.vega-embed details,
-  #altair-viz-b2d13c126133433aaba3b39275a672a6.vega-embed details summary {
-    position: relative;
-  }
-</style>
-<div id="altair-viz-b2d13c126133433aaba3b39275a672a6"></div>
-<script type="text/javascript">
-  var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
-  (function(spec, embedOpt){
-    let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-b2d13c126133433aaba3b39275a672a6") {
-      outputDiv = document.getElementById("altair-viz-b2d13c126133433aaba3b39275a672a6");
-    }
-
-    const paths = {
-      "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
-      "vega-lib": "https://cdn.jsdelivr.net/npm/vega-lib?noext",
-      "vega-lite": "https://cdn.jsdelivr.net/npm/vega-lite@5.20.1?noext",
-      "vega-embed": "https://cdn.jsdelivr.net/npm/vega-embed@6?noext",
-    };
-
-    function maybeLoadScript(lib, version) {
-      var key = `${lib.replace("-", "")}_version`;
-      return (VEGA_DEBUG[key] == version) ?
-        Promise.resolve(paths[lib]) :
-        new Promise(function(resolve, reject) {
-          var s = document.createElement('script');
-          document.getElementsByTagName("head")[0].appendChild(s);
-          s.async = true;
-          s.onload = () => {
-            VEGA_DEBUG[key] = version;
-            return resolve(paths[lib]);
-          };
-          s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
-          s.src = paths[lib];
-        });
-    }
-
-    function showError(err) {
-      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
-      throw err;
-    }
-
-    function displayChart(vegaEmbed) {
-      vegaEmbed(outputDiv, spec, embedOpt)
-        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
-    }
-
-    if(typeof define === "function" && define.amd) {
-      requirejs.config({paths});
-      let deps = ["vega-embed"];
-      require(deps, displayChart, err => showError(`Error loading script: ${err.message}`));
-    } else {
-      maybeLoadScript("vega", "5")
-        .then(() => maybeLoadScript("vega-lite", "5.20.1"))
-        .then(() => maybeLoadScript("vega-embed", "6"))
-        .catch(showError)
-        .then(() => displayChart(vegaEmbed));
-    }
-  })({"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "layer": [{"data": {"name": "data-e6b30e72c7b513dba29f92fb4448459d"}, "mark": {"type": "circle", "size": 50}, "encoding": {"color": {"field": "variable", "type": "nominal"}, "tooltip": [{"field": "variable", "type": "nominal"}, {"field": "value", "type": "nominal"}, {"field": "component 0", "type": "quantitative"}, {"field": "component 1", "type": "quantitative"}], "x": {"axis": {"title": "component 0 \u2014 89.67%"}, "field": "component 0", "scale": {"zero": false}, "type": "quantitative"}, "y": {"axis": {"title": "component 1 \u2014 4.31%"}, "field": "component 1", "scale": {"zero": false}, "type": "quantitative"}}, "name": "view_1"}, {"data": {"name": "data-e6b30e72c7b513dba29f92fb4448459d"}, "mark": {"type": "text"}, "encoding": {"text": {"field": "label", "type": "nominal"}, "x": {"axis": {"title": "component 0 \u2014 89.67%"}, "field": "component 0", "scale": {"zero": false}, "type": "quantitative"}, "y": {"axis": {"title": "component 1 \u2014 4.31%"}, "field": "component 1", "scale": {"zero": false}, "type": "quantitative"}}}, {"data": {"name": "data-3072e1b53194c1b88bf4b170a23a69c1"}, "mark": {"type": "circle", "size": 50}, "encoding": {"color": {"field": "variable", "type": "nominal"}, "tooltip": [{"field": "variable", "type": "nominal"}, {"field": "value", "type": "nominal"}, {"field": "component 0", "type": "quantitative"}, {"field": "component 1", "type": "quantitative"}], "x": {"axis": {"title": "component 0 \u2014 89.67%"}, "field": "component 0", "scale": {"zero": false}, "type": "quantitative"}, "y": {"axis": {"title": "component 1 \u2014 4.31%"}, "field": "component 1", "scale": {"zero": false}, "type": "quantitative"}}}, {"data": {"name": "data-3072e1b53194c1b88bf4b170a23a69c1"}, "mark": {"type": "text"}, "encoding": {"text": {"field": "label", "type": "nominal"}, "x": {"axis": {"title": "component 0 \u2014 89.67%"}, "field": "component 0", "scale": {"zero": false}, "type": "quantitative"}, "y": {"axis": {"title": "component 1 \u2014 4.31%"}, "field": "component 1", "scale": {"zero": false}, "type": "quantitative"}}}], "height": 300, "params": [{"name": "param_1", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales", "views": ["view_1"]}], "width": 400, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-e6b30e72c7b513dba29f92fb4448459d": [{"component 0": 0.3876957944605957, "component 1": 0.02617826195594096, "variable": "Team", "value": "Arsenal", "label": "Arsenal"}, {"component 0": 0.04174514555377986, "component 1": 0.0021965465072706124, "variable": "Team", "value": "Aston Villa", "label": "Aston Villa"}, {"component 0": -0.29492365881697086, "component 1": 0.02356824518809931, "variable": "Team", "value": "Brentford", "label": "Brentford"}, {"component 0": -0.1885348292766161, "component 1": -0.09202879825968194, "variable": "Team", "value": "Brighton & Hove Albion", "label": "Brighton & Hove Albion"}, {"component 0": -0.0026065273871860076, "component 1": -0.005939417313889558, "variable": "Team", "value": "Chelsea", "label": "Chelsea"}, {"component 0": -0.15244413543899682, "component 1": -0.03794120543921429, "variable": "Team", "value": "Crystal Palace", "label": "Crystal Palace"}, {"component 0": -0.2357863405957413, "component 1": -0.0430186433355981, "variable": "Team", "value": "Everton", "label": "Everton"}, {"component 0": 0.26891487807223763, "component 1": -0.07315985791153574, "variable": "Team", "value": "Liverpool", "label": "Liverpool"}, {"component 0": 0.3722166239982842, "component 1": -0.012830789011427953, "variable": "Team", "value": "Manchester City", "label": "Manchester City"}, {"component 0": -0.05500644162936894, "component 1": 0.03966169932356441, "variable": "Team", "value": "Manchester United", "label": "Manchester United"}, {"component 0": -0.003980840286597288, "component 1": 0.08410927556853574, "variable": "Team", "value": "Newcastle United", "label": "Newcastle United"}, {"component 0": 0.02078755948453749, "component 1": 0.051426164113843, "variable": "Team", "value": "Tottenham Hotspur", "label": "Tottenham Hotspur"}, {"component 0": -0.1944876336091236, "component 1": -0.026370070598920103, "variable": "Team", "value": "West Ham United", "label": "West Ham United"}, {"component 0": -0.2487693273529613, "component 1": 0.0469155938141684, "variable": "Team", "value": "Wolverhampton Wanderers", "label": "Wolverhampton Wanderers"}], "data-3072e1b53194c1b88bf4b170a23a69c1": [{"component 0": 0.21287083622744138, "component 1": 0.010905482349246053, "variable": "Result", "value": "Wins", "label": "Wins"}, {"component 0": -0.19682470336903923, "component 1": -0.23098704586975033, "variable": "Result", "value": "Draws", "label": "Draws"}, {"component 0": -0.47241493231462695, "component 1": 0.05936048902554801, "variable": "Result", "value": "Losses", "label": "Losses"}, {"component 0": 0.12343512124722195, "component 1": 0.019930198526620542, "variable": "Result", "value": "Goals", "label": "Goals"}, {"component 0": -0.2734428853819147, "component 1": 0.007013772189222785, "variable": "Result", "value": "Conceded", "label": "Conceded"}, {"component 0": 0.17016741766318494, "component 1": -0.012950354634272437, "variable": "Result", "value": "Points", "label": "Points"}]}}, {"mode": "vega-lite"});
-</script></div></div>
 </div>
 </section>
 

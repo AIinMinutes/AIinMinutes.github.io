@@ -240,7 +240,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/energy.html">Energy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/hyperplanes.html">Hyperplanes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html">Inner Product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/inner_product.html"><strong>Inner Product</strong></a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../generative-ai/matrix-calculus-for-genAI/moore_penrose_inverse.html">Moore Penrose Inverse</a></li>
@@ -256,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/prefix_sum.html">Prefix Sum and Sliding Window</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/leetcode-python/two_pointer.html">Two Pointer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../programming/pandas/pivoting.html">Pivoting in Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/optimization/cudf.html">Pandas on NVIDIA GPUs</a></li>
 </ul>
 
     </div>
@@ -860,12 +861,6 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/aim/anaconda3/envs/book/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +907,7 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fde0062944731b0416ec2560c0b6972d516a38a68ff12bd9c7dd3e2c2eb9c6a2.png" src="../../_images/fde0062944731b0416ec2560c0b6972d516a38a68ff12bd9c7dd3e2c2eb9c6a2.png" />
+<img alt="../../_images/184b3b28933c95bae1744fdb21318970eaf15c17862df3ad3e384b61a52a9366.png" src="../../_images/184b3b28933c95bae1744fdb21318970eaf15c17862df3ad3e384b61a52a9366.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -926,7 +921,7 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shapley value of x1 for 48-th instance using formula is -0.12
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shapley value of x1 for 48-th instance using formula is 0.10
 </pre></div>
 </div>
 </div>
@@ -948,7 +943,7 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/405f00adcbc07dbe81f4d25e0c37f0718f2914c4b2a66c1cfe6c903357228dd2.png" src="../../_images/405f00adcbc07dbe81f4d25e0c37f0718f2914c4b2a66c1cfe6c903357228dd2.png" />
+<img alt="../../_images/48196fb5bf0cea31dd7b7578b7258a8d121d9eaa809770e254725d047d5fca07.png" src="../../_images/48196fb5bf0cea31dd7b7578b7258a8d121d9eaa809770e254725d047d5fca07.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -960,7 +955,7 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7334139e02a55aec0e07df59a4665ab3c898bc4132bfe76fcdacc2550af11b43.png" src="../../_images/7334139e02a55aec0e07df59a4665ab3c898bc4132bfe76fcdacc2550af11b43.png" />
+<img alt="../../_images/e6fbbd138d48ada1df1b15fa22cfebc6b181e40413d850f674bc9d0cc9db6182.png" src="../../_images/e6fbbd138d48ada1df1b15fa22cfebc6b181e40413d850f674bc9d0cc9db6182.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -972,7 +967,7 @@ p_i = x_{1i} - \bar{x}_1, \quad q_i = x_{2i} - \bar{x}_2, \quad r_i = x_{3i} - \
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b51aeee599f359fcf0e6ee616bc3011bcc68665988654e50ec5712490f64ac5d.png" src="../../_images/b51aeee599f359fcf0e6ee616bc3011bcc68665988654e50ec5712490f64ac5d.png" />
+<img alt="../../_images/b972ecdc633295cf6a612b9fc005e924ba4dfa9d9b23d65a63fddbc93f17208b.png" src="../../_images/b972ecdc633295cf6a612b9fc005e924ba4dfa9d9b23d65a63fddbc93f17208b.png" />
 </div>
 </div>
 </section>
