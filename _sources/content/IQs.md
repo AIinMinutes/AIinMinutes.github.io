@@ -70,8 +70,7 @@
 
 ### **Natural Language Processing & LLMs**
 1. What is the difference between Lemmatization and Stemming?
-2. Given the tokens in alphabetically sorted order with their assigned indices in the vocabulary, what will be the BPE encoding of the word "Rahulization"?
-3. What is Nucleus sampling? How is it used to control the text-generation process by LLMs?
+2. What is Nucleus sampling? How is it used to control the text-generation process by LLMs?
 4. How would you explain to a layman the contextualized embedding of a word in a sentence that a transformer model learns?
 5. What is the attention mechanism?
 6. How are knowledge graphs used to improve factual accuracy of LLMs?
