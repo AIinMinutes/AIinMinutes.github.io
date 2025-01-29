@@ -1,4 +1,4 @@
-# **Full Stack Data Science Potential Interview Questios** 📚
+# **Full Stack Data Science Potential Interview Questions** 📚
 
 ## **Statistics++** 📊
 
