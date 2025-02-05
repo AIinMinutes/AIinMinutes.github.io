@@ -539,7 +539,7 @@
 <h2>User-User Interaction Matrix<a class="headerlink" href="#user-user-interaction-matrix" title="Link to this heading">#</a></h2>
 <p>The <strong>user-user interaction matrix</strong> represents the relationship between users based on the items they have interacted with. The matrix captures how similar users are in terms of the items they have interacted with.</p>
 <p>The mathematical formula for the user-user interaction matrix <span class="math notranslate nohighlight">\(U\)</span> is:</p>
-<p><span class="math notranslate nohighlight">\(U = A A^T\)</span></p>
+<p><span class="math notranslate nohighlight">\( U = A A^T \)</span></p>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A\)</span> is the binary user-item interaction matrix.</p></li>
@@ -549,8 +549,8 @@
 <section id="explanation-of-the-matrix">
 <h3>Explanation of the Matrix<a class="headerlink" href="#explanation-of-the-matrix" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>The diagonal cell, <span class="math notranslate nohighlight">\(U_{ii}\)</span>, represents the total number of items with which the <span class="math notranslate nohighlight">\(i\)</span>-th user has interacted.</p></li>
-<li><p>The off-diagonal cell, <span class="math notranslate nohighlight">\(U_{ij}\)</span>, represents the number of times users <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> have interacted with the same set of items.</p></li>
+<li><p>The diagonal cell, <span class="math notranslate nohighlight">\(U_{ii}\)</span>, represents the total number of items with which the <span class="math notranslate nohighlight">\(i\)</span>-th user has interacted. It is the sum of interactions across all items for user <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The off-diagonal cell, <span class="math notranslate nohighlight">\(U_{ij}\)</span>, represents the number of common items both users <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> have interacted with. It is the dot product of the <span class="math notranslate nohighlight">\(i\)</span>-th and <span class="math notranslate nohighlight">\(j\)</span>-th rows of the binary user-item interaction matrix.</p></li>
 </ul>
 <p>This matrix is used to measure the similarity between users based on their shared interactions with items.</p>
 <div class="cell docutils container">
@@ -595,7 +595,8 @@
 <h2>Item-Item Co-occurrence Matrix<a class="headerlink" href="#item-item-co-occurrence-matrix" title="Link to this heading">#</a></h2>
 <p>The <strong>item-item co-occurrence matrix</strong> is used to capture how often pairs of items are interacted with together. This matrix is typically derived from a binary user-item interaction matrix, where each element represents the number of times items have co-occurred in the same user’s interaction history.</p>
 <p>The mathematical formula for the item-item co-occurrence matrix <span class="math notranslate nohighlight">\(I\)</span> is:</p>
-<p><span class="math notranslate nohighlight">\(I = A^T A\)</span></p>
+<div class="math notranslate nohighlight">
+\[ I = A^T A \]</div>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(A\)</span> is the binary user-item interaction matrix.</p></li>
@@ -605,8 +606,8 @@
 <section id="id1">
 <h3>Explanation of the Matrix<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>The diagonal cell, <span class="math notranslate nohighlight">\(I_{ii}\)</span>, represents the total number of times the <span class="math notranslate nohighlight">\(i\)</span>-th item has been interacted with.</p></li>
-<li><p>The off-diagonal cell, <span class="math notranslate nohighlight">\(I_{ij}\)</span>, represents the number of times items <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> have been interacted with together, meaning they have co-occurred in the same interaction.</p></li>
+<li><p>The diagonal cell, <span class="math notranslate nohighlight">\(I_{ii}\)</span>, represents the total number of times the <span class="math notranslate nohighlight">\(i\)</span>-th item has been interacted with. It is the sum of interactions across all users for item <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The off-diagonal cell, <span class="math notranslate nohighlight">\(I_{ij}\)</span>, represents the number of common users who have interacted with both items <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. It is the dot product of the <span class="math notranslate nohighlight">\(i\)</span>-th and <span class="math notranslate nohighlight">\(j\)</span>-th rows of the binary user-item interaction matrix.</p></li>
 </ul>
 <p>This matrix helps identify which items are frequently interacted with together by users.</p>
 <div class="cell docutils container">
