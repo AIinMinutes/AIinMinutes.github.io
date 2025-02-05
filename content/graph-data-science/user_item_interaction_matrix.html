@@ -523,7 +523,7 @@
             <span class="n">yticklabels</span><span class="o">=</span><span class="n">userlabels</span><span class="p">,</span> 
             <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;User-Item Interaction Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;User-Item Interaction Matrix</span><span class="se">\n</span><span class="s2">A&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Items&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -531,13 +531,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/54ce66cd4be4b8eb0db182e095fb425c0ec7a503752f879c23de59387be52bbe.png" src="../../_images/54ce66cd4be4b8eb0db182e095fb425c0ec7a503752f879c23de59387be52bbe.png" />
+<img alt="../../_images/c01a8ffe235d4a54fddabfc34c794f720ff539ed2a7df0a5213718386cce4828.png" src="../../_images/c01a8ffe235d4a54fddabfc34c794f720ff539ed2a7df0a5213718386cce4828.png" />
 </div>
 </div>
 </section>
 <section id="user-user-similarity-matrix">
 <h2>User-User Similarity Matrix<a class="headerlink" href="#user-user-similarity-matrix" title="Link to this heading">#</a></h2>
-<p>The <strong>user-user similarity matrix</strong> represents the relationship between users based on the items they have interacted with. The matrix captures how similar users are in terms of the items they have interacted with.</p>
+<p>The <strong>user-user Similarity matrix</strong> represents the relationship between users based on the items they have interacted with. The matrix captures how similar users are in terms of the items they have interacted with.</p>
 <p>The mathematical formula for the user-user interaction matrix <span class="math notranslate nohighlight">\(U\)</span> is:</p>
 <p><span class="math notranslate nohighlight">\( U = A A^T \)</span></p>
 <p>Where:</p>
@@ -572,21 +572,18 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> 
-            <span class="n">xticklabels</span><span class="o">=</span><span class="n">userlabels</span><span class="p">,</span> 
-            <span class="n">yticklabels</span><span class="o">=</span><span class="n">userlabels</span><span class="p">,</span> 
-            <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;User-User Similarity Matrix&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Items&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">userlabels</span><span class="p">,</span> 
+            <span class="n">yticklabels</span><span class="o">=</span><span class="n">userlabels</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;User-User Similarity Matrix</span><span class="se">\n</span><span class="s2"> AA&#39;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Users&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/42b57636d519fe7a82b443432767f4098b1721855598f9fabcae834bc60986a4.png" src="../../_images/42b57636d519fe7a82b443432767f4098b1721855598f9fabcae834bc60986a4.png" />
+<img alt="../../_images/19a538de4709d741a7a03acff3457725479d7ea2286fcb3d02a41a3b78a653a4.png" src="../../_images/19a538de4709d741a7a03acff3457725479d7ea2286fcb3d02a41a3b78a653a4.png" />
 </div>
 </div>
 </section>
@@ -636,7 +633,7 @@
             <span class="n">yticklabels</span><span class="o">=</span><span class="n">itemlabels</span><span class="p">,</span> 
             <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Item-Item Co-occurrence Heatmap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Item-Item Co-occurrence Matrix</span><span class="se">\n</span><span class="s2">A&#39;A&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Items&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Items&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -644,7 +641,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc68f2f1336846ff7e63e843c18e7e2a74d02bbe552a24e76c080813450f52da.png" src="../../_images/bc68f2f1336846ff7e63e843c18e7e2a74d02bbe552a24e76c080813450f52da.png" />
+<img alt="../../_images/617fb9fd62a88b07eee3801099a30d41a6e0bb05551f3b1640fdbfcb02f253e4.png" src="../../_images/617fb9fd62a88b07eee3801099a30d41a6e0bb05551f3b1640fdbfcb02f253e4.png" />
 </div>
 </div>
 </section>
