@@ -1,6 +1,6 @@
 ![](stats.jpg "Stats++")
 
-# Full Stack Data Scientist Potentially Interview Questions
+# Full Stack Data Scientist Potential Interview Questions
 
 ## Stats++
 
