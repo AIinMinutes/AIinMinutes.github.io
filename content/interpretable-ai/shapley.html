@@ -452,13 +452,13 @@ document.write(`
 </li>
 <li><p><strong>Efficiency</strong>: The total value is fully distributed among players</p>
 <ul class="simple">
-<li><p>Mathematical Definition: $<span class="math notranslate nohighlight">\(\sum_{i} \phi_i(v) = v(N)\)</span>$</p></li>
+<li><p>Mathematical Definition: <span class="math notranslate nohighlight">\(\sum_{i} \phi_i(v) = v(N)\)</span></p></li>
 <li><p>The sum of all Shapley values equals the value of the grand coalition.</p></li>
 </ul>
 </li>
 <li><p><strong>Additivity</strong>: Payoffs can be expressed as the sum of payoffs from subgames</p>
 <ul class="simple">
-<li><p>Mathematical Definition: For any two characteristic functions <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span>, $<span class="math notranslate nohighlight">\(\phi_i(v + w) = \phi_i(v) + \phi_i(w)\)</span>$</p></li>
+<li><p>Mathematical Definition: For any two characteristic functions <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span>, <span class="math notranslate nohighlight">\(\phi_i(v + w) = \phi_i(v) + \phi_i(w)\)</span></p></li>
 <li><p>This allows complex games to be broken down into simpler components.</p></li>
 </ul>
 </li>
@@ -478,10 +478,9 @@ For <span class="math notranslate nohighlight">\(N = 3\)</span> players {A, B, C
 <section id="shapley-value-definition">
 <h3>Shapley Value Definition<a class="headerlink" href="#shapley-value-definition" title="Link to this heading">#</a></h3>
 <p>The Shapley value for player <span class="math notranslate nohighlight">\(i\)</span> is defined as the average marginal contribution over all <span class="math notranslate nohighlight">\(N!\)</span> ordered grand coalitions:</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 \phi_i(v) = \frac{1}{N!}\sum_{\pi \in \Pi}[v(P_i^\pi \cup \{i\}) - v(P_i^\pi)]
-\]</div>
+\)</span></p>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Pi\)</span> represents all <span class="math notranslate nohighlight">\(N!\)</span> ordered grand coalitions.</p></li>
@@ -521,10 +520,9 @@ For <span class="math notranslate nohighlight">\(N = 3\)</span> players {A, B, C
 <section id="final-shapley-value-formula">
 <h3>Final Shapley Value Formula<a class="headerlink" href="#final-shapley-value-formula" title="Link to this heading">#</a></h3>
 <p>For player <span class="math notranslate nohighlight">\(i\)</span> and unordered coalition <span class="math notranslate nohighlight">\(S\)</span> (excluding <span class="math notranslate nohighlight">\(i\)</span>):</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 \phi_i(v) = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|!(|N| - |S| - 1)!}{|N|!} [v(S \cup \{i\}) - v(S)]
-\]</div>
+\)</span></p>
 <h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Why Shapley Values Matter</h2>
 In an era of increasing demand for explainable AI, Shapley Values offer a principled approach to feature attribution. They help us understand:
 <ul class="simple">
@@ -599,7 +597,7 @@ In an era of increasing demand for explainable AI, Shapley Values offer a princi
 </table>
 </div>
 <p><strong>Total Contribution for A</strong>: <span class="math notranslate nohighlight">\(1 + 1 + 1 + 1 + 1 + 1 = 6\)</span></p>
-<p><strong>Average (Shapley Value)</strong>: $<span class="math notranslate nohighlight">\(\phi_A = \frac{6}{6} = 1\)</span>$</p>
+<p><strong>Average (Shapley Value)</strong>: <span class="math notranslate nohighlight">\(\phi_A = \frac{6}{6} = 1\)</span></p>
 </section>
 <section id="using-final-formula">
 <h4>Using Final Formula<a class="headerlink" href="#using-final-formula" title="Link to this heading">#</a></h4>
@@ -608,41 +606,41 @@ In an era of increasing demand for explainable AI, Shapley Values offer a princi
 <li><p>For <span class="math notranslate nohighlight">\(S = \emptyset\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(|S| = 0\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 2\)</span></p></li>
-<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{0! \cdot 2!}{3!} = \frac{1}{3}\)</span>$</p></li>
+<li><p>Coefficient: <span class="math notranslate nohighlight">\(\frac{0! \cdot 2!}{3!} = \frac{1}{3}\)</span></p></li>
 <li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A\}) - v(\emptyset) = 1 - 0 = 1\)</span></p></li>
-<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span>$</p></li>
+<li><p>Term: <span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span></p></li>
 </ul>
 </li>
 <li><p>For <span class="math notranslate nohighlight">\(S = \{B\}\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(|S| = 1\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 1\)</span></p></li>
-<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span>$</p></li>
+<li><p>Coefficient: <span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span></p></li>
 <li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,B\}) - v(\{B\}) = 2 - 1 = 1\)</span></p></li>
-<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span>$</p></li>
+<li><p>Term: <span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span></p></li>
 </ul>
 </li>
 <li><p>For <span class="math notranslate nohighlight">\(S = \{C\}\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(|S| = 1\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 1\)</span></p></li>
-<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span>$</p></li>
+<li><p>Coefficient: <span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span></p></li>
 <li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,C\}) - v(\{C\}) = 2 - 1 = 1\)</span></p></li>
-<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span>$</p></li>
+<li><p>Term: <span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span></p></li>
 </ul>
 </li>
 <li><p>For <span class="math notranslate nohighlight">\(S = \{B,C\}\)</span>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(|S| = 2\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 0\)</span></p></li>
-<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{2! \cdot 0!}{3!} = \frac{1}{3}\)</span>$</p></li>
+<li><p>Coefficient: <span class="math notranslate nohighlight">\(\frac{2! \cdot 0!}{3!} = \frac{1}{3}\)</span></p></li>
 <li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,B,C\}) - v(\{B,C\}) = 3 - 2 = 1\)</span></p></li>
-<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span>$</p></li>
+<li><p>Term: <span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span></p></li>
 </ul>
 </li>
 </ol>
 <p><strong>Sum of All Terms for A</strong>:<br />
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \phi_A = \frac{1}{3} + \frac{1}{6} + \frac{1}{6} + \frac{1}{3} = 1
-\)</span>$</p>
-<p>This confirms that both approaches yield $<span class="math notranslate nohighlight">\(\phi_A = 1\)</span>$, validating our calculation methods.</p>
+\)</span></p>
+<p>This confirms that both approaches yield <span class="math notranslate nohighlight">\(\phi_A = 1\)</span>, validating our calculation methods.</p>
 <h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Shapley for Multiple Linear Regression (Example)</h2>
 </section>
 </section>
@@ -654,10 +652,9 @@ $<span class="math notranslate nohighlight">\(
 <li><p><strong>Payoff when no feature is included</strong>: <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
 </ul>
 <p>We are working with a multiple linear regression model of the form:</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{3i} + \epsilon_i, \quad i = 1, 2, \ldots, n,
-\]</div>
+\)</span></p>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y_i\)</span> is the observed value for the <span class="math notranslate nohighlight">\(i\)</span>-th example,</p></li>
@@ -670,64 +667,58 @@ y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{3i} + \epsilon_i, \
 <section id="ordinary-least-squares-ols-estimates">
 <h3>1. Ordinary Least Squares (OLS) Estimates<a class="headerlink" href="#ordinary-least-squares-ols-estimates" title="Link to this heading">#</a></h3>
 <p>To estimate the model coefficients <span class="math notranslate nohighlight">\(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3\)</span>, we minimize the sum of squared errors:
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 L = \sum_{i=1}^n (y_i - \hat{y}_i)^2,
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\hat{y}_i = \hat{\beta}_0 + \hat{\beta}<em>1 x</em>{1i} + \hat{\beta}<em>2 x</em>{2i} + \hat{\beta}<em>3 x</em>{3i}$.</p>
+\)</span>
+where <span class="math notranslate nohighlight">\(\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \hat{\beta}_3 x_{3i}\)</span>.</p>
 <section id="normal-equations">
 <h4>Normal Equations<a class="headerlink" href="#normal-equations" title="Link to this heading">#</a></h4>
 <p>Minimizing <span class="math notranslate nohighlight">\(L\)</span> with respect to each parameter involves setting the partial derivatives to zero:
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \frac{\partial L}{\partial \hat{\beta}_0} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_1} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_2} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_3} = 0.
-\)</span>$
+\)</span>
 This results in a system of linear equations known as the <strong>normal equations</strong>. For the model with three features, the equations can be expressed as:</p>
-<div class="math notranslate nohighlight">
-\[ n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i=1}^n x_{1i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i} = \sum_{i=1}^n y_i, \]</div>
-<div class="math notranslate nohighlight">
-\[ \hat{\beta}_0 \sum_{i=1}^n x_{1i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i}^2 + \hat{\beta}_2 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{1i} x_{3i} = \sum_{i=1}^n y_i x_{1i}, \]</div>
-<div class="math notranslate nohighlight">
-\[ \hat{\beta}_0 \sum_{i=1}^n x_{2i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i}^2 + \hat{\beta}_3 \sum_{i=1}^n x_{2i} x_{3i} = \sum_{i=1}^n y_i x_{2i}, \]</div>
-<div class="math notranslate nohighlight">
-\[ \hat{\beta}_0 \sum_{i=1}^n x_{3i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{3i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} x_{3i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i}^2 = \sum_{i=1}^n y_i x_{3i}. \]</div>
+<p><span class="math notranslate nohighlight">\( n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i=1}^n x_{1i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i} = \sum_{i=1}^n y_i, \)</span></p>
+<p><span class="math notranslate nohighlight">\( \hat{\beta}_0 \sum_{i=1}^n x_{1i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i}^2 + \hat{\beta}_2 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{1i} x_{3i} = \sum_{i=1}^n y_i x_{1i}, \)</span></p>
+<p><span class="math notranslate nohighlight">\( \hat{\beta}_0 \sum_{i=1}^n x_{2i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i}^2 + \hat{\beta}_3 \sum_{i=1}^n x_{2i} x_{3i} = \sum_{i=1}^n y_i x_{2i}, \)</span></p>
+<p><span class="math notranslate nohighlight">\( \hat{\beta}_0 \sum_{i=1}^n x_{3i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{3i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} x_{3i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i}^2 = \sum_{i=1}^n y_i x_{3i}. \)</span></p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="relationship-between-predictions-and-averages">
 <h3>2. Relationship Between Predictions and Averages<a class="headerlink" href="#relationship-between-predictions-and-averages" title="Link to this heading">#</a></h3>
 <p>The intercept <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> can be expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 \hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}_1 - \hat{\beta}_2 \bar{x}_2 - \hat{\beta}_3 \bar{x}_3,
-\]</div>
+\)</span></p>
 <p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_1\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_2\)</span>, and <span class="math notranslate nohighlight">\(\bar{x}_3\)</span> are the means of <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>, respectively.</p>
 </section>
 <hr class="docutils" />
 <section id="explaining-predictions-for-each-observation">
 <h3>3. Explaining Predictions for Each Observation<a class="headerlink" href="#explaining-predictions-for-each-observation" title="Link to this heading">#</a></h3>
 <p>For the <span class="math notranslate nohighlight">\(i\)</span>-th observation, the difference between the prediction <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> and the average prediction <span class="math notranslate nohighlight">\(\bar{y}\)</span> (residual model) is:</p>
-<div class="math notranslate nohighlight">
-\[
+<p><span class="math notranslate nohighlight">\(
 \hat{y}_i - \bar{y} = \hat{\beta}_1 (x_{1i} - \bar{x}_1) + \hat{\beta}_2 (x_{2i} - \bar{x}_2) + \hat{\beta}_3 (x_{3i} - \bar{x}_3) = \text{grand coalition payoff}
-\]</div>
+\)</span></p>
 <p>This shows that <span class="math notranslate nohighlight">\(\hat{y}_i - \bar{y}\)</span> is the weighted sum of the deviations of the features <span class="math notranslate nohighlight">\(x_{1i}, x_{2i}, x_{3i}\)</span> from their respective means, with weights given by the coefficients <span class="math notranslate nohighlight">\(\hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3\)</span>.</p>
 </section>
 <hr class="docutils" />
 <section id="marginal-contribution-of-each-feature">
 <h3>4. Marginal Contribution of each Feature<a class="headerlink" href="#marginal-contribution-of-each-feature" title="Link to this heading">#</a></h3>
 <p>The marginal contribution of feature <span class="math notranslate nohighlight">\(x_j\)</span> to the prediction for the <span class="math notranslate nohighlight">\(i\)</span>-th observation is:
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \text{Marginal Contribution} = \hat{\beta}_j (x_{ji} - \bar{x}_j).
-\)</span>$</p>
+\)</span></p>
 </section>
 <hr class="docutils" />
 <section id="shap-values-for-features">
 <h3>5. SHAP Values for Features<a class="headerlink" href="#shap-values-for-features" title="Link to this heading">#</a></h3>
 <p>The marginal contribution of feature <span class="math notranslate nohighlight">\(x_j\)</span> for <span class="math notranslate nohighlight">\(i\)</span>-th observation is always the same regardless of with which order of features it is included in the model because the average effect of every other feature is zero (integrating out) across all observations.</p>
 <p>The <strong>SHAP value</strong> for feature <span class="math notranslate nohighlight">\(x_j\)</span> for observation <span class="math notranslate nohighlight">\(i\)</span> is:
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \text{SHAP}_j(i) = \hat{\beta}_j (x_{ji} - \bar{x}_j).
-\)</span><span class="math notranslate nohighlight">\(
-This represents the contribution of \)</span>x_j<span class="math notranslate nohighlight">\( to the prediction \)</span>\hat{y}<em>i<span class="math notranslate nohighlight">\(, accounting for how much \)</span>x</em>{ji}<span class="math notranslate nohighlight">\( deviates from its mean \)</span>\bar{x}_j<span class="math notranslate nohighlight">\(, weighted by the model coefficient \)</span>\hat{\beta}_j$.</p>
+\)</span>
+This represents the contribution of <span class="math notranslate nohighlight">\(x_j\)</span> to the prediction <span class="math notranslate nohighlight">\(\hat{y}_i\)</span>, accounting for how much <span class="math notranslate nohighlight">\(x_{ji}\)</span> deviates from its mean <span class="math notranslate nohighlight">\(\bar{x}_j\)</span>, weighted by the model coefficient <span class="math notranslate nohighlight">\(\hat{\beta}_j\)</span>.</p>
 </section>
 <hr class="docutils" />
 <section id="validating-our-formulas-using-shap-library">
