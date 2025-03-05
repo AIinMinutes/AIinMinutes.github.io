@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Shapley Values &#8212; Data &amp; AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/interpretable-ai/shapley';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Binary User-Item Interaction Matrix" href="../graph-data-science/user_item_interaction_matrix.html" />
+    <link rel="prev" title="Gaussian Error Linear Unit (GeLU)" href="../generative-ai/gelu.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Data & AI - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Data & AI - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Data and AI Concepts by @AIinMinutes
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Generative AI 🤖</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/autoencoder_latent_space.html">Ideal Properties of a Latent Space</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/variational_autoencoders/pca_for_anomaly_detection.html">PCA for Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/attention_mechanism.html">Attention Mechanism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generative-ai/gelu.html">GeLU</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Interpretable AI 🔍🧠</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shapley Values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Graph Data Science 🌐</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../graph-data-science/user_item_interaction_matrix.html">Interaction Matrix</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mathematical Statistics 🎲</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../mathematical-statistics/ecdf.html">ECDF</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pre-requisite Math ➗</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/introduction.html">The Origin</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../prerequisite-math/linear-algebra/spectral_decomposition.html">Singular Value Decomposition</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/interpretable-ai/shapley.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Shapley Values</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cooperative-games-and-coalitions-the-foundation">Cooperative Games and Coalitions: The Foundation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fairness-problem">The Fairness Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fundamental-role-of-shapley-values">The Fundamental Role of Shapley Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-four-fairness-axioms-of-shapley-values">The Four Fairness Axioms of Shapley Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coalition-mathematics">Coalition Mathematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-value-definition">Shapley Value Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-insights">Key Insights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-transition">Example Transition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-factors">Conversion Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-shapley-value-formula">Final Shapley Value Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shapley-value-for-player-a">Computing Shapley Value for Player A</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-permutations">Using Permutations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-final-formula">Using Final Formula</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-least-squares-ols-estimates">1. Ordinary Least Squares (OLS) Estimates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equations">Normal Equations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-predictions-and-averages">2. Relationship Between Predictions and Averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-predictions-for-each-observation">3. Explaining Predictions for Each Observation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-contribution-of-each-feature">4. Marginal Contribution of each Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-values-for-features">5. SHAP Values for Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-our-formulas-using-shap-library">6. Validating Our Formulas using SHAP library</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="shapley-values">
+<h1>Shapley Values<a class="headerlink" href="#shapley-values" title="Link to this heading">#</a></h1>
+<h1 style="font-weight: bold; background: linear-gradient(to left, yellow, red); -webkit-background-clip: text; color: transparent;"> Understanding Shapley Values</h1>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;"> Cooperative Games and Coalitions</h2>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Have you ever wondered how to fairly attribute contributions in a collaborative project? Or perhaps you’re trying to explain which features in your machine learning model are most important for a specific prediction? Enter Shapley Values—a concept from cooperative game theory that has found a powerful application in the world of explainable AI.</p>
+<img alt="../../_images/meme.jpg" src="../../_images/meme.jpg" />
+<p>In this post, we’ll explore what Shapley Values are, how they work, and how they can be applied to explain predictions in machine learning models.</p>
+<section id="cooperative-games-and-coalitions-the-foundation">
+<h3>Cooperative Games and Coalitions: The Foundation<a class="headerlink" href="#cooperative-games-and-coalitions-the-foundation" title="Link to this heading">#</a></h3>
+<p>Before diving into Shapley Values themselves, let’s understand their origin—cooperative game theory.</p>
+<p>In cooperative games, players work together toward shared goals rather than competing against one another. Players coordinate actions, share resources, and succeed or fail as a team. Think board games like Pandemic, where players collaborate to stop disease outbreaks, or Hanabi, where players collectively build firework displays through communication.</p>
+<ul class="simple">
+<li><p>A coalition is a temporary alliance of players who agree to work together for mutual benefit. Coalitions often involve pooling resources or coordinating actions.</p></li>
+<li><p>A complete coalition or “grand coalition” forms when all players agree to cooperate, uniting all participants in pursuit of shared objectives.</p></li>
+</ul>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Fairness Axioms and Mathematical Foundation</h2>
+</section>
+</section>
+<section id="the-fairness-problem">
+<h2>The Fairness Problem<a class="headerlink" href="#the-fairness-problem" title="Link to this heading">#</a></h2>
+<p>Here’s where it gets interesting. When players work together and create value, how do we fairly distribute the rewards? This is precisely where Shapley Values shine.</p>
+<p>Imagine a project where three team members—Atul, Bhumi, and Chetna—collaborate. The project succeeds and generates ₹10,000 in value. Who deserves what share of this value? Should they split it equally? Or should some members receive more based on their contributions?</p>
+<p><em><em>The Shapley Value provides a mathematically rigorous solution for distributing payoffs in a coalition that satisfies all fairness axioms.</em></em></p>
+<section id="the-fundamental-role-of-shapley-values">
+<h3>The Fundamental Role of Shapley Values<a class="headerlink" href="#the-fundamental-role-of-shapley-values" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In a cooperative game with a set of players <span class="math notranslate nohighlight">\( N = \{1, 2, \dots, n\} \)</span>, a <strong>characteristic function</strong> <span class="math notranslate nohighlight">\( v \)</span> is a mapping from all subsets of players (coalitions) <span class="math notranslate nohighlight">\( S \subseteq N \)</span> to real numbers, i.e., <span class="math notranslate nohighlight">\(v: 2^N \rightarrow \mathbb{R}\)</span> such that <span class="math notranslate nohighlight">\( v(S) \)</span> represents the total payoff that coalition <span class="math notranslate nohighlight">\( S \)</span> can achieve if they cooperate.</p></li>
+<li><p>The payoff allocation to each player is determined based on the characteristic function.</p></li>
+<li><p>A key concept here is that a player’s payoff depends on the value of the coalitions that they are part of.</p></li>
+<li><p>The Shapley value provides the unique solution for distributing payoffs in a grand coalition that satisfies all fairness axioms.</p></li>
+<li><p>In other words, if we want to distribute value in a way that is symmetric, efficient, and fair to both contributors and non-contributors, Shapley values are mathematically proven to be the only solution that works.</p></li>
+</ul>
+</section>
+<section id="the-four-fairness-axioms-of-shapley-values">
+<h3>The Four Fairness Axioms of Shapley Values<a class="headerlink" href="#the-four-fairness-axioms-of-shapley-values" title="Link to this heading">#</a></h3>
+<p>The Shapley value ensures fair distribution of cooperative gains based on each player’s marginal contributions. It adheres to these axioms:</p>
+<ol class="arabic simple">
+<li><p><strong>Symmetry</strong>: Players who contribute equally receive equal payoffs</p>
+<ul class="simple">
+<li><p>Mathematical Definition: For any players <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, if <span class="math notranslate nohighlight">\(v(S \cup \{i\}) = v(S \cup \{j\})\)</span> for all coalitions <span class="math notranslate nohighlight">\(S \subseteq N \setminus \{i,j\}\)</span>, then <span class="math notranslate nohighlight">\(\phi_i(v) = \phi_j(v)\)</span></p></li>
+<li><p>This means if two players are interchangeable in terms of their contributions, they must receive the same payoff.</p></li>
+</ul>
+</li>
+<li><p><strong>Null Player</strong>: Players who add no value to any coalition receive zero payoff</p>
+<ul class="simple">
+<li><p>Mathematical Definition: If <span class="math notranslate nohighlight">\(v(S \cup \{i\}) = v(S)\)</span> for all <span class="math notranslate nohighlight">\(S \subseteq N \setminus \{i\}\)</span>, then <span class="math notranslate nohighlight">\(\phi_i(v) = 0\)</span></p></li>
+<li><p>This ensures that players who never contribute marginal value receive no payment.</p></li>
+</ul>
+</li>
+<li><p><strong>Efficiency</strong>: The total value is fully distributed among players</p>
+<ul class="simple">
+<li><p>Mathematical Definition: $<span class="math notranslate nohighlight">\(\sum_{i} \phi_i(v) = v(N)\)</span>$</p></li>
+<li><p>The sum of all Shapley values equals the value of the grand coalition.</p></li>
+</ul>
+</li>
+<li><p><strong>Additivity</strong>: Payoffs can be expressed as the sum of payoffs from subgames</p>
+<ul class="simple">
+<li><p>Mathematical Definition: For any two characteristic functions <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(w\)</span>, $<span class="math notranslate nohighlight">\(\phi_i(v + w) = \phi_i(v) + \phi_i(w)\)</span>$</p></li>
+<li><p>This allows complex games to be broken down into simpler components.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="coalition-mathematics">
+<h2>Coalition Mathematics<a class="headerlink" href="#coalition-mathematics" title="Link to this heading">#</a></h2>
+<p>For a game with <span class="math notranslate nohighlight">\(N\)</span> players:</p>
+<ul class="simple">
+<li><p>There are <span class="math notranslate nohighlight">\(N!\)</span> ways to arrange the players in an ordered grand coalition (permutations).</p></li>
+<li><p>Each grand coalition represents one complete ordering of all <span class="math notranslate nohighlight">\(N\)</span> players.</p></li>
+</ul>
+<p>Example:
+For <span class="math notranslate nohighlight">\(N = 3\)</span> players {A, B, C}, the possible ordered grand coalitions (permutations) are:
+{A, B, C}, {A, C, B}, {B, A, C}, {B, C, A}, {C, A, B}, {C, B, A}</p>
+<section id="shapley-value-definition">
+<h3>Shapley Value Definition<a class="headerlink" href="#shapley-value-definition" title="Link to this heading">#</a></h3>
+<p>The Shapley value for player <span class="math notranslate nohighlight">\(i\)</span> is defined as the average marginal contribution over all <span class="math notranslate nohighlight">\(N!\)</span> ordered grand coalitions:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_i(v) = \frac{1}{N!}\sum_{\pi \in \Pi}[v(P_i^\pi \cup \{i\}) - v(P_i^\pi)]
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Pi\)</span> represents all <span class="math notranslate nohighlight">\(N!\)</span> ordered grand coalitions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_i^\pi\)</span> is the set of players preceding <span class="math notranslate nohighlight">\(i\)</span> in the ordered coalition <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(v\)</span> is the characteristic function assigning a value to each coalition.</p></li>
+</ul>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">From Ordered to Unordered Sets</h2>
+</section>
+<section id="key-insights">
+<h3>Key Insights<a class="headerlink" href="#key-insights" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>The order of players after <span class="math notranslate nohighlight">\(i\)</span> in a coalition does not affect <span class="math notranslate nohighlight">\(i\)</span>’s marginal contribution.</p></li>
+<li><p>When the characteristic function <span class="math notranslate nohighlight">\(v\)</span> is order-independent (e.g., <span class="math notranslate nohighlight">\(v(\{A,B\}) = v(\{B,A\})\)</span>):</p>
+<ul class="simple">
+<li><p>Permutations with the same unordered set preceding <span class="math notranslate nohighlight">\(i\)</span> are equivalent.</p></li>
+<li><p>This allows simplification of the formula, transitioning from permutations (ordered sets) to combinations (unordered sets).</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="example-transition">
+<h3>Example Transition<a class="headerlink" href="#example-transition" title="Link to this heading">#</a></h3>
+<p>Consider player <span class="math notranslate nohighlight">\(i\)</span> as the <span class="math notranslate nohighlight">\(k\)</span>-th player in ordered sets:</p>
+<ul class="simple">
+<li><p><strong>Ordered Sets</strong>: Marginal contributions of player <span class="math notranslate nohighlight">\(i\)</span> in {A,B,i,C,D} and {A,B,i,D,C} scenarios are identical.</p></li>
+<li><p><strong>Unordered Sets</strong>: If <span class="math notranslate nohighlight">\(v(\{A,B\}) = v(\{B,A\})\)</span>, then all permutations like {A,B,i,C,D} and {B,A,i,C,D} yield the same result.</p></li>
+</ul>
+</section>
+<section id="conversion-factors">
+<h3>Conversion Factors<a class="headerlink" href="#conversion-factors" title="Link to this heading">#</a></h3>
+<p>For an unordered set <span class="math notranslate nohighlight">\(S\)</span> of players before <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<ul class="simple">
+<li><p><strong>Arrangements before <span class="math notranslate nohighlight">\(i\)</span></strong>: <span class="math notranslate nohighlight">\(|S|!\)</span></p></li>
+<li><p><strong>Arrangements after <span class="math notranslate nohighlight">\(i\)</span></strong>: <span class="math notranslate nohighlight">\((|N| - 1 - |S|)!\)</span></p></li>
+</ul>
+</section>
+<section id="final-shapley-value-formula">
+<h3>Final Shapley Value Formula<a class="headerlink" href="#final-shapley-value-formula" title="Link to this heading">#</a></h3>
+<p>For player <span class="math notranslate nohighlight">\(i\)</span> and unordered coalition <span class="math notranslate nohighlight">\(S\)</span> (excluding <span class="math notranslate nohighlight">\(i\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_i(v) = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|!(|N| - |S| - 1)!}{|N|!} [v(S \cup \{i\}) - v(S)]
+\]</div>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Why Shapley Values Matter</h2>
+In an era of increasing demand for explainable AI, Shapley Values offer a principled approach to feature attribution. They help us understand:
+<ul class="simple">
+<li><p>Which features drive specific predictions in complex models</p></li>
+<li><p>How different features interact to produce outcomes</p></li>
+<li><p>Where model performance might be improved by focusing on high-impact features</p></li>
+</ul>
+<p>Additionally, the fairness axioms that underpin Shapley Values align with our intuitive notions of fairness, making them an appealing framework for attribution problems beyond machine learning.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Detailed Three-Player Example</h2>
+</section>
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Players: A, B, C</p></li>
+<li><p>Characteristic Function: <span class="math notranslate nohighlight">\(v(S) = |S|\)</span>, i.e., the value of a coalition is the number of players in it.</p></li>
+<li><p>Total Permutations: With <span class="math notranslate nohighlight">\(N = 3\)</span>, we have <span class="math notranslate nohighlight">\(3! = 6\)</span> permutations:
+{A,B,C}, {A,C,B}, {B,A,C}, {B,C,A}, {C,A,B}, {C,B,A}</p></li>
+</ul>
+</section>
+<section id="computing-shapley-value-for-player-a">
+<h3>Computing Shapley Value for Player A<a class="headerlink" href="#computing-shapley-value-for-player-a" title="Link to this heading">#</a></h3>
+<section id="using-permutations">
+<h4>Using Permutations<a class="headerlink" href="#using-permutations" title="Link to this heading">#</a></h4>
+<p>For each permutation, calculate A’s marginal contribution (the difference in value between the coalition after adding player A and before adding A):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Permutation</p></th>
+<th class="head"><p>Coalition before A</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(v(\text{Before A})\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(v(\text{Before A} \cup \{A\})\)</span></p></th>
+<th class="head"><p>Marginal Contribution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A, B, C</p></td>
+<td><p>∅</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>A, C, B</p></td>
+<td><p>∅</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>B, A, C</p></td>
+<td><p>{B}</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>B, C, A</p></td>
+<td><p>{B, C}</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>C, A, B</p></td>
+<td><p>{C}</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>C, B, A</p></td>
+<td><p>{C, B}</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Total Contribution for A</strong>: <span class="math notranslate nohighlight">\(1 + 1 + 1 + 1 + 1 + 1 = 6\)</span></p>
+<p><strong>Average (Shapley Value)</strong>: $<span class="math notranslate nohighlight">\(\phi_A = \frac{6}{6} = 1\)</span>$</p>
+</section>
+<section id="using-final-formula">
+<h4>Using Final Formula<a class="headerlink" href="#using-final-formula" title="Link to this heading">#</a></h4>
+<p>For <span class="math notranslate nohighlight">\(A\)</span>, with subsets <span class="math notranslate nohighlight">\(S \subseteq N \setminus \{A\}\)</span>: <span class="math notranslate nohighlight">\(\{\emptyset, \{B\}, \{C\}, \{B, C\}\}\)</span></p>
+<ol class="arabic simple">
+<li><p>For <span class="math notranslate nohighlight">\(S = \emptyset\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|S| = 0\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 2\)</span></p></li>
+<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{0! \cdot 2!}{3!} = \frac{1}{3}\)</span>$</p></li>
+<li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A\}) - v(\emptyset) = 1 - 0 = 1\)</span></p></li>
+<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span>$</p></li>
+</ul>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\(S = \{B\}\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|S| = 1\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 1\)</span></p></li>
+<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span>$</p></li>
+<li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,B\}) - v(\{B\}) = 2 - 1 = 1\)</span></p></li>
+<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span>$</p></li>
+</ul>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\(S = \{C\}\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|S| = 1\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 1\)</span></p></li>
+<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{1! \cdot 1!}{3!} = \frac{1}{6}\)</span>$</p></li>
+<li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,C\}) - v(\{C\}) = 2 - 1 = 1\)</span></p></li>
+<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{6} \cdot 1 = \frac{1}{6}\)</span>$</p></li>
+</ul>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\(S = \{B,C\}\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|S| = 2\)</span>, <span class="math notranslate nohighlight">\(|N| - |S| - 1 = 0\)</span></p></li>
+<li><p>Coefficient: $<span class="math notranslate nohighlight">\(\frac{2! \cdot 0!}{3!} = \frac{1}{3}\)</span>$</p></li>
+<li><p>Marginal Contribution: <span class="math notranslate nohighlight">\(v(\{A,B,C\}) - v(\{B,C\}) = 3 - 2 = 1\)</span></p></li>
+<li><p>Term: $<span class="math notranslate nohighlight">\(\frac{1}{3} \cdot 1 = \frac{1}{3}\)</span>$</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Sum of All Terms for A</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\phi_A = \frac{1}{3} + \frac{1}{6} + \frac{1}{6} + \frac{1}{3} = 1
+\)</span>$</p>
+<p>This confirms that both approaches yield $<span class="math notranslate nohighlight">\(\phi_A = 1\)</span>$, validating our calculation methods.</p>
+<h2 style="font-weight: bold; background: linear-gradient(to right, magenta, cyan); -webkit-background-clip: text; color: transparent;">Shapley for Multiple Linear Regression (Example)</h2>
+</section>
+</section>
+<section id="id1">
+<h3>Setup<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Players</strong>: Features <span class="math notranslate nohighlight">\(x_1, x_2, x_3\)</span> are available.</p></li>
+<li><p><strong>Payoff of the grand coalition</strong> (all features included in the model) for the <span class="math notranslate nohighlight">\(i\)</span>-th prediction: <span class="math notranslate nohighlight">\(\hat{y}_i - \bar{y}\)</span>, where <span class="math notranslate nohighlight">\(\bar{y} = \frac{1}{n} \sum_{i=1}^n y_i\)</span> is the mean of observed values.</p></li>
+<li><p><strong>Payoff when no feature is included</strong>: <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+</ul>
+<p>We are working with a multiple linear regression model of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 x_{3i} + \epsilon_i, \quad i = 1, 2, \ldots, n,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> is the observed value for the <span class="math notranslate nohighlight">\(i\)</span>-th example,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, \beta_3\)</span> are the true model coefficients,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{1i}, x_{2i}, x_{3i}\)</span> are the feature values for the <span class="math notranslate nohighlight">\(i\)</span>-th observation,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\epsilon_i\)</span> is the error term, assumed to satisfy <span class="math notranslate nohighlight">\(\mathbb{E}[\epsilon_i] = 0\)</span> and <span class="math notranslate nohighlight">\(\mathbb{E}[\epsilon_i^2] = \sigma^2\)</span> (i.i.d. noise).</p></li>
+</ul>
+<p>Our goal is to compute <strong>SHAP values</strong> for each feature to explain their contributions to the prediction <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> for a given observation.</p>
+</section>
+<section id="ordinary-least-squares-ols-estimates">
+<h3>1. Ordinary Least Squares (OLS) Estimates<a class="headerlink" href="#ordinary-least-squares-ols-estimates" title="Link to this heading">#</a></h3>
+<p>To estimate the model coefficients <span class="math notranslate nohighlight">\(\hat{\beta}_0, \hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3\)</span>, we minimize the sum of squared errors:
+$<span class="math notranslate nohighlight">\(
+L = \sum_{i=1}^n (y_i - \hat{y}_i)^2,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\hat{y}_i = \hat{\beta}_0 + \hat{\beta}<em>1 x</em>{1i} + \hat{\beta}<em>2 x</em>{2i} + \hat{\beta}<em>3 x</em>{3i}$.</p>
+<section id="normal-equations">
+<h4>Normal Equations<a class="headerlink" href="#normal-equations" title="Link to this heading">#</a></h4>
+<p>Minimizing <span class="math notranslate nohighlight">\(L\)</span> with respect to each parameter involves setting the partial derivatives to zero:
+$<span class="math notranslate nohighlight">\(
+\frac{\partial L}{\partial \hat{\beta}_0} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_1} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_2} = 0, \quad \frac{\partial L}{\partial \hat{\beta}_3} = 0.
+\)</span>$
+This results in a system of linear equations known as the <strong>normal equations</strong>. For the model with three features, the equations can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ n \hat{\beta}_0 + \hat{\beta}_1 \sum_{i=1}^n x_{1i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i} = \sum_{i=1}^n y_i, \]</div>
+<div class="math notranslate nohighlight">
+\[ \hat{\beta}_0 \sum_{i=1}^n x_{1i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i}^2 + \hat{\beta}_2 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_3 \sum_{i=1}^n x_{1i} x_{3i} = \sum_{i=1}^n y_i x_{1i}, \]</div>
+<div class="math notranslate nohighlight">
+\[ \hat{\beta}_0 \sum_{i=1}^n x_{2i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{2i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i}^2 + \hat{\beta}_3 \sum_{i=1}^n x_{2i} x_{3i} = \sum_{i=1}^n y_i x_{2i}, \]</div>
+<div class="math notranslate nohighlight">
+\[ \hat{\beta}_0 \sum_{i=1}^n x_{3i} + \hat{\beta}_1 \sum_{i=1}^n x_{1i} x_{3i} + \hat{\beta}_2 \sum_{i=1}^n x_{2i} x_{3i} + \hat{\beta}_3 \sum_{i=1}^n x_{3i}^2 = \sum_{i=1}^n y_i x_{3i}. \]</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="relationship-between-predictions-and-averages">
+<h3>2. Relationship Between Predictions and Averages<a class="headerlink" href="#relationship-between-predictions-and-averages" title="Link to this heading">#</a></h3>
+<p>The intercept <span class="math notranslate nohighlight">\(\hat{\beta}_0\)</span> can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}_1 - \hat{\beta}_2 \bar{x}_2 - \hat{\beta}_3 \bar{x}_3,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{y}\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_1\)</span>, <span class="math notranslate nohighlight">\(\bar{x}_2\)</span>, and <span class="math notranslate nohighlight">\(\bar{x}_3\)</span> are the means of <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, and <span class="math notranslate nohighlight">\(x_3\)</span>, respectively.</p>
+</section>
+<hr class="docutils" />
+<section id="explaining-predictions-for-each-observation">
+<h3>3. Explaining Predictions for Each Observation<a class="headerlink" href="#explaining-predictions-for-each-observation" title="Link to this heading">#</a></h3>
+<p>For the <span class="math notranslate nohighlight">\(i\)</span>-th observation, the difference between the prediction <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> and the average prediction <span class="math notranslate nohighlight">\(\bar{y}\)</span> (residual model) is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y}_i - \bar{y} = \hat{\beta}_1 (x_{1i} - \bar{x}_1) + \hat{\beta}_2 (x_{2i} - \bar{x}_2) + \hat{\beta}_3 (x_{3i} - \bar{x}_3) = \text{grand coalition payoff}
+\]</div>
+<p>This shows that <span class="math notranslate nohighlight">\(\hat{y}_i - \bar{y}\)</span> is the weighted sum of the deviations of the features <span class="math notranslate nohighlight">\(x_{1i}, x_{2i}, x_{3i}\)</span> from their respective means, with weights given by the coefficients <span class="math notranslate nohighlight">\(\hat{\beta}_1, \hat{\beta}_2, \hat{\beta}_3\)</span>.</p>
+</section>
+<hr class="docutils" />
+<section id="marginal-contribution-of-each-feature">
+<h3>4. Marginal Contribution of each Feature<a class="headerlink" href="#marginal-contribution-of-each-feature" title="Link to this heading">#</a></h3>
+<p>The marginal contribution of feature <span class="math notranslate nohighlight">\(x_j\)</span> to the prediction for the <span class="math notranslate nohighlight">\(i\)</span>-th observation is:
+$<span class="math notranslate nohighlight">\(
+\text{Marginal Contribution} = \hat{\beta}_j (x_{ji} - \bar{x}_j).
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="shap-values-for-features">
+<h3>5. SHAP Values for Features<a class="headerlink" href="#shap-values-for-features" title="Link to this heading">#</a></h3>
+<p>The marginal contribution of feature <span class="math notranslate nohighlight">\(x_j\)</span> for <span class="math notranslate nohighlight">\(i\)</span>-th observation is always the same regardless of with which order of features it is included in the model because the average effect of every other feature is zero (integrating out) across all observations.</p>
+<p>The <strong>SHAP value</strong> for feature <span class="math notranslate nohighlight">\(x_j\)</span> for observation <span class="math notranslate nohighlight">\(i\)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{SHAP}_j(i) = \hat{\beta}_j (x_{ji} - \bar{x}_j).
+\)</span><span class="math notranslate nohighlight">\(
+This represents the contribution of \)</span>x_j<span class="math notranslate nohighlight">\( to the prediction \)</span>\hat{y}<em>i<span class="math notranslate nohighlight">\(, accounting for how much \)</span>x</em>{ji}<span class="math notranslate nohighlight">\( deviates from its mean \)</span>\bar{x}_j<span class="math notranslate nohighlight">\(, weighted by the model coefficient \)</span>\hat{\beta}_j$.</p>
+</section>
+<hr class="docutils" />
+<section id="validating-our-formulas-using-shap-library">
+<h3>6. Validating Our Formulas using SHAP library<a class="headerlink" href="#validating-our-formulas-using-shap-library" title="Link to this heading">#</a></h3>
+<p>Now that we understand the theoretical foundation of Shapley Values and how they apply to linear regression, let’s verify our calculations using the popular SHAP (SHapley Additive exPlanations) library.</p>
+<p>The SHAP library provides a powerful implementation of Shapley Values for various machine learning models, including linear regression. Let’s see how our formula compares to the library’s implementation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import required libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shap.maskers._tabular</span><span class="w"> </span><span class="kn">import</span> <span class="n">Independent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Set global matplotlib parameters for better visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+    <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="s1">&#39;savefig.dpi&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Generate synthetic data with uncorrelated structure</span>
+<span class="n">covariance</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+
+<span class="c1"># Mean values for features x1, x2, x3, x4</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  
+
+<span class="c1"># Generate 100,000 samples from multivariate normal distribution</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">covariance</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100000</span><span class="p">)</span>
+
+<span class="c1"># Create target variable with coefficients (0.1, 0.2, 0.3, 0.4)</span>
+<span class="c1"># Add small Gaussian noise (σ=0.001) for realistic variation</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> 
+     <span class="mf">0.3</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> 
+     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to pandas DataFrame/Series for better handling</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">,</span> <span class="s1">&#39;x4&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Split data into training (80%) and testing (20%) sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">47</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize and train linear regression model</span>
+<span class="n">regression_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">regression_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Create SHAP explainer with independent masker</span>
+<span class="c1"># Using full training set for background distribution</span>
+<span class="n">masker</span> <span class="o">=</span> <span class="n">Independent</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">max_samples</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">regression_model</span><span class="p">,</span> <span class="n">masker</span><span class="o">=</span><span class="n">masker</span><span class="p">)</span>
+
+<span class="c1"># Calculate SHAP values for test set</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select a specific for visualizing Shapley values of each feature</span>
+<span class="n">instance_id</span> <span class="o">=</span> <span class="mi">47</span>
+
+<span class="c1"># 1. Waterfall plot for individual prediction explanation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">waterfall</span><span class="p">(</span><span class="n">shap_values</span><span class="p">[</span><span class="n">instance_id</span><span class="p">],</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9ecebd1706301954942fb602f0b4bfe95ffc2c2eea8efa8580e1f7d0ca05ecd3.png" src="../../_images/9ecebd1706301954942fb602f0b4bfe95ffc2c2eea8efa8580e1f7d0ca05ecd3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coef_of_x1</span> <span class="o">=</span> <span class="n">regression_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">x1_value_sample_index</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">][</span><span class="n">instance_id</span><span class="p">:</span> <span class="n">instance_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="n">x1_mean_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">shap_val</span> <span class="o">=</span> <span class="n">coef_of_x1</span> <span class="o">*</span> <span class="p">(</span><span class="n">x1_value_sample_index</span> <span class="o">-</span> <span class="n">x1_mean_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shapley value of x1 for </span><span class="si">{</span><span class="n">instance_id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">-th instance using formula is </span><span class="si">{</span><span class="n">shap_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> It is the same as computed by SHAP library functions.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shapley value of x1 for 48-th instance using formula is 0.14 
+ It is the same as computed by SHAP library functions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Partial dependence plot for feature &#39;x2&#39;</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">partial_dependence_plot</span><span class="p">(</span>
+    <span class="s2">&quot;x1&quot;</span><span class="p">,</span>
+    <span class="n">regression_model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">model_expected_value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">feature_expected_value</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">ice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">shap_values</span><span class="o">=</span><span class="n">shap_values</span><span class="p">[</span><span class="n">instance_id</span><span class="p">:</span><span class="n">instance_id</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/806d8ac8cc139a80306a905b41eb6459e521a0b896687a164d553a001f720b5b.png" src="../../_images/806d8ac8cc139a80306a905b41eb6459e521a0b896687a164d553a001f720b5b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Beeswarm plot for global feature importance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">beeswarm</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/45db7ad106c654dd3f4723050c8eecf6d340a07131ec1dfd5d2aa416c2579215.png" src="../../_images/45db7ad106c654dd3f4723050c8eecf6d340a07131ec1dfd5d2aa416c2579215.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Bar plot for average feature importance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plots</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">shap_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ffb3f049817b0893db0d9a2dcbe13ccee37fd3676bffcf7ebc97b853e463ef16.png" src="../../_images/ffb3f049817b0893db0d9a2dcbe13ccee37fd3676bffcf7ebc97b853e463ef16.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/interpretable-ai"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../generative-ai/gelu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Gaussian Error Linear Unit (GeLU)</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../graph-data-science/user_item_interaction_matrix.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Binary User-Item Interaction Matrix</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cooperative-games-and-coalitions-the-foundation">Cooperative Games and Coalitions: The Foundation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fairness-problem">The Fairness Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-fundamental-role-of-shapley-values">The Fundamental Role of Shapley Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-four-fairness-axioms-of-shapley-values">The Four Fairness Axioms of Shapley Values</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coalition-mathematics">Coalition Mathematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shapley-value-definition">Shapley Value Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-insights">Key Insights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-transition">Example Transition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-factors">Conversion Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-shapley-value-formula">Final Shapley Value Formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shapley-value-for-player-a">Computing Shapley Value for Player A</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-permutations">Using Permutations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-final-formula">Using Final Formula</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-least-squares-ols-estimates">1. Ordinary Least Squares (OLS) Estimates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-equations">Normal Equations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-predictions-and-averages">2. Relationship Between Predictions and Averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explaining-predictions-for-each-observation">3. Explaining Predictions for Each Observation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-contribution-of-each-feature">4. Marginal Contribution of each Feature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-values-for-features">5. SHAP Values for Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-our-formulas-using-shap-library">6. Validating Our Formulas using SHAP library</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ❤️AIinMinutes
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
