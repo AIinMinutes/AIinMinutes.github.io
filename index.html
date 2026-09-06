@@ -1,1 +1,100 @@
-<meta http-equiv="Refresh" content="0; url=content/intro.html" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Learn AI in Minutes</title>
+    <style>
+      :root {
+        --ink: #1a1a1a;
+        --muted: #5a5a5a;
+        --accent: #1f4e79;
+        --rule: #e6e6e6;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font: 18px/1.55 "Iowan Old Style", Palatino, "Palatino Linotype",
+          "Book Antiqua", Georgia, serif;
+      }
+      main {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 3.5rem 1.25rem 4rem;
+      }
+      h1 {
+        font-size: 1.85rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.6rem;
+      }
+      .lede {
+        color: var(--muted);
+        margin: 0 0 2.25rem;
+      }
+      h2 {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-top: 1px solid var(--rule);
+        padding-top: 1.4rem;
+        margin: 0 0 1rem;
+      }
+      ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      li + li {
+        margin-top: 1.35rem;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover { text-decoration: underline; }
+      li > a {
+        font-size: 1.15rem;
+        font-weight: 600;
+      }
+      .blurb {
+        margin: 0.3rem 0 0.15rem;
+      }
+      .meta, .foot {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin: 0;
+      }
+      .foot {
+        margin-top: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Learn AI in Minutes</h1>
+      <p class="lede">
+        Data, stats, and AI concepts from research papers. Each note is a short
+        Marimo notebook: the idea, the math, and a small experiment.
+      </p>
+      <h2>Notes</h2>
+      <ol>
+        <li>
+          <a href="/fundamentals/visualization/grammar-of-graphics/">Grammar of graphics in plotnine</a>
+          <p class="blurb">A plot is a mapping from a table to visual properties. Bill length against bill depth, then the same points with species as a mapping.</p>
+          <p class="meta">Visualization</p>
+        </li>
+      </ol>
+      <p class="foot">
+        Earlier Jupyter Book notes remain at
+        <a href="/content/intro.html">/content/intro.html</a>.
+        Source:
+        <a href="https://github.com/AIinMinutes/Data-and-AI-Concepts">Data-and-AI-Concepts</a>.
+      </p>
+    </main>
+  </body>
+</html>
