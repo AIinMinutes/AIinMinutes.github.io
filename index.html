@@ -57,31 +57,31 @@
         transition: background-color 0.15s ease;
       }
       ol.note-list li:hover {
-        background-color: var(--bg-hover);
+        background: var(--bg-hover);
       }
-      ol.note-list li + li {
-        margin-top: 0.5rem;
-      }
-      a {
+      ol.note-list a {
         color: var(--accent);
         text-decoration: none;
-      }
-      a:hover { text-decoration: underline; }
-      ol.note-list li > a {
-        font-size: 1.12rem;
         font-weight: 600;
+        font-size: 1.05rem;
+      }
+      ol.note-list a:hover {
+        text-decoration: underline;
       }
       .blurb {
-        color: #444;
-        font-size: 0.95rem;
         margin: 0.25rem 0 0;
+        font-size: 0.95rem;
+        color: var(--muted);
       }
       .foot {
-        margin-top: 3.5rem;
+        margin-top: 4rem;
         padding-top: 1.5rem;
         border-top: 1px solid var(--rule);
+        font-size: 0.9rem;
         color: var(--muted);
-        font-size: 0.92rem;
+      }
+      .foot a {
+        color: var(--accent);
       }
     </style>
   </head>
@@ -96,19 +96,19 @@
       <ol class="note-list">
         <li>
           <a href="/fundamentals/00_introduction/">Note 00: Systems of Linear Equations</a>
-          <p class="blurb">Systems of linear equations, Ax = b, and vector representations</p>
+          <p class="blurb">Linear combinations, row vs column perspectives, and invertibility</p>
         </li>
         <li>
-          <a href="/fundamentals/01_inner_product/">Note 01: Inner Products</a>
-          <p class="blurb">Dot product, cosine similarity, angles, and projection geometry</p>
+          <a href="/fundamentals/01_inner_product/">Note 01: Inner Products and Angles</a>
+          <p class="blurb">Dot products, projection, geometric angles, and Hilbert spaces</p>
         </li>
         <li>
-          <a href="/fundamentals/02_norm_and_metric/">Note 02: Norms and Metrics</a>
-          <p class="blurb">Lp norms, distance metrics, and the Minkowski inequality</p>
+          <a href="/fundamentals/02_norm_and_metric/">Note 02: Vector Norms and Metrics</a>
+          <p class="blurb">L1, L2, Lp norms, distances, and unit ball geometries</p>
         </li>
         <li>
-          <a href="/fundamentals/03_hyperplanes/">Note 03: Hyperplanes</a>
-          <p class="blurb">Decision boundaries, half-spaces, and linear separation geometry</p>
+          <a href="/fundamentals/03_hyperplanes/">Note 03: Hyperplanes and Halfspaces</a>
+          <p class="blurb">Decision boundaries, affine sets, and separating hyperplanes</p>
         </li>
         <li>
           <a href="/fundamentals/04_rank_one_matrices/">Note 04: Rank-One Matrices</a>
@@ -126,275 +126,33 @@
           <a href="/fundamentals/07_spectral_decomposition/">Note 07: Spectral Decomposition</a>
           <p class="blurb">Eigendecomposition, symmetric matrices, and singular value decomposition</p>
         </li>
-        <li>
-          <a href="/fundamentals/08_matrix_calculus_short/">Note 08: Matrix Calculus</a>
-          <p class="blurb">Derivatives of vector and matrix expressions for optimization</p>
-        </li>
-        <li>
-          <a href="/fundamentals/09_condition_number/">Note 09: Condition Number</a>
-          <p class="blurb">Numerical stability, matrix sensitivity, and multicollinearity diagnostics</p>
-        </li>
       </ol>
-      <h2>Probability & Statistical Foundations</h2>
+
+      <h2>Subject Notes (Deep Dives)</h2>
       <ol class="note-list">
         <li>
-          <a href="/fundamentals/10_chebyshev_inequality/">Note 10: Chebyshev Inequality</a>
-          <p class="blurb">Distribution-free probability bounds and concentration</p>
+          <span style="font-weight: 600; color: #1f4e79;">Multivariate Analysis</span>
+          <p class="blurb">Advanced multivariate statistical techniques and geometric formulations (in progress).</p>
         </li>
         <li>
-          <a href="/fundamentals/11_ecdf/">Note 11: Empirical CDF</a>
-          <p class="blurb">Empirical distribution functions and non-parametric inference</p>
-        </li>
-        <li>
-          <a href="/fundamentals/12_multivariate_normal_distribution/">Note 12: Multivariate Normal Distribution</a>
-          <p class="blurb">Multivariate Gaussian geometry, covariance matrices, and density contours</p>
-        </li>
-        <li>
-          <a href="/fundamentals/13_unbiased_vs_consistent/">Note 13: Unbiased vs Consistent Estimators</a>
-          <p class="blurb">Core properties of statistical estimators and sample size behavior</p>
-        </li>
-        <li>
-          <a href="/fundamentals/14_dist_of_minimum/">Note 14: Distribution of Minimum</a>
-          <p class="blurb">Order statistics and extreme value distributions</p>
-        </li>
-        <li>
-          <a href="/fundamentals/15_mutual_information/">Note 15: Mutual Information</a>
-          <p class="blurb">Information theory, entropy, and non-linear feature dependence</p>
-        </li>
-        <li>
-          <a href="/fundamentals/16_point_biserial/">Note 16: Point-Biserial Correlation</a>
-          <p class="blurb">Measuring association between continuous and binary variables</p>
-        </li>
-        <li>
-          <a href="/fundamentals/17_jensen_inequality/">Note 17: Jensen's Inequality</a>
-          <p class="blurb">Convexity, expectation inequalities, and bounds in learning algorithms</p>
+          <span style="font-weight: 600; color: #1f4e79;">Functional Data Analysis</span>
+          <p class="blurb">Infinite-dimensional representations, smoothing, and functional principal components (in progress).</p>
         </li>
       </ol>
-      <h2>Applied Statistics & Correlation</h2>
+    
+
+      <h2>Research Paper Notes</h2>
       <ol class="note-list">
         <li>
-          <a href="/fundamentals/18_cramer_v/">Note 18: Cramer's V</a>
-          <p class="blurb">Strength of association between categorical variables</p>
+          <span style="font-weight: 600; color: #1f4e79;">TabICLv2</span>
+          <p class="blurb">Tabular foundation model for in-context learning, classification, and regression (research notes).</p>
         </li>
         <li>
-          <a href="/fundamentals/19_kendalltaub/">Note 19: Kendall's Tau-b</a>
-          <p class="blurb">Non-parametric rank correlation robust to ties</p>
-        </li>
-        <li>
-          <a href="/fundamentals/20_spurious_correlation/">Note 20: Spurious Correlation</a>
-          <p class="blurb">Confounders, lurking variables, and Simpson's paradox</p>
-        </li>
-        <li>
-          <a href="/fundamentals/21_kruskal_wallis/">Note 21: Kruskal-Wallis Test</a>
-          <p class="blurb">Non-parametric ANOVA for comparing multiple groups</p>
-        </li>
-        <li>
-          <a href="/fundamentals/22_acf_and_pacf/">Note 22: ACF and PACF</a>
-          <p class="blurb">Autocorrelation and partial autocorrelation for time series modeling</p>
-        </li>
-        <li>
-          <a href="/fundamentals/23_ewa_and_bias_correction/">Note 23: Exponential Moving Averages</a>
-          <p class="blurb">EMA smoothing, momentum, and initial bias correction</p>
-        </li>
-        <li>
-          <a href="/fundamentals/24_adjusted_r_squared/">Note 24: Adjusted R-Squared</a>
-          <p class="blurb">Penalizing model complexity in linear regression</p>
-        </li>
-        <li>
-          <a href="/fundamentals/25_predictive_r2/">Note 25: Predictive R-Squared</a>
-          <p class="blurb">Leave-one-out cross-validation and generalization performance</p>
-        </li>
-        <li>
-          <a href="/fundamentals/26_hotelling/">Note 26: Hotelling's T-Squared</a>
-          <p class="blurb">Multivariate hypothesis testing and group mean comparisons</p>
+          <span style="font-weight: 600; color: #1f4e79;">LeJEPA</span>
+          <p class="blurb">Joint-Embedding Predictive Architecture formulations and explorations (research notes).</p>
         </li>
       </ol>
-      <h2>Multivariate Methods & Dimensionality</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/27_principal_component_analysis/">Note 27: Principal Component Analysis</a>
-          <p class="blurb">Dimensionality reduction via covariance eigendecomposition</p>
-        </li>
-        <li>
-          <a href="/fundamentals/28_factor_analysis/">Note 28: Factor Analysis</a>
-          <p class="blurb">Latent variable modeling and unobserved factor estimation</p>
-        </li>
-        <li>
-          <a href="/fundamentals/29_canonical_correlation_analysis/">Note 29: Canonical Correlation Analysis</a>
-          <p class="blurb">Maximizing correlation between two multidimensional variable sets</p>
-        </li>
-        <li>
-          <a href="/fundamentals/30_correspondence_analysis/">Note 30: Correspondence Analysis</a>
-          <p class="blurb">Geometric visualization of contingency tables and categorical associations</p>
-        </li>
-        <li>
-          <a href="/fundamentals/31_gaussian_mixture_models/">Note 31: Gaussian Mixture Models</a>
-          <p class="blurb">Soft clustering, Expectation-Maximization, and density estimation</p>
-        </li>
-      </ol>
-      <h2>Machine Learning Models & Diagnostics</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/32_elastic_net/">Note 32: Elastic Net Regression</a>
-          <p class="blurb">Balancing L1 and L2 penalties for correlated feature selection</p>
-        </li>
-        <li>
-          <a href="/fundamentals/33_huber_loss/">Note 33: Huber Loss</a>
-          <p class="blurb">Robust regression combining squared and absolute error penalties</p>
-        </li>
-        <li>
-          <a href="/fundamentals/34_mahalanobis_distance/">Note 34: Mahalanobis Distance</a>
-          <p class="blurb">Covariance-scaled distance metrics for outlier detection</p>
-        </li>
-        <li>
-          <a href="/fundamentals/35_gini_impurity_vs_entropy/">Note 35: Gini Impurity vs Entropy</a>
-          <p class="blurb">Split evaluation criteria for decision trees</p>
-        </li>
-        <li>
-          <a href="/fundamentals/36_agglomerative_clustering/">Note 36: Agglomerative Clustering</a>
-          <p class="blurb">Hierarchical clustering, distance metrics, and dendrograms</p>
-        </li>
-        <li>
-          <a href="/fundamentals/37_natural_breaks/">Note 37: Natural Breaks (Jenks)</a>
-          <p class="blurb">1D clustering optimization for histogram and choropleth binning</p>
-        </li>
-        <li>
-          <a href="/fundamentals/38_oversampling/">Note 38: Oversampling and SMOTE</a>
-          <p class="blurb">Synthesizing minority class samples for imbalanced classification</p>
-        </li>
-        <li>
-          <a href="/fundamentals/39_permutation_importance/">Note 39: Permutation Feature Importance</a>
-          <p class="blurb">Model-agnostic feature importance via shuffling evaluation</p>
-        </li>
-        <li>
-          <a href="/fundamentals/40_pca_vs_feat_ag/">Note 40: PCA vs Feature Agglomeration</a>
-          <p class="blurb">Linear dimensionality reduction versus hierarchical feature clustering</p>
-        </li>
-        <li>
-          <a href="/fundamentals/41_pseudo_r2/">Note 41: Pseudo R-Squared</a>
-          <p class="blurb">Goodness-of-fit metrics for logistic regression and GLMs</p>
-        </li>
-        <li>
-          <a href="/fundamentals/42_multiclass_classification/">Note 42: Multiclass Classification</a>
-          <p class="blurb">Softmax functions, cross-entropy loss, and decision regions</p>
-        </li>
-        <li>
-          <a href="/fundamentals/43_energy/">Note 43: Energy-Based Models</a>
-          <p class="blurb">Energy landscapes, Boltzmann distributions, and score matching</p>
-        </li>
-      </ol>
-      <h2>Interpretable AI</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/44_logistic_regression/">Note 44: Logistic Regression Interpretability</a>
-          <p class="blurb">Log-odds, odds ratios, and marginal feature effects</p>
-        </li>
-        <li>
-          <a href="/fundamentals/45_shapley/">Note 45: Shapley Values and SHAP</a>
-          <p class="blurb">Game-theoretic feature attributions and local model explanations</p>
-        </li>
-        <li>
-          <a href="/fundamentals/46_model_counterfactuals/">Note 46: Model Counterfactuals</a>
-          <p class="blurb">Actionable recourse and minimal changes to alter model predictions</p>
-        </li>
-      </ol>
-      <h2>Deep Learning & Generative AI</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/47_gelu/">Note 47: GELU Activation</a>
-          <p class="blurb">Gaussian Error Linear Units in modern Transformer models</p>
-        </li>
-        <li>
-          <a href="/fundamentals/48_temperature_scaled_softmax/">Note 48: Temperature-Scaled Softmax</a>
-          <p class="blurb">Calibrating confidence and diversity in probability distributions</p>
-        </li>
-        <li>
-          <a href="/fundamentals/49_focal_loss_balanced/">Note 49: Focal Loss</a>
-          <p class="blurb">Down-weighting easy examples for dense object detection and hard mining</p>
-        </li>
-        <li>
-          <a href="/fundamentals/50_attention_mechanism/">Note 50: Attention Mechanism</a>
-          <p class="blurb">Scaled dot-product attention as value weighting by query-key similarity</p>
-        </li>
-        <li>
-          <a href="/fundamentals/51_causal_attention/">Note 51: Causal Attention</a>
-          <p class="blurb">Autoregressive masking in decoder-only generative models</p>
-        </li>
-        <li>
-          <a href="/fundamentals/52_multi_head_attention/">Note 52: Multi-Head Attention</a>
-          <p class="blurb">Parallel representation subspaces in Transformer blocks</p>
-        </li>
-        <li>
-          <a href="/fundamentals/53_layer_and_rms_normalization/">Note 53: LayerNorm and RMSNorm</a>
-          <p class="blurb">Internal activation scaling and modern variance normalization</p>
-        </li>
-        <li>
-          <a href="/fundamentals/54_decoding_strategies/">Note 54: Decoding Strategies</a>
-          <p class="blurb">Greedy search, beam search, top-k, and nucleus (top-p) sampling</p>
-        </li>
-        <li>
-          <a href="/fundamentals/55_perplexity/">Note 55: Perplexity</a>
-          <p class="blurb">Information-theoretic evaluation metric for autoregressive language models</p>
-        </li>
-        <li>
-          <a href="/fundamentals/56_reparametrization_trick/">Note 56: Reparameterization Trick</a>
-          <p class="blurb">Differentiable sampling through stochastic nodes via auxiliary noise</p>
-        </li>
-        <li>
-          <a href="/fundamentals/57_autoencoder_latent_space/">Note 57: Autoencoder Latent Space</a>
-          <p class="blurb">Deterministic bottleneck compression and feature representation</p>
-        </li>
-        <li>
-          <a href="/fundamentals/58_pca_for_anomaly_detection/">Note 58: PCA for Anomaly Detection</a>
-          <p class="blurb">Reconstruction error in reduced eigenspaces as anomaly scoring</p>
-        </li>
-        <li>
-          <a href="/fundamentals/59_vae_on_mnist/">Note 59: VAE on MNIST</a>
-          <p class="blurb">Variational Autoencoders with evidence lower bound (ELBO) optimization</p>
-        </li>
-        <li>
-          <a href="/fundamentals/60_vae_anomaly_detection/">Note 60: VAE Anomaly Detection</a>
-          <p class="blurb">Probabilistic reconstruction likelihood for out-of-distribution detection</p>
-        </li>
-      </ol>
-      <h2>Graphs & Applied Pipelines</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/61_user_item_interaction_matrix/">Note 61: User-Item Interaction Matrix</a>
-          <p class="blurb">Bipartite graph representations for recommendation systems</p>
-        </li>
-        <li>
-          <a href="/fundamentals/62_grammar_of_graphics/">Note 62: Grammar of Graphics</a>
-          <p class="blurb">Layered visualization specifications with plotnine</p>
-        </li>
-      </ol>
-      <h2>Programming Patterns & Tools</h2>
-      <ol class="note-list">
-        <li>
-          <a href="/fundamentals/63_einsum/">Note 63: Einstein Summation (einsum)</a>
-          <p class="blurb">Succinct multidimensional array contractions in NumPy and PyTorch</p>
-        </li>
-        <li>
-          <a href="/fundamentals/64_pivoting/">Note 64: Data Pivoting</a>
-          <p class="blurb">Reshaping and aggregating tabular datasets in Pandas</p>
-        </li>
-        <li>
-          <a href="/fundamentals/65_cudf/">Note 65: GPU Acceleration (cuDF)</a>
-          <p class="blurb">Accelerating dataframe pipelines with GPU memory and parallelism</p>
-        </li>
-        <li>
-          <a href="/fundamentals/66_prefix_sum/">Note 66: Prefix Sum Pattern</a>
-          <p class="blurb">Constant-time range sum queries with precomputed cumulative arrays</p>
-        </li>
-        <li>
-          <a href="/fundamentals/67_kadanes/">Note 67: Kadane's Algorithm</a>
-          <p class="blurb">Linear-time maximum contiguous subarray sum via dynamic programming</p>
-        </li>
-        <li>
-          <a href="/fundamentals/68_two_pointer/">Note 68: Two-Pointer Technique</a>
-          <p class="blurb">In-place array processing and linear scan search optimizations</p>
-        </li>
-      </ol>
+    
       <p class="foot">
         Published at <a href="https://learnaiinminutes.com">learnaiinminutes.com</a>.
         Source code: <a href="https://github.com/AIinMinutes/Data-and-AI-Concepts">Data-and-AI-Concepts</a>.
